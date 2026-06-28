@@ -52,13 +52,13 @@ while ( have_posts() ) :
 			),
 			'buttons'      => array(
 				array(
-					'label' => esc_html__( 'Caja personalizada', 'samirarte-boutique' ),
-					'url'   => samirarte_boutique_boxes_url(),
+					'label' => esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ),
+					'url'   => samirarte_boutique_boxes_url() . '#caja-gourmet-personalizada',
 					'class' => 'sam-button',
 				),
 				array(
 					'label' => esc_html__( 'Ver catálogo de piezas', 'samirarte-boutique' ),
-					'url'   => samirarte_boutique_boxes_url(),
+					'url'   => samirarte_boutique_boxes_url() . '#catalogo-piezas',
 					'class' => 'sam-button sam-button--ghost',
 				),
 			),
@@ -111,7 +111,7 @@ while ( have_posts() ) :
 				'title'   => esc_html__( 'Crea tu colección de joyas comestibles', 'samirarte-boutique' ),
 				'text'    => esc_html__( 'Elige el tamaño, descubre el catálogo y prepara una caja lista para regalar.', 'samirarte-boutique' ),
 				'buttons' => array(
-					array( esc_html__( 'Caja personalizada', 'samirarte-boutique' ), samirarte_boutique_boxes_url(), 'sam-button' ),
+					array( esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ), samirarte_boutique_boxes_url() . '#caja-gourmet-personalizada', 'sam-button' ),
 					array( esc_html__( 'Ver catálogo de piezas', 'samirarte-boutique' ), samirarte_boutique_boxes_url(), 'sam-button sam-button--ghost' ),
 				),
 			),
@@ -755,4 +755,3 @@ while ( have_posts() ) :
 
 <?php
 get_footer();
-

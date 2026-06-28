@@ -17,15 +17,36 @@ $experience_image = samirarte_boutique_image_url( 'experiencia-privada-samirarte
 $table_image      = samirarte_boutique_image_url( 'mesa-gourmet-samirarte.webp' );
 $contact_image    = samirarte_boutique_image_url( 'contacto-propuesta-samirarte.webp' );
 $opening_video    = get_template_directory_uri() . '/assets/video/intro-samirarte-apertura.mp4';
-$request_url      = samirarte_boutique_custom_box_request_url();
-$coming_soon      = esc_html__( 'Preapertura', 'samirarte-boutique' );
+$custom_box_url   = samirarte_boutique_boxes_url() . '#caja-gourmet-personalizada';
+$coming_soon      = esc_html__( 'Próximamente', 'samirarte-boutique' );
 $featured_products = array(
 	array(
-		'title' => esc_html__( 'Caja personalizada', 'samirarte-boutique' ),
+		'title' => esc_html__( 'Caja Gourmet 3 piezas', 'samirarte-boutique' ),
 		'price' => $coming_soon,
-		'text'  => esc_html__( 'Una composición gourmet creada a medida según la ocasión, los sabores deseados y el mensaje que quieras transmitir.', 'samirarte-boutique' ),
-		'image' => $box_image,
-		'url'   => $request_url,
+		'text'  => esc_html__( 'Un detalle pequeño y precioso para abrir boca con tus piezas favoritas.', 'samirarte-boutique' ),
+		'image' => $dates_image,
+		'url'   => $custom_box_url,
+	),
+	array(
+		'title' => esc_html__( 'Caja Gourmet 6 piezas', 'samirarte-boutique' ),
+		'price' => $coming_soon,
+		'text'  => esc_html__( 'La combinación equilibrada para regalar, compartir o acompañar un té.', 'samirarte-boutique' ),
+		'image' => $box_image ? $box_image : $dates_image,
+		'url'   => $custom_box_url,
+	),
+	array(
+		'title' => esc_html__( 'Caja Gourmet 9 piezas', 'samirarte-boutique' ),
+		'price' => $coming_soon,
+		'text'  => esc_html__( 'Una colección generosa para descubrir distintas texturas y sabores.', 'samirarte-boutique' ),
+		'image' => $story_image ? $story_image : $box_image,
+		'url'   => $custom_box_url,
+	),
+	array(
+		'title' => esc_html__( 'Caja Gourmet 12 piezas', 'samirarte-boutique' ),
+		'price' => $coming_soon,
+		'text'  => esc_html__( 'La composición completa para celebraciones, empresas y regalos especiales.', 'samirarte-boutique' ),
+		'image' => samirarte_boutique_image_url( 'galeria-caja-gourmet-16.webp' ),
+		'url'   => $custom_box_url,
 	),
 );
 $available_pieces = array(
@@ -93,9 +114,9 @@ $available_pieces = array(
 		<div class="sam-hero__content">
 			<p class="sam-eyebrow"><?php echo esc_html__( 'Boutique gourmet artesanal', 'samirarte-boutique' ); ?></p>
 			<h1><?php echo esc_html__( 'Sabores que cuentan historias. Detalles que dejan huella.', 'samirarte-boutique' ); ?></h1>
-			<p class="sam-hero__text"><?php echo esc_html__( 'Cajas gourmet personalizadas, detalles artesanales y relatos en pergamino para regalar con intención y belleza.', 'samirarte-boutique' ); ?></p>
+			<p class="sam-hero__text"><?php echo esc_html__( 'Cajas gourmet de 3, 6, 9 y 12 piezas, experiencias a medida y regalos artesanales con presentación cuidada y cuento en pergamino.', 'samirarte-boutique' ); ?></p>
 			<div class="sam-actions">
-				<a class="sam-button" href="<?php echo esc_url( $request_url ); ?>"><?php echo esc_html__( 'Caja personalizada', 'samirarte-boutique' ); ?></a>
+				<a class="sam-button" href="<?php echo esc_url( $custom_box_url ); ?>"><?php echo esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ); ?></a>
 				<a class="sam-button sam-button--ghost" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?></a>
 			</div>
 		</div>
@@ -104,12 +125,12 @@ $available_pieces = array(
 
 <section class="sam-featured-carousel-section sam-box-builder" aria-labelledby="sam-featured-carousel-title">
 	<div class="sam-container sam-featured-carousel-heading">
-		<h2 id="sam-featured-carousel-title"><?php echo esc_html__( 'Caja personalizada', 'samirarte-boutique' ); ?></h2>
-		<p><?php echo esc_html__( 'Crea una caja gourmet a medida para regalar, sorprender o acompañar una ocasión especial.', 'samirarte-boutique' ); ?></p>
+		<h2 id="sam-featured-carousel-title"><?php echo esc_html__( 'Elige tu caja', 'samirarte-boutique' ); ?></h2>
+		<p><?php echo esc_html__( 'Formatos pensados para configurar una caja gourmet según la ocasión, el número de personas y el mensaje que quieres transmitir.', 'samirarte-boutique' ); ?></p>
 	</div>
-	<div class="sam-featured-carousel sam-featured-carousel--single sam-box-builder__formats" tabindex="0" aria-label="<?php echo esc_attr__( 'Caja personalizada Samirarte', 'samirarte-boutique' ); ?>">
+	<div class="sam-featured-carousel sam-box-builder__formats" tabindex="0" aria-label="<?php echo esc_attr__( 'Cajas Gourmet Samirarte', 'samirarte-boutique' ); ?>">
 		<?php foreach ( $featured_products as $product ) : ?>
-			<a class="sam-featured-card sam-featured-card--custom" href="<?php echo esc_url( $product['url'] ); ?>" aria-label="<?php echo esc_attr( $product['title'] ); ?>">
+			<a class="sam-featured-card" href="<?php echo esc_url( $product['url'] ); ?>" aria-label="<?php echo esc_attr( $product['title'] ); ?>">
 				<span class="sam-featured-card__image">
 					<?php if ( $product['image'] ) : ?>
 						<img src="<?php echo esc_url( $product['image'] ); ?>" alt="<?php echo esc_attr( $product['title'] ); ?>" loading="lazy">
@@ -121,7 +142,7 @@ $available_pieces = array(
 					<strong><?php echo esc_html( $product['title'] ); ?></strong>
 					<span class="sam-coming-soon-price"><?php echo esc_html( $product['price'] ); ?></span>
 					<span class="sam-featured-card__description"><?php echo esc_html( $product['text'] ); ?></span>
-					<em><?php echo esc_html__( 'Solicitar caja personalizada', 'samirarte-boutique' ); ?></em>
+					<em><?php echo esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ); ?></em>
 				</span>
 			</a>
 		<?php endforeach; ?>
@@ -208,7 +229,7 @@ $available_pieces = array(
 
 			foreach ( $cards as $card ) :
 				?>
-				<a class="sam-product-card" href="<?php echo esc_url( $request_url ); ?>">
+				<a class="sam-product-card" href="<?php echo esc_url( $custom_box_url ); ?>">
 					<span class="sam-product-card__image">
 						<?php if ( $card['image'] ) : ?>
 							<img src="<?php echo esc_url( $card['image'] ); ?>" alt="<?php echo esc_attr( $card['title'] ); ?>" loading="lazy">
@@ -280,4 +301,3 @@ $available_pieces = array(
 
 <?php
 get_footer();
-
