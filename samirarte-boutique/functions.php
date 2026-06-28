@@ -554,12 +554,11 @@ if ( ! function_exists( 'samirarte_boutique_shop_intro' ) ) {
 			<div class="sam-personalized-box__copy">
 				<p class="sam-eyebrow"><?php echo esc_html__( 'POR ENCARGO', 'samirarte-boutique' ); ?></p>
 				<h2 id="sam-personalized-box-title"><?php echo esc_html__( 'Caja gourmet personalizada', 'samirarte-boutique' ); ?></h2>
-				<p class="sam-personalized-box__lead"><?php echo esc_html__( 'Crea una caja gourmet a medida para regalar, sorprender o acompañar una ocasión especial.', 'samirarte-boutique' ); ?></p>
-				<p><?php echo esc_html__( 'Cuéntanos qué te gustaría incluir: dátiles rellenos, pastas finas, té, detalles especiales, una dedicatoria o un cuento en pergamino. Prepararemos una propuesta personalizada según la ocasión, el número de personas y el estilo que buscas.', 'samirarte-boutique' ); ?></p>
+				<p class="sam-personalized-box__lead"><?php echo esc_html__( 'Crea una caja a medida para una ocasión especial. Cuéntanos qué quieres transmitir, para cuántas personas es, qué sabores prefieres y qué estilo de regalo buscas. Prepararemos una propuesta cuidada, artesanal y con historia.', 'samirarte-boutique' ); ?></p>
 			</div>
 			<div class="sam-personalized-box__request">
-				<p><?php echo esc_html__( 'Describe aquí cómo imaginas tu caja personalizada: sabores, piezas, estilo, ocasión, presupuesto aproximado o cualquier detalle importante.', 'samirarte-boutique' ); ?></p>
-				<a class="sam-button" href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar caja personalizada', 'samirarte-boutique' ); ?></a>
+				<p><?php echo esc_html__( 'Cuéntanos brevemente tu solicitud y nosotros te prepararemos una propuesta detallada.', 'samirarte-boutique' ); ?></p>
+				<a class="sam-button" href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ); ?></a>
 				<?php /* Espacio preparado para insertar un shortcode de formulario si se decide integrarlo aquí. */ ?>
 			</div>
 		</section>
