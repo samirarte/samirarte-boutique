@@ -112,6 +112,9 @@ $cart_url      = samirarte_boutique_cart_url();
 			);
 			?>
 		</p>
+		<p class="sam-footer__legal-links">
+			<a href="<?php echo esc_url( home_url( '/samirarte-digital/' ) ); ?>"><?php echo esc_html__( 'Desarrollo Web & Apps — Samirarte Digital', 'samirarte-boutique' ); ?></a>
+		</p>
 	</div>
 </footer>
 
