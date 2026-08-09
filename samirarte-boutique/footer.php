@@ -17,40 +17,59 @@ $cart_url      = samirarte_boutique_cart_url();
 	<div class="sam-footer__inner">
 		<section class="sam-footer__brand" aria-label="<?php echo esc_attr__( 'Samirarte', 'samirarte-boutique' ); ?>">
 			<?php echo samirarte_boutique_logo_markup( 'sam-footer__logo' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<h2><?php echo esc_html__( 'Samirarte', 'samirarte-boutique' ); ?></h2>
-			<p class="sam-footer__claim"><?php echo esc_html__( 'Artesanía Gourmet', 'samirarte-boutique' ); ?></p>
-			<p class="sam-footer__tagline"><?php echo esc_html__( 'Tradición que se saborea, arte que se comparte.', 'samirarte-boutique' ); ?></p>
-
+			<h2><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h2>
+			<?php if ( get_bloginfo( 'description' ) || is_customize_preview() ) : ?>
+				<p class="sam-footer__claim"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>
+			<?php endif; ?>
 		</section>
 
 		<section class="sam-footer__column">
-			<h2><?php echo esc_html__( 'Catálogo', 'samirarte-boutique' ); ?></h2>
-			<ul>
-				<li><a href="<?php echo esc_url( samirarte_boutique_boxes_url() ); ?>"><?php echo esc_html__( 'Cajas Gourmet', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/galeria/' ) ); ?>"><?php echo esc_html__( 'Galería', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/experiencias/' ) ); ?>"><?php echo esc_html__( 'Experiencias', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/cuentos/' ) ); ?>"><?php echo esc_html__( 'Cuentos', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( samirarte_boutique_diary_url() ); ?>"><?php echo esc_html__( 'Diario', 'samirarte-boutique' ); ?></a></li>
-			</ul>
+			<?php
+			// Prefer a footer menu if configured; otherwise fall back to a widget area or curated links.
+			if ( has_nav_menu( 'footer' ) ) :
+				wp_nav_menu( array( 'theme_location' => 'footer', 'container' => '', 'menu_class' => 'sam-footer-menu' ) );
+			elseif ( is_active_sidebar( 'footer-1' ) ) :
+				dynamic_sidebar( 'footer-1' );
+			else :
+				?>
+				<h2><?php echo esc_html__( 'Catálogo', 'samirarte-boutique' ); ?></h2>
+				<ul>
+					<li><a href="<?php echo esc_url( samirarte_boutique_boxes_url() ); ?>"><?php echo esc_html__( 'Cajas Gourmet', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/galeria/' ) ); ?>"><?php echo esc_html__( 'Galería', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/experiencias/' ) ); ?>"><?php echo esc_html__( 'Experiencias', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/cuentos/' ) ); ?>"><?php echo esc_html__( 'Cuentos', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( samirarte_boutique_diary_url() ); ?>"><?php echo esc_html__( 'Diario', 'samirarte-boutique' ); ?></a></li>
+				</ul>
+				<?php
+			endif;
+			?>
 		</section>
 
 		<section class="sam-footer__column">
-			<h2><?php echo esc_html__( 'Cliente', 'samirarte-boutique' ); ?></h2>
-			<ul>
-				<li><a href="<?php echo esc_url( $account_url ); ?>"><?php echo esc_html( $account_label ); ?></a></li>
-				<li><a href="<?php echo esc_url( $cart_url ); ?>"><?php echo esc_html__( 'Cesta', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?></a></li>
-			</ul>
+			<?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
+				<?php dynamic_sidebar( 'footer-2' ); ?>
+			<?php else : ?>
+				<h2><?php echo esc_html__( 'Cliente', 'samirarte-boutique' ); ?></h2>
+				<ul>
+					<li><a href="<?php echo esc_url( $account_url ); ?>"><?php echo esc_html( $account_label ); ?></a></li>
+					<li><a href="<?php echo esc_url( $cart_url ); ?>"><?php echo esc_html__( 'Cesta', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?></a></li>
+				</ul>
+			<?php endif; ?>
 		</section>
 
 		<section class="sam-footer__column">
-			<h2><?php echo esc_html__( 'Legal', 'samirarte-boutique' ); ?></h2>
-			<ul>
-				<li><a href="<?php echo esc_url( home_url( '/condiciones-de-compra/' ) ); ?>"><?php echo esc_html__( 'Condiciones de compra', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/politica-de-privacidad/' ) ); ?>"><?php echo esc_html__( 'Política de privacidad', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/politica-de-cookies/' ) ); ?>"><?php echo esc_html__( 'Política de cookies', 'samirarte-boutique' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/aviso-legal/' ) ); ?>"><?php echo esc_html__( 'Aviso legal', 'samirarte-boutique' ); ?></a></li>
-			</ul>
+			<?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
+				<?php dynamic_sidebar( 'footer-3' ); ?>
+			<?php else : ?>
+				<h2><?php echo esc_html__( 'Legal', 'samirarte-boutique' ); ?></h2>
+				<ul>
+					<li><a href="<?php echo esc_url( home_url( '/condiciones-de-compra/' ) ); ?>"><?php echo esc_html__( 'Condiciones de compra', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/politica-de-privacidad/' ) ); ?>"><?php echo esc_html__( 'Política de privacidad', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/politica-de-cookies/' ) ); ?>"><?php echo esc_html__( 'Política de cookies', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( home_url( '/aviso-legal/' ) ); ?>"><?php echo esc_html__( 'Aviso legal', 'samirarte-boutique' ); ?></a></li>
+				</ul>
+			<?php endif; ?>
 		</section>
 		<section class="sam-footer__column sam-footer__social" aria-label="<?php echo esc_attr__( 'Redes sociales', 'samirarte-boutique' ); ?>">
 			<h2><?php echo esc_html__( 'Síguenos', 'samirarte-boutique' ); ?></h2>

@@ -9,6 +9,25 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
+// If a static page is set as the front page and it contains blocks or content,
+// render its content so editors can fully manage the front page from WP admin.
+$front_id = (int) get_option( 'page_on_front' );
+if ( $front_id ) {
+	$front = get_post( $front_id );
+	if ( $front && ( has_blocks( $front->ID ) || trim( $front->post_content ) !== '' ) ) {
+		// Render the front page content (allows Gutenberg blocks / editable content)
+		setup_postdata( $front );
+		?>
+		<main class="sam-page-content">
+			<?php echo apply_filters( 'the_content', $front->post_content ); ?>
+		</main>
+		<?php
+		wp_reset_postdata();
+		get_footer();
+		return;
+	}
+}
+
 $box_image        = samirarte_boutique_image_url( 'caja-gourmet-samirarte.webp' );
 $dates_image      = samirarte_boutique_image_url( 'datiles.webp' );
 $pastries_image   = samirarte_boutique_image_url( 'pastas_finas.webp' );

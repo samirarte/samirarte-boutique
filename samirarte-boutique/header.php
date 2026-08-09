@@ -48,7 +48,7 @@ $account_current_class = function_exists( 'is_account_page' ) && is_account_page
 
 			<div id="sam-mobile-menu" class="sam-mobile-menu" hidden>
 				<nav aria-label="<?php echo esc_attr__( 'Navegación principal móvil', 'samirarte-boutique' ); ?>">
-					<?php samirarte_boutique_primary_menu( 'sam-mobile-menu__list' ); ?>
+					<?php samirarte_boutique_nav( array( 'menu_class' => 'sam-mobile-menu__list' ) ); ?>
 				</nav>
 				<div class="sam-mobile-menu__utilities">
 					<a class="sam-mobile-account-link<?php echo esc_attr( $account_current_class ); ?>" href="<?php echo esc_url( $account_url ); ?>"<?php echo $account_current_class ? ' aria-current="' . esc_attr( 'page' ) . '"' : ''; ?>>
@@ -67,7 +67,7 @@ $account_current_class = function_exists( 'is_account_page' ) && is_account_page
 		</div>
 
 		<nav class="sam-navigation" aria-label="<?php echo esc_attr__( 'Menú principal', 'samirarte-boutique' ); ?>">
-			<?php samirarte_boutique_primary_menu(); ?>
+			<?php samirarte_boutique_nav(); ?>
 		</nav>
 
 		<div class="sam-header-actions">

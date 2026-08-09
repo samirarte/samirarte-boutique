@@ -14,6 +14,14 @@ get_header();
 while ( have_posts() ) :
 	the_post();
 
+	// If the editor has content (blocks or classic), render it directly so pages are fully editable from WP admin.
+	if ( has_blocks( get_the_ID() ) || trim( get_the_content() ) !== '' ) {
+		echo '<div class="sam-page-content">';
+		the_content();
+		echo '</div>';
+		continue;
+	}
+
 	$page_slug  = get_post_field( 'post_name', get_the_ID() );
 	$is_contact = 'contacto' === $page_slug;
 	$is_account = function_exists( 'is_account_page' ) && is_account_page();

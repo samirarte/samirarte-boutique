@@ -32,16 +32,17 @@ if ( ! function_exists( 'samirarte_boutique_primary_menu' ) ) {
 	}
 }
 
-if ( ! function_exists( 'samirarte_boutique_fallback_menu' ) ) {
-	function samirarte_boutique_fallback_menu( $args = array() ) {
-		$menu_class = 'sam-site-menu';
+// New helper: render a dynamic nav using the 'primary' theme location when available
+if ( ! function_exists( 'samirarte_boutique_nav' ) ) {
+	function samirarte_boutique_nav( $args = array() ) {
+		$defaults = array(
+			'theme_location' => 'primary',
+			'container'      => '',
+			'menu_class'      => isset( $args['menu_class'] ) ? $args['menu_class'] : 'sam-site-menu',
+			'fallback_cb'     => 'samirarte_boutique_fallback_menu',
+		);
 
-		if ( is_object( $args ) && ! empty( $args->menu_class ) ) {
-			$menu_class = $args->menu_class;
-		} elseif ( is_array( $args ) && ! empty( $args['menu_class'] ) ) {
-			$menu_class = $args['menu_class'];
-		}
-
-		samirarte_boutique_primary_menu( $menu_class );
+		$nav_args = wp_parse_args( $args, $defaults );
+		wp_nav_menu( $nav_args );
 	}
 }

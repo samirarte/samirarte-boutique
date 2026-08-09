@@ -39,9 +39,40 @@ if ( ! function_exists( 'samirarte_boutique_setup' ) ) {
 
 		register_nav_menus(
 			array(
-				'primary_menu' => esc_html__( 'Menú principal', 'samirarte-boutique' ),
+				'primary' => esc_html__( 'Menú principal', 'samirarte-boutique' ),
+				'footer'  => esc_html__( 'Footer menu', 'samirarte-boutique' ),
+				// Backwards compatibility key used elsewhere in the theme.
+				'primary_menu' => esc_html__( 'Menú principal (legacy)', 'samirarte-boutique' ),
 			)
 		);
+
+			// Register footer widget areas (three columns) so editors can manage footer content from WP admin.
+			register_sidebar( array(
+				'name'          => esc_html__( 'Footer column 1', 'samirarte-boutique' ),
+				'id'            => 'footer-1',
+				'before_widget' => '<div class="footer-widget footer-widget-1">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="footer-widget-title">',
+				'after_title'   => '</h3>',
+			) );
+
+			register_sidebar( array(
+				'name'          => esc_html__( 'Footer column 2', 'samirarte-boutique' ),
+				'id'            => 'footer-2',
+				'before_widget' => '<div class="footer-widget footer-widget-2">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="footer-widget-title">',
+				'after_title'   => '</h3>',
+			) );
+
+			register_sidebar( array(
+				'name'          => esc_html__( 'Footer column 3', 'samirarte-boutique' ),
+				'id'            => 'footer-3',
+				'before_widget' => '<div class="footer-widget footer-widget-3">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h3 class="footer-widget-title">',
+				'after_title'   => '</h3>',
+			) );
 	}
 }
 add_action( 'after_setup_theme', 'samirarte_boutique_setup' );
