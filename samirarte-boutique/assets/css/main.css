@@ -6659,25 +6659,3 @@ body.sam-intro-active .sam-opening-intro {
 		text-align: center;
 	}
 }
-/* Samirarte Digital portfolio styles */
-.sam-digital-page .sam-digital-hero{
-  text-align:center;
-  margin:3.5rem 0 2rem;
-}
-.sam-digital-lead{color:#666;margin-top:.5rem;max-width:78ch;margin-left:auto;margin-right:auto}
-.sam-digital-portfolio{margin:2.5rem 0}
-.sam-digital-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
-.sam-digital-card{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.03)}
-.sam-digital-card-link{display:block;color:inherit;text-decoration:none}
-.sam-digital-card-media{height:140px;background:#f6f6f6;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.sam-digital-card-media img{width:100%;height:100%;object-fit:cover}
-.sam-digital-card-body{padding:1rem}
-.sam-digital-card-body h3{margin:0 0 .25rem;font-size:1.05rem}
-.sam-digital-tag{font-size:0.85rem;color:#999;margin-bottom:.5rem}
-.sam-digital-excerpt{font-size:.95rem;color:#444}
-.sam-digital-cta{display:inline-block;margin-top:.75rem;color:#0073aa;font-weight:600}
-.sam-digital-cta .sam-button{margin-top:1rem}
-.sam-digital-cta{text-align:center;padding:2.25rem 0}
-@media (min-width:900px){
-  .sam-digital-card-media{height:160px}
-}

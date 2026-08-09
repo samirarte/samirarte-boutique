@@ -16,6 +16,7 @@ require_once get_template_directory() . '/inc/menus.php';
 require_once get_template_directory() . '/inc/seo.php';
 require_once get_template_directory() . '/inc/branding.php';
 require_once get_template_directory() . '/inc/shop.php';
+require_once get_template_directory() . '/inc/portfolio.php';
 
 if ( ! function_exists( 'samirarte_boutique_setup' ) ) {
 	/**

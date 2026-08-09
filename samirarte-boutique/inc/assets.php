@@ -47,3 +47,19 @@ if ( ! function_exists( 'samirarte_boutique_enqueue_assets' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'samirarte_boutique_enqueue_assets' );
+
+// Enqueue styles specific to the Samirarte Digital template only
+if ( ! function_exists( 'samirarte_boutique_enqueue_digital_assets' ) ) {
+	function samirarte_boutique_enqueue_digital_assets() {
+		// Only enqueue on pages using the page-digital.php template
+		if ( function_exists( 'is_page_template' ) && is_page_template( 'page-digital.php' ) ) {
+			wp_enqueue_style(
+				'samirarte-boutique-digital',
+				get_template_directory_uri() . '/assets/css/digital.css',
+				array( 'samirarte-boutique-main' ),
+				samirarte_boutique_asset_version( '/assets/css/digital.css' )
+			);
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'samirarte_boutique_enqueue_digital_assets', 25 );
