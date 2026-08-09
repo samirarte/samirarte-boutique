@@ -1,20 +1,56 @@
+# IDEs, editor & environment
 .agents/
 .vscode/
 .idea/
+
+# Node.js dependencies and logs
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build / output folders
+dist/
+build/
+.cache/
+.sass-cache/
+
+# Composer dependencies (if any)
+vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs, swap & temp files
 *.log
+*.log.*
 *.tmp
 *.bak
+*.swp
+*.swo
+
+# Editor / project files
+*.sublime-workspace
+*.sublime-project
+
+# Environment / secrets
+.env
+.env.*.local
+
+# SFTP / deploy config (often editor-specific)
+.sftp-config.json
+.deploy/
+
+# WordPress runtime files (uploads, caches) — typically not part of a theme repo
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+
+# Misc
 Thumbs.db
-.DS_Store
 
-# screenshot.png must stay committed (required by WordPress theme directory).
-# Replace the stub with a real 880x660 px PNG before submitting to wp.org.
+# Keep screenshot (WordPress themes require screenshot.png in the theme root)
+!screenshot.png
 
-# Diff and original-backup files — keep out of version control
-diff-*.txt
-diff_*.txt
-orig-*.txt
-orig_*.txt
-orig-*.php
-orig_*.php
+# Notes: commit package-lock.json / yarn.lock and composer.lock for reproducible installs. Adjust ignores above if you intentionally track vendor/ or build artifacts.
