@@ -1,4 +1,4 @@
-name: Deploy Theme via SSH
+name: Deploy Theme via FTP
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to webserver via rsync/ssh
+    name: Deploy to webserver via FTP
     runs-on: ubuntu-latest
 
     steps:
@@ -15,21 +15,27 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Deploy theme to server
-        uses: easingthemes/ssh-deploy@v5.1.0
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
-          SOURCE: "."
-          EXCLUDE: ".git, .github, node_modules, .vscode, .env"
-          ARGS: "-rlgoDzvc -i --delete"
-          SSH_CMD_ARGS: "-o StrictHostKeyChecking=no"
-          SCRIPT_BEFORE: |
-            # ensure target exists and has correct permissions
-            mkdir -p ${{ secrets.REMOTE_TARGET }}
-            chown -R ${{ secrets.REMOTE_USER }}: ${{ secrets.REMOTE_TARGET }} || true
-          SCRIPT_AFTER: |
-            echo "Deployed samirarte-boutique to ${{ secrets.REMOTE_TARGET }}"
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: '.'
+          protocol: ftps
+          # Remove files on remote that do not exist locally
+          # Warning: --delete will remove remote files not present in the repo
+          git-ftp-args: --insecure --delete
+          # Optional: exclude common dev files (pattern list)
+          exclude: |
+            .git
+            .github
+            node_modules
+            .vscode
+            .env
+
+      - name: Confirm deployment
+        run: |
+          echo "Deployed samirarte-boutique to ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_SERVER_DIR }}"
+
