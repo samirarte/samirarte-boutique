@@ -23,3 +23,13 @@ jobs:
           protocol: ftps
           port: 21
           security: loose
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.vscode/**
+            **/node_modules/**
+            **/backup/**
+            **/deploy/**
+            **/brief/**
+            **/samirarte-theme*/**
+            **/samirarte-core/**
