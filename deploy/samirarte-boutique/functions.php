@@ -74,15 +74,11 @@ if ( ! function_exists( 'samirarte_boutique_enqueue_assets' ) ) {
 			true
 		);
 
-		// Load the script with defer so it never blocks HTML parsing.
-		wp_script_add_data( 'samirarte-boutique-main', 'strategy', 'defer' );
-
 		wp_localize_script(
 			'samirarte-boutique-main',
 			'SamirarteBoutique',
 			array(
-				'debug'       => defined( 'SAMIRARTE_DEBUG' ) && SAMIRARTE_DEBUG,
-				'isFrontPage' => is_front_page(),
+				'debug' => defined( 'WP_DEBUG' ) && WP_DEBUG,
 			)
 		);
 	}
@@ -141,12 +137,14 @@ if ( ! function_exists( 'samirarte_boutique_cart_count' ) ) {
 
 if ( ! function_exists( 'samirarte_boutique_boxes_url' ) ) {
 	/**
-	 * Return the commercial Cajas Gourmet landing URL.
+	 * Return the WooCommerce shop URL used as the Cajas Gourmet destination.
 	 *
 	 * @return string
 	 */
 	function samirarte_boutique_boxes_url() {
-		return home_url( '/cajas-gourmet/' );
+		$shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
+
+		return $shop_url ? $shop_url : home_url( '/cajas-gourmet/' );
 	}
 }
 
@@ -416,32 +414,11 @@ if ( ! function_exists( 'samirarte_boutique_image_url' ) ) {
 	/**
 	 * Return a theme image URL only if the file exists.
 	 *
-	 * Only files with allowed image extensions are served. Results are cached in a
-	 * static array for the duration of the request so file_exists() is called at
-	 * most once per unique filename.
-	 *
 	 * @param string $filename Image filename inside assets/img.
-	 * @return string URL with cache-busting version, or empty string when not found.
+	 * @return string
 	 */
 	function samirarte_boutique_image_url( $filename ) {
-		static $cache = array();
-
-		// Allowed image extensions — nothing else is served from this function.
-		static $allowed_extensions = array( 'webp', 'png', 'jpg', 'jpeg', 'svg', 'gif' );
-
-		$filename = wp_basename( (string) $filename );
-
-		// Validate extension before touching the filesystem.
-		$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
-		if ( ! in_array( $ext, $allowed_extensions, true ) ) {
-			return '';
-		}
-
-		// Return cached result when available.
-		if ( array_key_exists( $filename, $cache ) ) {
-			return $cache[ $filename ];
-		}
-
+		$filename   = wp_basename( (string) $filename );
 		$candidates = array_unique(
 			array_filter(
 				array(
@@ -455,65 +432,10 @@ if ( ! function_exists( 'samirarte_boutique_image_url' ) ) {
 			$file = get_template_directory() . '/assets/img/' . $candidate;
 
 			if ( file_exists( $file ) ) {
-				$url            = get_template_directory_uri() . '/assets/img/' . rawurlencode( $candidate ) . '?ver=' . filemtime( $file );
-				$cache[ $filename ] = $url;
-				return $url;
+				return get_template_directory_uri() . '/assets/img/' . rawurlencode( $candidate ) . '?ver=' . filemtime( $file );
 			}
 		}
 
-		// Cache negative result to avoid repeated stat() calls.
-		$cache[ $filename ] = '';
-		return '';
-	}
-}
-
-if ( ! function_exists( 'samirarte_boutique_video_url' ) ) {
-	/**
-	 * Return a theme video URL only if the file exists, with cache-busting version.
-	 *
-	 * Results are cached in a static array for the duration of the request so
-	 * file_exists() is called at most once per unique filename.
-	 *
-	 * @param string $filename Video filename inside assets/video.
-	 * @return string URL with cache-busting version, or empty string when not found.
-	 */
-	function samirarte_boutique_video_url( $filename ) {
-		static $cache = array();
-
-		// Allowed video extensions.
-		static $allowed_extensions = array( 'mp4', 'webm', 'ogv' );
-
-		$filename = wp_basename( (string) $filename );
-
-		$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
-		if ( ! in_array( $ext, $allowed_extensions, true ) ) {
-			return '';
-		}
-
-		if ( array_key_exists( $filename, $cache ) ) {
-			return $cache[ $filename ];
-		}
-
-		$candidates = array_unique(
-			array_filter(
-				array(
-					$filename,
-					sanitize_file_name( $filename ),
-				)
-			)
-		);
-
-		foreach ( $candidates as $candidate ) {
-			$file = get_template_directory() . '/assets/video/' . $candidate;
-
-			if ( file_exists( $file ) ) {
-				$url              = get_template_directory_uri() . '/assets/video/' . rawurlencode( $candidate ) . '?ver=' . filemtime( $file );
-				$cache[ $filename ] = $url;
-				return $url;
-			}
-		}
-
-		$cache[ $filename ] = '';
 		return '';
 	}
 }
@@ -535,11 +457,15 @@ if ( ! function_exists( 'samirarte_boutique_fallback_menu' ) ) {
 	}
 }
 
-if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
+if ( ! function_exists( 'samirarte_boutique_shop_intro' ) ) {
 	/**
-	 * Render the commercial Cajas Gourmet landing without depending on WooCommerce.
+	 * Present the box configurator concept before the WooCommerce product loop.
 	 */
-	function samirarte_boutique_render_boxes_landing() {
+	function samirarte_boutique_shop_intro() {
+		if ( ! function_exists( 'is_shop' ) || ! is_shop() ) {
+			return;
+		}
+
 		$piece_categories = array(
 			array(
 				'title' => esc_html__( 'Minipastelas', 'samirarte-boutique' ),
@@ -635,11 +561,44 @@ if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
 				<a class="sam-button" href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar personalización', 'samirarte-boutique' ); ?></a>
 			</div>
 		</section>
-
-		<?php echo samirarte_boutique_shop_compact_opening_gift_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php
 	}
 }
+add_action( 'woocommerce_before_shop_loop', 'samirarte_boutique_shop_intro', 2 );
+
+if ( ! function_exists( 'samirarte_boutique_disable_shop_product_loop' ) ) {
+	/**
+	 * Keep the main shop as a curated request page without printing product cards.
+	 */
+	function samirarte_boutique_disable_shop_product_loop() {
+		if ( is_admin() || ! function_exists( 'is_shop' ) || ! is_shop() ) {
+			return;
+		}
+
+		add_filter( 'woocommerce_product_loop', '__return_false', 20 );
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+		remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+		remove_action( 'woocommerce_no_products_found', 'wc_no_products_found', 10 );
+	}
+}
+add_action( 'wp', 'samirarte_boutique_disable_shop_product_loop', 20 );
+
+if ( ! function_exists( 'samirarte_boutique_shop_page_title' ) ) {
+	/**
+	 * Replace the generic WooCommerce shop title.
+	 *
+	 * @param string $title Archive title.
+	 * @return string
+	 */
+	function samirarte_boutique_shop_page_title( $title ) {
+		return function_exists( 'is_shop' ) && is_shop()
+			? esc_html__( 'Cajas Gourmet', 'samirarte-boutique' )
+			: $title;
+	}
+}
+add_filter( 'woocommerce_page_title', 'samirarte_boutique_shop_page_title' );
+
 if ( ! function_exists( 'samirarte_boutique_preload_hero_image' ) ) {
 	/**
 	 * Preload the home hero background image because it is above the fold.
@@ -868,6 +827,7 @@ if ( ! function_exists( 'samirarte_boutique_shop_opening_gift_notice' ) ) {
 		echo samirarte_boutique_shop_compact_opening_gift_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
+add_action( 'woocommerce_before_shop_loop', 'samirarte_boutique_shop_opening_gift_notice', 4 );
 
 if ( ! function_exists( 'samirarte_boutique_account_opening_gift_notice' ) ) {
 	/**

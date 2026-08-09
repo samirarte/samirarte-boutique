@@ -16,7 +16,7 @@ $story_image      = samirarte_boutique_image_url( 'cuento-pergamino-samirarte.we
 $experience_image = samirarte_boutique_image_url( 'experiencia-privada-samirarte.webp' );
 $table_image      = samirarte_boutique_image_url( 'mesa-gourmet-samirarte.webp' );
 $contact_image    = samirarte_boutique_image_url( 'contacto-propuesta-samirarte.webp' );
-$opening_video    = samirarte_boutique_video_url( 'intro-samirarte-apertura.mp4' );
+$opening_video    = get_template_directory_uri() . '/assets/video/intro-samirarte-apertura.mp4';
 $custom_box_url   = samirarte_boutique_boxes_url() . '#caja-gourmet-personalizada';
 $coming_soon      = esc_html__( 'Próximamente', 'samirarte-boutique' );
 $featured_products = array(
@@ -24,35 +24,52 @@ $featured_products = array(
 		'title' => esc_html__( 'Caja Gourmet 3 piezas', 'samirarte-boutique' ),
 		'price' => $coming_soon,
 		'text'  => esc_html__( 'Un detalle pequeño y precioso para abrir boca con tus piezas favoritas.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_3.png' ),
+		'image' => $dates_image,
 		'url'   => $custom_box_url,
 	),
 	array(
 		'title' => esc_html__( 'Caja Gourmet 6 piezas', 'samirarte-boutique' ),
 		'price' => $coming_soon,
 		'text'  => esc_html__( 'La combinación equilibrada para regalar, compartir o acompañar un té.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_6.png' ),
+		'image' => $box_image ? $box_image : $dates_image,
 		'url'   => $custom_box_url,
 	),
 	array(
 		'title' => esc_html__( 'Caja Gourmet 9 piezas', 'samirarte-boutique' ),
 		'price' => $coming_soon,
 		'text'  => esc_html__( 'Una colección generosa para descubrir distintas texturas y sabores.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_9.png' ),
+		'image' => $story_image ? $story_image : $box_image,
 		'url'   => $custom_box_url,
 	),
 	array(
 		'title' => esc_html__( 'Caja Gourmet 12 piezas', 'samirarte-boutique' ),
 		'price' => $coming_soon,
 		'text'  => esc_html__( 'La composición completa para celebraciones, empresas y regalos especiales.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_12.png' ),
+		'image' => samirarte_boutique_image_url( 'galeria-caja-gourmet-16.webp' ),
 		'url'   => $custom_box_url,
+	),
+);
+$available_pieces = array(
+	array(
+		'title' => esc_html__( "Medina d'Or", 'samirarte-boutique' ),
+		'text'  => esc_html__( 'Dátil Medjool con frutos secos tostados, naranja confitada, notas florales y un acabado delicado.', 'samirarte-boutique' ),
+	),
+	array(
+		'title' => esc_html__( 'Oasis de Mint', 'samirarte-boutique' ),
+		'text'  => esc_html__( 'Una pieza fresca y aromática, inspirada en el ritual del té y el contraste entre dulzor natural, menta y frutos secos.', 'samirarte-boutique' ),
+	),
+	array(
+		'title' => esc_html__( 'Majorelle en Fleur', 'samirarte-boutique' ),
+		'text'  => esc_html__( 'Dátil con pasta de pistacho, notas cítricas, flores y un contraste visual intenso y elegante.', 'samirarte-boutique' ),
+	),
+	array(
+		'title' => esc_html__( 'Brise Florale', 'samirarte-boutique' ),
+		'text'  => esc_html__( 'Una combinación floral y untuosa con almendra, frutos rojos, hibisco y un acabado delicado.', 'samirarte-boutique' ),
 	),
 );
 ?>
 
 <section class="sam-opening-intro is-hidden" data-theme-url="<?php echo esc_url( get_template_directory_uri() ); ?>" aria-label="<?php echo esc_attr__( 'Vídeo introductorio de Samirarte', 'samirarte-boutique' ); ?>">
-	<?php if ( $opening_video ) : ?>
 	<div class="sam-opening-intro__frame">
 		<div class="sam-opening-intro__backdrop" aria-hidden="true">
 			<video muted playsinline preload="auto">
@@ -71,7 +88,6 @@ $featured_products = array(
 			<?php echo esc_html__( 'Activar sonido', 'samirarte-boutique' ); ?>
 		</button>
 	</div>
-	<?php endif; ?>
 </section>
 
 <div class="sam-opening-gift-modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="sam-opening-gift-title" aria-describedby="sam-opening-gift-desc" hidden>
@@ -133,6 +149,24 @@ $featured_products = array(
 	</div>
 	<div class="sam-container sam-box-builder__summary" aria-hidden="true">
 		<span class="sam-box-builder__count">0</span>
+	</div>
+</section>
+
+<section class="sam-section sam-available-pieces" aria-labelledby="sam-available-pieces-title">
+	<div class="sam-container">
+		<div class="sam-section-heading">
+			<p class="sam-eyebrow"><?php echo esc_html__( 'Variedades iniciales', 'samirarte-boutique' ); ?></p>
+			<h2 id="sam-available-pieces-title"><?php echo esc_html__( 'Piezas disponibles', 'samirarte-boutique' ); ?></h2>
+		</div>
+		<div class="sam-variety-grid sam-box-builder__pieces">
+			<?php foreach ( $available_pieces as $piece ) : ?>
+				<article class="sam-variety-card sam-box-builder__piece-card">
+					<span class="sam-variety-card__mark" aria-hidden="true"></span>
+					<h3><?php echo esc_html( $piece['title'] ); ?></h3>
+					<p><?php echo esc_html( $piece['text'] ); ?></p>
+				</article>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </section>
 

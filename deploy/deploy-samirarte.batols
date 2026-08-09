@@ -1,0 +1,67 @@
+@echo off
+setlocal
+
+echo ==========================================
+echo Despliegue temas Samirarte a Hostalia
+echo ==========================================
+echo.
+
+set "PROJECT_DIR=C:\Samirarte-wp"
+set "DEPLOY_DIR=%PROJECT_DIR%\deploy"
+set "SCRIPT_FILE=%DEPLOY_DIR%\deploy-samirarte.txt"
+set "LOG_FILE=%DEPLOY_DIR%\deploy.log"
+
+set "WINSCP_EXE=C:\Program Files (x86)\WinSCP\WinSCP.com"
+if not exist "%WINSCP_EXE%" set "WINSCP_EXE=C:\Program Files\WinSCP\WinSCP.com"
+
+if not exist "%WINSCP_EXE%" (
+    echo ERROR: No se encuentra WinSCP.com.
+    pause
+    exit /b 1
+)
+
+if not exist "%SCRIPT_FILE%" (
+    echo ERROR: No existe el script:
+    echo %SCRIPT_FILE%
+    pause
+    exit /b 1
+)
+
+if not exist "%PROJECT_DIR%\samirarte-theme" (
+    echo ERROR: No existe la carpeta local samirarte-theme.
+    echo %PROJECT_DIR%\samirarte-theme
+    pause
+    exit /b 1
+)
+
+if not exist "%PROJECT_DIR%\samirarte-boutique" (
+    echo ERROR: No existe la carpeta local samirarte-boutique.
+    echo %PROJECT_DIR%\samirarte-boutique
+    pause
+    exit /b 1
+)
+
+echo Ejecutando WinSCP...
+echo Log: %LOG_FILE%
+echo.
+
+"%WINSCP_EXE%" /script="%SCRIPT_FILE%" /log="%LOG_FILE%"
+
+set "EXITCODE=%ERRORLEVEL%"
+
+echo.
+echo ==========================================
+echo WinSCP terminó con código: %EXITCODE%
+echo ==========================================
+echo.
+
+if not "%EXITCODE%"=="0" (
+    echo Ha habido un error. Abriendo log...
+    notepad "%LOG_FILE%"
+    pause
+    exit /b %EXITCODE%
+)
+
+echo Despliegue terminado correctamente.
+pause
+exit /b 0

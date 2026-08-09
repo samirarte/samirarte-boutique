@@ -35,12 +35,7 @@ while ( have_posts() ) :
 		'content_mode' => 'default',
 	);
 
-	if ( 'cajas-gourmet' === $page_slug ) {
-		$config['eyebrow']      = esc_html__( 'Cajas Gourmet', 'samirarte-boutique' );
-		$config['title']        = esc_html__( 'Configura una caja regalo', 'samirarte-boutique' );
-		$config['intro']        = esc_html__( 'Configura una caja regalo con piezas gourmet de autor, cuento en pergamino y una composición preparada a medida.', 'samirarte-boutique' );
-		$config['content_mode'] = 'boxes_landing';
-	} elseif ( 'artesania-gourmet' === $page_slug ) {
+	if ( in_array( $page_slug, array( 'artesania-gourmet', 'cajas-gourmet' ), true ) ) {
 		$config = array(
 			'eyebrow'      => esc_html__( 'Cajas Gourmet', 'samirarte-boutique' ),
 			'title'        => esc_html__( 'Configura una caja regalo', 'samirarte-boutique' ),
@@ -159,7 +154,8 @@ while ( have_posts() ) :
 					'title'       => esc_html__( 'El Ritual', 'samirarte-boutique' ),
 					'subtitle'    => esc_html__( 'La experiencia guiada', 'samirarte-boutique' ),
 					'format'      => esc_html__( 'Una sobremesa o tardeo gourmet interactivo y presencial en torno al té y los dulces de autor.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Una sobremesa gourmet guiada en torno al té premium y los bocados dulces de autor. Una experiencia íntima, pausada y sensorial para compartir historias, sabores y detalles cuidados.', 'samirarte-boutique' ),
+					'description' => esc_html__( 'Un viaje sensorial guiado donde el té premium y los bocados dulces selectos se sirven en una vajilla meticulosamente escogida. El protagonismo lo tiene la narrativa: se desvela la historia, el origen y los matices de cada pieza artesanal mientras los comensales disfrutan de una atmósfera íntima y pausada.', 'samirarte-boutique' ),
+					'difference'  => esc_html__( 'Una experiencia enfocada en el universo dulce y el arte del té, ideal para tardes especiales, reuniones íntimas o momentos de sobremesa.', 'samirarte-boutique' ),
 					'ideal'       => array(
 						esc_html__( 'Tardeos especiales', 'samirarte-boutique' ),
 						esc_html__( 'Reuniones íntimas', 'samirarte-boutique' ),
@@ -174,7 +170,8 @@ while ( have_posts() ) :
 					'title'       => esc_html__( 'Taller Gastronómico', 'samirarte-boutique' ),
 					'subtitle'    => esc_html__( 'Cocina en directo y menú completo', 'samirarte-boutique' ),
 					'format'      => esc_html__( 'Comidas, cenas o eventos culinarios completos con cocina en directo, showcooking o menú degustación.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Una experiencia culinaria completa con cocina en directo, menú degustación o showcooking. Ideal para encuentros privados, celebraciones y eventos donde la gastronomía forma parte del espectáculo.', 'samirarte-boutique' ),
+					'description' => esc_html__( 'Un despliegue gastronómico para un evento completo, con propuestas saladas y dulces. Puede desarrollarse como menú degustación a mesa puesta o mediante estaciones gastronómicas dinámicas, donde se elaboran platos principales y bocados mediterráneos o de autor a la vista de los invitados, convirtiendo la cocina en el motor del evento.', 'samirarte-boutique' ),
+					'difference'  => esc_html__( 'Un servicio de menú completo para comida o cena, con infraestructura y logística de catering para eventos salados y dulces de distinta envergadura.', 'samirarte-boutique' ),
 					'ideal'       => array(
 						esc_html__( 'Comidas privadas', 'samirarte-boutique' ),
 						esc_html__( 'Cenas especiales', 'samirarte-boutique' ),
@@ -189,7 +186,8 @@ while ( have_posts() ) :
 					'title'       => esc_html__( 'Atelier Samirarte', 'samirarte-boutique' ),
 					'subtitle'    => esc_html__( 'Creación exclusiva a medida', 'samirarte-boutique' ),
 					'format'      => esc_html__( 'Laboratorio de creación exclusiva y diseño conceptual personalizado.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Una propuesta creada a medida para marcas, eventos o encargos especiales. Diseñamos una experiencia visual y gastronómica con identidad propia, cuidando concepto, presentación y narrativa.', 'samirarte-boutique' ),
+					'description' => esc_html__( 'Una hoja en blanco absoluta. Diseñamos desde cero tanto el menú completo como la identidad visual, el concepto temático y la puesta en escena para que todo encaje con una idea, una época histórica, un hilo conductor sensorial o una campaña de marca específica del cliente.', 'samirarte-boutique' ),
+					'difference'  => esc_html__( 'No se elige nada de un menú cerrado. Se inventa un concepto culinario y artístico único para encargos de autor, marcas premium o eventos con una identidad propia muy marcada.', 'samirarte-boutique' ),
 					'ideal'       => array(
 						esc_html__( 'Marcas premium', 'samirarte-boutique' ),
 						esc_html__( 'Eventos de autor', 'samirarte-boutique' ),
@@ -201,84 +199,41 @@ while ( have_posts() ) :
 					'image'       => samirarte_boutique_image_url( 'packaging-regalo-samirarte.webp' ),
 				),
 			),
-			'workshops'    => array(
-				array(
-					'title'       => esc_html__( 'Ceremonia del Té y Maamoul', 'samirarte-boutique' ),
-					'subtitle'    => esc_html__( 'Ritual, aroma y repostería de dátil y azahar.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Un taller que combina ceremonia del té, modelado manual y dulces rellenos de dátil, almendra y agua de azahar. Una experiencia pausada, aromática y social, pensada para cerrar en mesa con degustación compartida.', 'samirarte-boutique' ),
-					'details'     => esc_html__( 'Formato participativo · 3 horas · por estaciones', 'samirarte-boutique' ),
-					'sensory'     => array(
-						esc_html__( 'Vertido del té en altura y sonido ceremonial.', 'samirarte-boutique' ),
-						esc_html__( 'Modelado manual de piezas, una a una.', 'samirarte-boutique' ),
-						esc_html__( 'Degustación final con té y dulces recién elaborados.', 'samirarte-boutique' ),
-					),
-				),
-				array(
-					'title'       => esc_html__( 'Ghriba: el Secreto del Agrietado', 'samirarte-boutique' ),
-					'subtitle'    => esc_html__( 'Texturas arenosas y horneado de precisión.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Un taller centrado en la textura de la ghriba, el punto exacto de arenado de la masa, los aromas de frutos secos tostados y el agrietado perfecto al horno.', 'samirarte-boutique' ),
-					'details'     => esc_html__( 'Formato participativo · 3 horas · por estaciones', 'samirarte-boutique' ),
-					'sensory'     => array(
-						esc_html__( 'Trabajo de la masa con la punta de los dedos.', 'samirarte-boutique' ),
-						esc_html__( 'Búsqueda del agrietado exacto.', 'samirarte-boutique' ),
-						esc_html__( 'Degustación con infusión aromática.', 'samirarte-boutique' ),
-					),
-				),
-				array(
-					'title'       => esc_html__( 'Pastela: el Arte de lo Crujiente', 'samirarte-boutique' ),
-					'subtitle'    => esc_html__( 'Tres rellenos, una misma búsqueda de textura.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Un taller dedicado a la pastela individual, trabajando el equilibrio entre rellenos jugosos y exterior crujiente. Cada participante monta sus propias piezas y descubre el contraste entre aroma, textura y corte.', 'samirarte-boutique' ),
-					'details'     => esc_html__( 'Formato participativo · 3 horas · por estaciones', 'samirarte-boutique' ),
-					'sensory'     => array(
-						esc_html__( 'El crujido como prueba final de la técnica.', 'samirarte-boutique' ),
-						esc_html__( 'Tres aromas y rellenos distintos.', 'samirarte-boutique' ),
-						esc_html__( 'Cata compartida de variedades.', 'samirarte-boutique' ),
-					),
-				),
-				array(
-					'title'       => esc_html__( 'Tajín de Kefta y Especias Sorpresa', 'samirarte-boutique' ),
-					'subtitle'    => esc_html__( 'Aromas que se revelan al destapar.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Una experiencia construida alrededor del tajín, la cocción lenta y una cata inicial de especias a ciegas. El taller culmina con el destapado en mesa y la liberación de los aromas concentrados.', 'samirarte-boutique' ),
-					'details'     => esc_html__( 'Formato participativo · 3 horas · por estaciones', 'samirarte-boutique' ),
-					'sensory'     => array(
-						esc_html__( 'Cata a ciegas de especias.', 'samirarte-boutique' ),
-						esc_html__( 'Cocción lenta y sonido del borboteo.', 'samirarte-boutique' ),
-						esc_html__( 'Destapado final en mesa.', 'samirarte-boutique' ),
-					),
-				),
-				array(
-					'title'       => esc_html__( 'Mlaoui y Rghaif: el Arte del Pliegue', 'samirarte-boutique' ),
-					'subtitle'    => esc_html__( 'Capas, calor de plancha y relleno a elegir.', 'samirarte-boutique' ),
-					'description' => esc_html__( 'Un taller dedicado a panes plegados de sartén, trabajando capas, aceite, mantequilla y rellenos. Cada participante amasa, dobla, cocina y degusta sus propias piezas.', 'samirarte-boutique' ),
-					'details'     => esc_html__( 'Formato participativo · 3 horas · por estaciones', 'samirarte-boutique' ),
-					'sensory'     => array(
-						esc_html__( 'Técnica manual del pliegue.', 'samirarte-boutique' ),
-						esc_html__( 'Chisporroteo de la masa en la plancha.', 'samirarte-boutique' ),
-						esc_html__( 'Capas que se abren al partir el pan.', 'samirarte-boutique' ),
-					),
-				),
-			),
 			'gallery'      => array(
 				array(
 					'title'       => esc_html__( 'Mesa del Ritual', 'samirarte-boutique' ),
+					'type'        => esc_html__( 'Foto / vídeo', 'samirarte-boutique' ),
 					'category'    => esc_html__( 'El Ritual', 'samirarte-boutique' ),
 					'description' => esc_html__( 'Vajilla, té, dulces de autor y una atmósfera íntima preparada para una sobremesa guiada.', 'samirarte-boutique' ),
-					'video'       => get_template_directory_uri() . '/assets/video/ritual.mp4',
 					'image'       => samirarte_boutique_image_url( 'mesa-gourmet-samirarte.webp' ),
 				),
 				array(
 					'title'       => esc_html__( 'Cocina en directo', 'samirarte-boutique' ),
+					'type'        => esc_html__( 'Vídeo', 'samirarte-boutique' ),
 					'category'    => esc_html__( 'Taller Gastronómico', 'samirarte-boutique' ),
 					'description' => esc_html__( 'Platos, estaciones y gestos culinarios que convierten la cocina en parte visible del evento.', 'samirarte-boutique' ),
-					'video'       => get_template_directory_uri() . '/assets/video/taller.mp4',
 					'image'       => '',
 				),
 				array(
 					'title'       => esc_html__( 'Concepto de Atelier', 'samirarte-boutique' ),
+					'type'        => esc_html__( 'Foto', 'samirarte-boutique' ),
 					'category'    => esc_html__( 'Atelier Samirarte', 'samirarte-boutique' ),
 					'description' => esc_html__( 'Bocetos, piezas, packaging y detalles creados alrededor de una idea única.', 'samirarte-boutique' ),
-					'video'       => get_template_directory_uri() . '/assets/video/atelier.mp4',
 					'image'       => samirarte_boutique_image_url( 'packaging-regalo-samirarte.webp' ),
+				),
+				array(
+					'title'       => esc_html__( 'Procesos y montaje', 'samirarte-boutique' ),
+					'type'        => esc_html__( 'Vídeo corto', 'samirarte-boutique' ),
+					'category'    => esc_html__( 'Taller Gastronómico', 'samirarte-boutique' ),
+					'description' => esc_html__( 'Momentos de elaboración, servicio, montaje y acabado de una experiencia completa.', 'samirarte-boutique' ),
+					'image'       => '',
+				),
+				array(
+					'title'       => esc_html__( 'Detalle sensorial', 'samirarte-boutique' ),
+					'type'        => esc_html__( 'Foto', 'samirarte-boutique' ),
+					'category'    => esc_html__( 'El Ritual', 'samirarte-boutique' ),
+					'description' => esc_html__( 'Bocados, té, vajilla y pequeños gestos que dan forma al relato de la mesa.', 'samirarte-boutique' ),
+					'image'       => samirarte_boutique_image_url( 'pastelas.webp' ),
 				),
 			),
 			'gallery_filters' => array(
@@ -369,9 +324,8 @@ while ( have_posts() ) :
 					'alt' => esc_attr__( 'Caja gourmet Samirarte preparada como regalo', 'samirarte-boutique' ),
 				),
 				array(
-					'url' => samirarte_boutique_image_url( 'mesa-gourmet-samirarte_2.webp' ),
+					'url' => samirarte_boutique_image_url( 'mesa-gourmet-samirarte.webp' ),
 					'alt' => esc_attr__( 'Mesa de experiencia Samirarte', 'samirarte-boutique' ),
-					'class' => 'sam-page-editorial-image--mesa-gourmet',
 				),
 			),
 			'buttons'      => array(),
@@ -395,7 +349,7 @@ while ( have_posts() ) :
 					'text'  => esc_html__( 'Elaboración, selección, montaje y acabados realizados con atención artesanal.', 'samirarte-boutique' ),
 				),
 				array(
-					'image' => samirarte_boutique_image_url( 'experiencia-privada-samirarte_2.webp' ),
+					'image' => samirarte_boutique_image_url( 'experiencia-privada-samirarte.webp' ),
 					'alt'   => esc_attr__( 'Experiencia privada', 'samirarte-boutique' ),
 					'title' => esc_html__( 'Experiencias', 'samirarte-boutique' ),
 					'text'  => esc_html__( 'Mesas preparadas, celebraciones privadas y momentos compartidos.', 'samirarte-boutique' ),
@@ -405,7 +359,6 @@ while ( have_posts() ) :
 					'alt'   => esc_attr__( 'Detalle de packaging', 'samirarte-boutique' ),
 					'title' => esc_html__( 'Detalles', 'samirarte-boutique' ),
 					'text'  => esc_html__( 'Packaging, pergaminos, lazos y pequeños gestos que completan el regalo.', 'samirarte-boutique' ),
-					'class' => 'sam-gallery-card--details',
 				),
 			),
 			'sections'     => array(
@@ -428,37 +381,33 @@ while ( have_posts() ) :
 		);
 	} elseif ( 'diario' === $page_slug ) {
 		$config = array(
-			'eyebrow'         => esc_html__( 'Diario', 'samirarte-boutique' ),
-			'title'           => esc_html__( 'Diario', 'samirarte-boutique' ),
-			'subtitle'        => esc_html__( 'Notas sobre gastronomía, rituales, ingredientes y detalles con historia.', 'samirarte-boutique' ),
-			'intro'           => esc_html__( 'Un espacio editorial para compartir inspiración, cultura del té, artesanía gourmet y relatos del universo Samirarte.', 'samirarte-boutique' ),
-			'media'           => array(
+			'eyebrow'      => esc_html__( 'Diario', 'samirarte-boutique' ),
+			'title'        => esc_html__( 'Historias, ingredientes y rituales', 'samirarte-boutique' ),
+			'intro'        => esc_html__( 'Notas, historias e inspiración alrededor de la cocina árabe, la cultura del té, los ingredientes singulares y el arte de regalar experiencias gourmet.', 'samirarte-boutique' ),
+			'media'        => array(
 				array(
 					'url' => samirarte_boutique_image_url( 'pastas_finas.webp' ),
 					'alt' => esc_attr__( 'Inspiración culinaria Samirarte', 'samirarte-boutique' ),
 				),
 			),
-			'buttons'         => array(),
-			'cards'           => array(),
-			'sections'        => array(),
-			'journal_entries' => array(
+			'buttons'      => array(),
+			'cards'        => array(),
+			'sections'     => array(
 				array(
-					'label'      => esc_html__( 'Primera entrada', 'samirarte-boutique' ),
-					'title'      => esc_html__( 'Bienvenida al diario de Samirarte', 'samirarte-boutique' ),
-					'closing'    => esc_html__( 'Bienvenida a los sabores que cuentan historias.', 'samirarte-boutique' ),
-					'paragraphs' => array(
-						esc_html__( 'Hay proyectos que nacen para vender un producto. Samirarte nace para contar una historia.', 'samirarte-boutique' ),
-						esc_html__( 'Este diario será un espacio íntimo y vivo dentro de nuestra web: un lugar donde compartir el origen de nuestras piezas, la inspiración de cada caja, los rituales del té, los ingredientes que nos emocionan y las pequeñas decisiones que convierten un bocado en un recuerdo. Aquí hablaremos de sabores, de artesanía, de celebraciones, de hospitalidad y de esa forma especial de regalar algo que no se consume solo con el paladar, sino también con la memoria.', 'samirarte-boutique' ),
-						esc_html__( 'Samirarte es una invitación a mirar la gastronomía como un lenguaje. Cada dátil relleno, cada pastela delicada, cada pasta fina y cada cuento que acompaña nuestras cajas forman parte de una misma intención: crear detalles con alma, pensados para emocionar antes, durante y después del último bocado.', 'samirarte-boutique' ),
-						esc_html__( 'Nuestra inspiración nace de una cocina de raíces antiguas, cálida, especiada y ceremonial. Una cocina donde el dulce y el salado pueden encontrarse en equilibrio; donde la almendra, la miel, la canela, el azahar, el sésamo, los frutos secos y las masas finas evocan sobremesas largas, bandejas compartidas y conversaciones alrededor del té.', 'samirarte-boutique' ),
-						esc_html__( 'Los dulces de esta tradición no son simples postres. Son gestos de bienvenida, símbolos de celebración y pequeñas joyas elaboradas con paciencia. Muchos se preparan para acompañar momentos importantes: una visita, una fiesta familiar, una mesa especial o un regalo cuidado. En ellos conviven la textura crujiente, los aromas florales, el dulzor medido y ese punto especiado que permanece suavemente en el recuerdo.', 'samirarte-boutique' ),
-						esc_html__( 'Con este diario empieza también una forma de abrir las puertas de Samirarte. Queremos que cada persona que llegue hasta aquí entienda que detrás de una caja no hay solo un producto bonito: hay una historia, una intención y una manera de celebrar la belleza de lo hecho a mano.', 'samirarte-boutique' ),
-						esc_html__( 'Bienvenida a Samirarte.', 'samirarte-boutique' ),
+					'type'  => 'list',
+					'title' => esc_html__( 'Temas del Diario', 'samirarte-boutique' ),
+					'items' => array(
+						esc_html__( 'Cocina árabe', 'samirarte-boutique' ),
+						esc_html__( 'Ingredientes', 'samirarte-boutique' ),
+						esc_html__( 'Té y rituales', 'samirarte-boutique' ),
+						esc_html__( 'Historias de bocados', 'samirarte-boutique' ),
+						esc_html__( 'Celebraciones', 'samirarte-boutique' ),
+						esc_html__( 'Procesos artesanales', 'samirarte-boutique' ),
 					),
 				),
 			),
-			'final_cta'       => array(),
-			'content_mode'    => 'journal',
+			'final_cta'    => array(),
+			'content_mode' => 'curated',
 		);
 	} elseif ( $is_account ) {
 		$config['eyebrow']      = esc_html__( 'Área cliente', 'samirarte-boutique' );
@@ -472,7 +421,7 @@ while ( have_posts() ) :
 		$config['intro']        = esc_html__( 'Cuéntanos la ocasión, el número de personas y el tipo de detalle que quieres preparar. Te responderemos con una propuesta personalizada, cuidada en presentación, sabores y relato.', 'samirarte-boutique' );
 		$config['media']        = array(
 			array(
-				'url' => samirarte_boutique_image_url( 'contacto-propuesta-samirarte_2.webp' ),
+				'url' => samirarte_boutique_image_url( 'contacto-propuesta-samirarte.webp' ),
 				'alt' => esc_attr__( 'Propuesta personalizada Samirarte', 'samirarte-boutique' ),
 			),
 		);
@@ -488,7 +437,6 @@ while ( have_posts() ) :
 	}
 	?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( $page_class ); ?>>
-		<?php if ( 'boxes_landing' !== $config['content_mode'] ) : ?>
 		<header class="sam-page-hero sam-page-hero--visual<?php echo $is_account ? ' sam-page-hero--account' : ''; ?>">
 			<div class="sam-container sam-page-hero__grid">
 				<div class="sam-page-hero__copy">
@@ -518,19 +466,8 @@ while ( have_posts() ) :
 			</div>
 		</header>
 
-		<?php endif; ?>
-
-		<div class="<?php echo 'boxes_landing' === $config['content_mode'] ? 'sam-page__content sam-page__content--boxes-landing' : 'sam-container sam-page__content'; ?>">
-			<?php if ( 'boxes_landing' === $config['content_mode'] ) : ?>
-				<?php samirarte_boutique_render_boxes_landing(); ?>
-				<?php if ( trim( get_the_content() ) ) : ?>
-					<div class="sam-container">
-						<div class="sam-content-card sam-content-card--editable">
-							<?php the_content(); ?>
-						</div>
-					</div>
-				<?php endif; ?>
-			<?php elseif ( 'account' === $config['content_mode'] ) : ?>
+		<div class="sam-container sam-page__content">
+			<?php if ( 'account' === $config['content_mode'] ) : ?>
 				<div class="sam-account-content">
 					<?php the_content(); ?>
 				</div>
@@ -539,35 +476,6 @@ while ( have_posts() ) :
 					<div class="sam-contact-panel__intro">
 						<h2><?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?></h2>
 						<p><?php echo esc_html__( 'Solicitudes para cajas gourmet, experiencias privadas, regalos personalizados o cuentos en pergamino.', 'samirarte-boutique' ); ?></p>
-						<div class="sam-social-links sam-social-links--contact" aria-label="<?php echo esc_attr__( 'Redes sociales', 'samirarte-boutique' ); ?>">
-							<p><?php echo esc_html__( 'También puedes seguir el universo Samirarte en redes.', 'samirarte-boutique' ); ?></p>
-							<ul>
-								<li>
-									<a class="sam-social-links__link" href="https://www.instagram.com/samirarte.es/" target="_blank" rel="noopener noreferrer">
-										<svg class="sam-social-links__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-											<path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.8A3.96 3.96 0 0 0 3.8 7.75v8.5a3.96 3.96 0 0 0 3.95 3.95h8.5a3.96 3.96 0 0 0 3.95-3.95v-8.5a3.96 3.96 0 0 0-3.95-3.95h-8.5Zm4.25 3.1a5.1 5.1 0 1 1 0 10.2 5.1 5.1 0 0 1 0-10.2Zm0 1.8a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.35-2.15a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" />
-										</svg>
-										<span class="sam-social-links__text"><?php echo esc_html__( 'Instagram Samirarte', 'samirarte-boutique' ); ?></span>
-									</a>
-								</li>
-								<li>
-									<a class="sam-social-links__link" href="https://instagram.com/sambirsousou/" target="_blank" rel="noopener noreferrer">
-										<svg class="sam-social-links__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-											<path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.8A3.96 3.96 0 0 0 3.8 7.75v8.5a3.96 3.96 0 0 0 3.95 3.95h8.5a3.96 3.96 0 0 0 3.95-3.95v-8.5a3.96 3.96 0 0 0-3.95-3.95h-8.5Zm4.25 3.1a5.1 5.1 0 1 1 0 10.2 5.1 5.1 0 0 1 0-10.2Zm0 1.8a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.35-2.15a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" />
-										</svg>
-										<span class="sam-social-links__text"><?php echo esc_html__( 'Instagram Handmade', 'samirarte-boutique' ); ?></span>
-									</a>
-								</li>
-								<li>
-									<a class="sam-social-links__link" href="https://www.tiktok.com/@simsi901?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer">
-										<svg class="sam-social-links__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-											<path d="M15.25 2.8c.3 2.15 1.56 3.68 3.95 3.82v3.08a7.1 7.1 0 0 1-3.9-1.22v5.98c0 3.02-2.06 5.42-5.16 5.42-2.9 0-5.34-2.16-5.34-5.08 0-3.36 3.25-5.88 6.48-4.96v3.18c-1.31-.48-3.25.15-3.25 1.75 0 1.09.94 1.9 2.06 1.9 1.29 0 2.06-.86 2.06-2.27V2.8h3.1Z" />
-										</svg>
-										<span class="sam-social-links__text"><?php echo esc_html__( 'TikTok', 'samirarte-boutique' ); ?></span>
-									</a>
-								</li>
-							</ul>
-						</div>
 						<?php if ( ! empty( $config['media'][0]['url'] ) ) : ?>
 							<img class="sam-contact-panel__image" src="<?php echo esc_url( $config['media'][0]['url'] ); ?>" alt="<?php echo esc_attr( $config['media'][0]['alt'] ); ?>" loading="lazy">
 						<?php endif; ?>
@@ -609,6 +517,12 @@ while ( have_posts() ) :
 										<p class="sam-experience-card__format"><?php echo esc_html( $experience['format'] ); ?></p>
 									<?php endif; ?>
 									<p><?php echo esc_html( $experience['description'] ); ?></p>
+									<?php if ( ! empty( $experience['difference'] ) ) : ?>
+										<div class="sam-experience-card__difference">
+											<strong><?php echo esc_html__( 'Diferencia clave', 'samirarte-boutique' ); ?></strong>
+											<span><?php echo esc_html( $experience['difference'] ); ?></span>
+										</div>
+									<?php endif; ?>
 									<div class="sam-experience-card__ideal">
 										<strong><?php echo esc_html__( 'Ideal para', 'samirarte-boutique' ); ?></strong>
 										<?php if ( is_array( $experience['ideal'] ) ) : ?>
@@ -628,37 +542,6 @@ while ( have_posts() ) :
 					</div>
 				</section>
 
-				<?php if ( ! empty( $config['workshops'] ) ) : ?>
-					<section class="sam-experience-workshops" aria-labelledby="sam-experience-workshops-title">
-						<div class="sam-experience-section-heading">
-							<p class="sam-eyebrow"><?php echo esc_html__( 'Cursos-taller cerrados', 'samirarte-boutique' ); ?></p>
-							<h2 id="sam-experience-workshops-title"><?php echo esc_html__( 'Cursos-taller sensoriales', 'samirarte-boutique' ); ?></h2>
-							<p><?php echo esc_html__( 'Cinco experiencias gastronómicas participativas diseñadas para vivir la cocina con el olfato, el tacto, el oído, la vista, el gusto y la sorpresa.', 'samirarte-boutique' ); ?></p>
-						</div>
-						<p class="sam-experience-workshops__intro"><?php echo esc_html__( 'Cada taller comienza con un ritual de bienvenida, continúa con una fase de creación manual y termina con una degustación compartida. Son propuestas cerradas, participativas y pensadas para grupos, escuelas, eventos privados o colaboraciones gastronómicas.', 'samirarte-boutique' ); ?></p>
-						<div class="sam-experience-workshops__grid">
-							<?php foreach ( $config['workshops'] as $workshop ) : ?>
-								<article class="sam-experience-workshop-card">
-									<div class="sam-experience-workshop-card__body">
-										<p class="sam-experience-workshop-card__details"><?php echo esc_html( $workshop['details'] ); ?></p>
-										<h3><?php echo esc_html( $workshop['title'] ); ?></h3>
-										<p class="sam-experience-workshop-card__subtitle"><?php echo esc_html( $workshop['subtitle'] ); ?></p>
-										<p class="sam-experience-workshop-card__description"><?php echo esc_html( $workshop['description'] ); ?></p>
-									</div>
-									<div class="sam-experience-workshop-card__sensory">
-										<strong><?php echo esc_html__( 'Experiencia sensorial', 'samirarte-boutique' ); ?></strong>
-										<ul>
-											<?php foreach ( $workshop['sensory'] as $sensory_point ) : ?>
-												<li><?php echo esc_html( $sensory_point ); ?></li>
-											<?php endforeach; ?>
-										</ul>
-									</div>
-									<a class="sam-experience-workshop-card__cta" href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar taller', 'samirarte-boutique' ); ?></a>
-								</article>
-							<?php endforeach; ?>
-						</div>
-					</section>
-				<?php endif; ?>
 				<section id="ejemplos-experiencias" class="sam-experience-gallery" aria-labelledby="sam-experience-gallery-title">
 					<div class="sam-experience-section-heading">
 						<p class="sam-eyebrow"><?php echo esc_html__( 'Galería editable', 'samirarte-boutique' ); ?></p>
@@ -674,11 +557,12 @@ while ( have_posts() ) :
 						<?php foreach ( $config['gallery'] as $item ) : ?>
 							<article class="sam-experience-example">
 								<figure class="sam-experience-example__media">
-									<?php if ( ! empty( $item['video'] ) ) : ?>
-										<video class="sam-experience-example__video" src="<?php echo esc_url( $item['video'] ); ?>" autoplay muted loop playsinline preload="metadata"></video>
-									<?php elseif ( ! empty( $item['image'] ) ) : ?>
+									<?php if ( ! empty( $item['image'] ) ) : ?>
 										<img src="<?php echo esc_url( $item['image'] ); ?>" alt="" loading="lazy">
+									<?php else : ?>
+										<span><?php echo esc_html__( 'Placeholder para foto o vídeo', 'samirarte-boutique' ); ?></span>
 									<?php endif; ?>
+									<figcaption><?php echo esc_html( $item['type'] ); ?></figcaption>
 								</figure>
 								<div class="sam-experience-example__body">
 									<p><?php echo esc_html( $item['category'] ); ?></p>
@@ -789,54 +673,15 @@ while ( have_posts() ) :
 						<?php the_content(); ?>
 					</div>
 				<?php endif; ?>
-			<?php elseif ( 'journal' === $config['content_mode'] ) : ?>
-				<section class="sam-journal" aria-labelledby="sam-journal-title">
-					<div class="sam-journal__heading">
-						<p class="sam-eyebrow"><?php echo esc_html__( 'Diario editorial', 'samirarte-boutique' ); ?></p>
-						<h2 id="sam-journal-title"><?php echo esc_html__( 'Entradas del diario', 'samirarte-boutique' ); ?></h2>
-					</div>
-
-					<div class="sam-journal__entries">
-						<?php foreach ( $config['journal_entries'] as $entry ) : ?>
-							<article class="sam-journal-entry">
-								<header class="sam-journal-entry__header">
-									<?php if ( ! empty( $entry['label'] ) ) : ?>
-										<p class="sam-journal-entry__label"><?php echo esc_html( $entry['label'] ); ?></p>
-									<?php endif; ?>
-									<h2><?php echo esc_html( $entry['title'] ); ?></h2>
-								</header>
-
-								<div class="sam-journal-entry__content">
-									<?php foreach ( $entry['paragraphs'] as $paragraph ) : ?>
-										<p><?php echo esc_html( $paragraph ); ?></p>
-									<?php endforeach; ?>
-								</div>
-
-								<?php if ( ! empty( $entry['closing'] ) ) : ?>
-									<footer class="sam-journal-entry__closing">
-										<p><?php echo esc_html( $entry['closing'] ); ?></p>
-									</footer>
-								<?php endif; ?>
-							</article>
-						<?php endforeach; ?>
-					</div>
-				</section>
-
-				<?php if ( trim( get_the_content() ) ) : ?>
-					<div class="sam-content-card sam-content-card--editable">
-						<?php the_content(); ?>
-					</div>
-				<?php endif; ?>
 			<?php elseif ( 'curated' === $config['content_mode'] ) : ?>
 				<?php if ( ! empty( $config['cards'] ) || ! empty( $config['media'][1]['url'] ) ) : ?>
 					<section id="opciones" class="sam-page-showcase">
 						<div class="sam-page-card-grid">
 							<?php foreach ( $config['cards'] as $card ) : ?>
 								<?php $card_class = ! empty( $card['image'] ) ? 'sam-feature-card sam-feature-card--image' : 'sam-feature-card'; ?>
-								<?php $card_class .= ! empty( $card['class'] ) ? ' ' . $card['class'] : ''; ?>
 								<div class="<?php echo esc_attr( $card_class ); ?>">
 									<?php if ( ! empty( $card['image'] ) ) : ?>
-										<figure class="sam-feature-card__image<?php echo ! empty( $card['image_class'] ) ? ' ' . esc_attr( $card['image_class'] ) : ''; ?>">
+										<figure class="sam-feature-card__image">
 											<img src="<?php echo esc_url( $card['image'] ); ?>" alt="<?php echo esc_attr( $card['alt'] ); ?>" loading="lazy">
 										</figure>
 									<?php elseif ( ! empty( $card['icon'] ) ) : ?>
@@ -848,7 +693,7 @@ while ( have_posts() ) :
 							<?php endforeach; ?>
 						</div>
 						<?php if ( ! empty( $config['media'][1]['url'] ) ) : ?>
-							<figure class="sam-page-editorial-image<?php echo ! empty( $config['media'][1]['class'] ) ? ' ' . esc_attr( $config['media'][1]['class'] ) : ''; ?>">
+							<figure class="sam-page-editorial-image">
 								<img src="<?php echo esc_url( $config['media'][1]['url'] ); ?>" alt="<?php echo esc_attr( $config['media'][1]['alt'] ); ?>" loading="lazy">
 							</figure>
 						<?php endif; ?>

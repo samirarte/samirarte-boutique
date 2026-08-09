@@ -74,15 +74,11 @@ if ( ! function_exists( 'samirarte_boutique_enqueue_assets' ) ) {
 			true
 		);
 
-		// Load the script with defer so it never blocks HTML parsing.
-		wp_script_add_data( 'samirarte-boutique-main', 'strategy', 'defer' );
-
 		wp_localize_script(
 			'samirarte-boutique-main',
 			'SamirarteBoutique',
 			array(
-				'debug'       => defined( 'SAMIRARTE_DEBUG' ) && SAMIRARTE_DEBUG,
-				'isFrontPage' => is_front_page(),
+				'debug' => defined( 'WP_DEBUG' ) && WP_DEBUG,
 			)
 		);
 	}
@@ -141,12 +137,14 @@ if ( ! function_exists( 'samirarte_boutique_cart_count' ) ) {
 
 if ( ! function_exists( 'samirarte_boutique_boxes_url' ) ) {
 	/**
-	 * Return the commercial Cajas Gourmet landing URL.
+	 * Return the WooCommerce shop URL used as the Cajas Gourmet destination.
 	 *
 	 * @return string
 	 */
 	function samirarte_boutique_boxes_url() {
-		return home_url( '/cajas-gourmet/' );
+		$shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
+
+		return $shop_url ? $shop_url : home_url( '/cajas-gourmet/' );
 	}
 }
 
@@ -416,32 +414,11 @@ if ( ! function_exists( 'samirarte_boutique_image_url' ) ) {
 	/**
 	 * Return a theme image URL only if the file exists.
 	 *
-	 * Only files with allowed image extensions are served. Results are cached in a
-	 * static array for the duration of the request so file_exists() is called at
-	 * most once per unique filename.
-	 *
 	 * @param string $filename Image filename inside assets/img.
-	 * @return string URL with cache-busting version, or empty string when not found.
+	 * @return string
 	 */
 	function samirarte_boutique_image_url( $filename ) {
-		static $cache = array();
-
-		// Allowed image extensions — nothing else is served from this function.
-		static $allowed_extensions = array( 'webp', 'png', 'jpg', 'jpeg', 'svg', 'gif' );
-
-		$filename = wp_basename( (string) $filename );
-
-		// Validate extension before touching the filesystem.
-		$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
-		if ( ! in_array( $ext, $allowed_extensions, true ) ) {
-			return '';
-		}
-
-		// Return cached result when available.
-		if ( array_key_exists( $filename, $cache ) ) {
-			return $cache[ $filename ];
-		}
-
+		$filename   = wp_basename( (string) $filename );
 		$candidates = array_unique(
 			array_filter(
 				array(
@@ -455,65 +432,10 @@ if ( ! function_exists( 'samirarte_boutique_image_url' ) ) {
 			$file = get_template_directory() . '/assets/img/' . $candidate;
 
 			if ( file_exists( $file ) ) {
-				$url            = get_template_directory_uri() . '/assets/img/' . rawurlencode( $candidate ) . '?ver=' . filemtime( $file );
-				$cache[ $filename ] = $url;
-				return $url;
+				return get_template_directory_uri() . '/assets/img/' . rawurlencode( $candidate );
 			}
 		}
 
-		// Cache negative result to avoid repeated stat() calls.
-		$cache[ $filename ] = '';
-		return '';
-	}
-}
-
-if ( ! function_exists( 'samirarte_boutique_video_url' ) ) {
-	/**
-	 * Return a theme video URL only if the file exists, with cache-busting version.
-	 *
-	 * Results are cached in a static array for the duration of the request so
-	 * file_exists() is called at most once per unique filename.
-	 *
-	 * @param string $filename Video filename inside assets/video.
-	 * @return string URL with cache-busting version, or empty string when not found.
-	 */
-	function samirarte_boutique_video_url( $filename ) {
-		static $cache = array();
-
-		// Allowed video extensions.
-		static $allowed_extensions = array( 'mp4', 'webm', 'ogv' );
-
-		$filename = wp_basename( (string) $filename );
-
-		$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
-		if ( ! in_array( $ext, $allowed_extensions, true ) ) {
-			return '';
-		}
-
-		if ( array_key_exists( $filename, $cache ) ) {
-			return $cache[ $filename ];
-		}
-
-		$candidates = array_unique(
-			array_filter(
-				array(
-					$filename,
-					sanitize_file_name( $filename ),
-				)
-			)
-		);
-
-		foreach ( $candidates as $candidate ) {
-			$file = get_template_directory() . '/assets/video/' . $candidate;
-
-			if ( file_exists( $file ) ) {
-				$url              = get_template_directory_uri() . '/assets/video/' . rawurlencode( $candidate ) . '?ver=' . filemtime( $file );
-				$cache[ $filename ] = $url;
-				return $url;
-			}
-		}
-
-		$cache[ $filename ] = '';
 		return '';
 	}
 }
@@ -535,11 +457,15 @@ if ( ! function_exists( 'samirarte_boutique_fallback_menu' ) ) {
 	}
 }
 
-if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
+if ( ! function_exists( 'samirarte_boutique_shop_intro' ) ) {
 	/**
-	 * Render the commercial Cajas Gourmet landing without depending on WooCommerce.
+	 * Present the box configurator concept before the WooCommerce product loop.
 	 */
-	function samirarte_boutique_render_boxes_landing() {
+	function samirarte_boutique_shop_intro() {
+		if ( ! function_exists( 'is_shop' ) || ! is_shop() ) {
+			return;
+		}
+
 		$piece_categories = array(
 			array(
 				'title' => esc_html__( 'Minipastelas', 'samirarte-boutique' ),
@@ -584,7 +510,7 @@ if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
 					<a class="sam-box-size-card" href="#catalogo-piezas" role="listitem"><strong>12</strong><span><?php echo esc_html__( 'piezas', 'samirarte-boutique' ); ?></span></a>
 				</div>
 				<div class="sam-actions">
-					<a class="sam-button" href="#caja-gourmet-personalizada"><?php echo esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ); ?></a>
+					<a class="sam-button" href="#productos"><?php echo esc_html__( 'Configurar mi caja', 'samirarte-boutique' ); ?></a>
 					<a class="sam-button sam-button--ghost" href="#catalogo-piezas"><?php echo esc_html__( 'Ver catálogo de piezas', 'samirarte-boutique' ); ?></a>
 				</div>
 			</div>
@@ -592,19 +518,15 @@ if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
 
 		<section id="catalogo-piezas" class="sam-piece-catalog" aria-labelledby="sam-piece-catalog-title">
 			<div class="sam-piece-catalog__heading">
-				<div>
-					<p class="sam-eyebrow"><?php echo esc_html__( 'Catálogo de piezas', 'samirarte-boutique' ); ?></p>
-					<h2 id="sam-piece-catalog-title"><?php echo esc_html__( 'Joyas Gourmet', 'samirarte-boutique' ); ?></h2>
-				</div>
-				<p><?php echo esc_html__( 'Combina sabores, texturas y tamaños para crear una caja pensada para regalar, compartir o guardar como recuerdo.', 'samirarte-boutique' ); ?></p>
+				<p class="sam-eyebrow"><?php echo esc_html__( 'Joyas gourmet', 'samirarte-boutique' ); ?></p>
+				<h2 id="sam-piece-catalog-title"><?php echo esc_html__( 'Catálogo de piezas', 'samirarte-boutique' ); ?></h2>
+				<p><?php echo esc_html__( 'Elige entre tres familias de bocados: minipastelas, dátiles gourmet y pastas finas.', 'samirarte-boutique' ); ?></p>
 			</div>
 			<div class="sam-piece-catalog__grid">
 				<?php foreach ( $piece_categories as $category ) : ?>
 					<article class="sam-piece-category">
-						<?php if ( ! empty( $category['image'] ) ) : ?>
-							<img src="<?php echo esc_url( $category['image'] ); ?>" alt="<?php echo esc_attr( ! empty( $category['alt'] ) ? $category['alt'] : $category['title'] ); ?>" loading="lazy">
-						<?php else : ?>
-							<span class="sam-image-placeholder sam-image-placeholder--small" aria-hidden="true"></span>
+						<?php if ( $category['image'] ) : ?>
+							<img src="<?php echo esc_url( $category['image'] ); ?>" alt="<?php echo isset( $category['alt'] ) ? esc_attr( $category['alt'] ) : ''; ?>" loading="lazy">
 						<?php endif; ?>
 						<div>
 							<h3><?php echo esc_html( $category['title'] ); ?></h3>
@@ -615,31 +537,39 @@ if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
 			</div>
 		</section>
 
-		<aside class="sam-parchment-feature" aria-label="<?php echo esc_attr__( 'Cuento en pergamino incluido', 'samirarte-boutique' ); ?>">
-			<span class="sam-parchment-feature__mark" aria-hidden="true"></span>
+		<aside class="sam-parchment-feature" aria-labelledby="sam-parchment-title">
+			<div class="sam-parchment-feature__mark" aria-hidden="true"></div>
 			<div>
-				<p class="sam-eyebrow"><?php echo esc_html__( 'Relato incluido', 'samirarte-boutique' ); ?></p>
-				<h2><?php echo esc_html__( 'Un cuento en pergamino para acompañar la caja', 'samirarte-boutique' ); ?></h2>
-				<p><?php echo esc_html__( 'Cada caja puede viajar con un relato breve creado para la persona destinataria, la ocasión o el gesto que quieras transmitir.', 'samirarte-boutique' ); ?></p>
+				<p class="sam-eyebrow"><?php echo esc_html__( 'Incluido en cada caja', 'samirarte-boutique' ); ?></p>
+				<h2 id="sam-parchment-title"><?php echo esc_html__( 'Un cuento en pergamino', 'samirarte-boutique' ); ?></h2>
+				<p><?php echo esc_html__( 'Un cuento en pergamino acompaña cada regalo Samirarte: una pequeña historia creada para convertir el detalle en recuerdo.', 'samirarte-boutique' ); ?></p>
 			</div>
 		</aside>
 
-		<section id="caja-gourmet-personalizada" class="sam-personalized-box" aria-labelledby="sam-personalized-box-title">
-			<div class="sam-personalized-box__media">
-				<img src="<?php echo esc_url( samirarte_boutique_image_url( 'galeria-caja-personalizada.webp' ) ); ?>" alt="<?php echo esc_attr__( 'Caja gourmet personalizada Samirarte', 'samirarte-boutique' ); ?>" loading="lazy">
-			</div>
-			<div class="sam-personalized-box__copy">
-				<p class="sam-eyebrow"><?php echo esc_html__( 'POR ENCARGO', 'samirarte-boutique' ); ?></p>
-				<h2 id="sam-personalized-box-title"><?php echo esc_html__( 'Caja gourmet personalizada', 'samirarte-boutique' ); ?></h2>
-				<p class="sam-personalized-box__lead"><?php echo esc_html__( 'Elige la imagen, los sabores, la ocasión y los detalles que quieres transmitir. Prepararemos una caja gourmet a medida, cuidada y con historia.', 'samirarte-boutique' ); ?></p>
-				<a class="sam-button" href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar personalización', 'samirarte-boutique' ); ?></a>
-			</div>
-		</section>
-
-		<?php echo samirarte_boutique_shop_compact_opening_gift_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<div id="productos" class="sam-shop-products-anchor" aria-hidden="true"></div>
 		<?php
 	}
 }
+add_action( 'woocommerce_before_shop_loop', 'samirarte_boutique_shop_intro', 2 );
+
+if ( ! function_exists( 'samirarte_boutique_shop_products_heading' ) ) {
+	/**
+	 * Print a boutique heading before the WooCommerce product loop.
+	 */
+	function samirarte_boutique_shop_products_heading() {
+		if ( ! function_exists( 'is_shop' ) || ! is_shop() ) {
+			return;
+		}
+		?>
+		<div class="sam-shop-products-heading" aria-labelledby="sam-shop-products-title">
+			<p class="sam-eyebrow"><?php echo esc_html__( 'Selección disponible', 'samirarte-boutique' ); ?></p>
+			<h2 id="sam-shop-products-title"><?php echo esc_html__( 'Cajas disponibles', 'samirarte-boutique' ); ?></h2>
+		</div>
+		<?php
+	}
+}
+add_action( 'woocommerce_before_shop_loop', 'samirarte_boutique_shop_products_heading', 6 );
+
 if ( ! function_exists( 'samirarte_boutique_preload_hero_image' ) ) {
 	/**
 	 * Preload the home hero background image because it is above the fold.
@@ -806,11 +736,11 @@ if ( ! function_exists( 'samirarte_boutique_opening_gift_markup' ) ) {
 			<span class="sam-opening-gift__seal" aria-hidden="true"></span>
 			<div class="sam-opening-gift__content">
 				<p class="sam-opening-gift__eyebrow"><?php echo esc_html__( 'Lista privada de preapertura', 'samirarte-boutique' ); ?></p>
-				<h2 id="sam-opening-gift-title" class="sam-opening-gift__title"><?php echo esc_html__( 'Detalle exclusivo de apertura', 'samirarte-boutique' ); ?></h2>
-				<p class="sam-opening-gift__banner"><?php echo esc_html__( 'Regístrate antes de la apertura y recibe un detalle exclusivo con tu primer pedido.', 'samirarte-boutique' ); ?></p>
+				<h2 id="sam-opening-gift-title" class="sam-opening-gift__title"><?php echo esc_html__( 'Regalo exclusivo de apertura', 'samirarte-boutique' ); ?></h2>
+				<p class="sam-opening-gift__banner"><?php echo esc_html__( 'Regístrate antes de la apertura y recibe un regalo exclusivo con tu primer pedido.', 'samirarte-boutique' ); ?></p>
 				<div class="sam-opening-gift__text">
 					<p><?php echo esc_html__( 'Regístrate como cliente antes de la apertura de Samirarte y formarás parte de nuestra primera lista privada.', 'samirarte-boutique' ); ?></p>
-					<p><?php echo esc_html__( 'Cuando la tienda abra, recibirás un detalle exclusivo con tu primer pedido, preparado solo para quienes acompañen el inicio de esta historia.', 'samirarte-boutique' ); ?></p>
+					<p><?php echo esc_html__( 'Cuando la tienda abra, recibirás un regalo exclusivo con tu primer pedido: un detalle preparado solo para quienes acompañen el inicio de esta historia.', 'samirarte-boutique' ); ?></p>
 					<p><?php echo esc_html__( 'Muy pronto podrás elegir tu caja gourmet, completarla con tus piezas favoritas y descubrir una forma distinta de regalar.', 'samirarte-boutique' ); ?></p>
 				</div>
 				<a class="sam-opening-gift__cta" href="<?php echo esc_url( samirarte_boutique_account_url() ); ?>">
@@ -848,7 +778,7 @@ if ( ! function_exists( 'samirarte_boutique_shop_compact_opening_gift_markup' ) 
 		<section class="sam-opening-gift sam-opening-gift--shop-compact" aria-label="<?php echo esc_attr__( 'Aviso de preapertura', 'samirarte-boutique' ); ?>">
 			<div class="sam-opening-gift__content">
 				<p class="sam-opening-gift__eyebrow"><?php echo esc_html__( 'PREAPERTURA', 'samirarte-boutique' ); ?></p>
-				<p class="sam-opening-gift__text"><?php echo esc_html__( 'Regístrate antes de la apertura y recibe un detalle exclusivo con tu primer pedido.', 'samirarte-boutique' ); ?></p>
+				<p class="sam-opening-gift__text"><?php echo esc_html__( 'Regístrate antes de la apertura y recibe un regalo exclusivo con tu primer pedido.', 'samirarte-boutique' ); ?></p>
 			</div>
 			<a class="sam-opening-gift__cta" href="<?php echo esc_url( samirarte_boutique_account_url() ); ?>">
 				<?php echo esc_html__( 'Crear cuenta', 'samirarte-boutique' ); ?>
@@ -868,6 +798,7 @@ if ( ! function_exists( 'samirarte_boutique_shop_opening_gift_notice' ) ) {
 		echo samirarte_boutique_shop_compact_opening_gift_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
+add_action( 'woocommerce_before_shop_loop', 'samirarte_boutique_shop_opening_gift_notice', 4 );
 
 if ( ! function_exists( 'samirarte_boutique_account_opening_gift_notice' ) ) {
 	/**
@@ -881,7 +812,7 @@ if ( ! function_exists( 'samirarte_boutique_account_opening_gift_notice' ) ) {
 		<aside class="sam-account-gift" aria-label="<?php echo esc_attr__( 'Regalo de apertura', 'samirarte-boutique' ); ?>">
 			<div class="sam-account-gift__message">
 				<svg class="sam-account-gift__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10h16v10H4V10Zm-1-4h18v4H3V6Zm9 0v14M12 6H8.8a2.3 2.3 0 1 1 2.3-2.3L12 6Zm0 0h3.2a2.3 2.3 0 1 0-2.3-2.3L12 6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-				<p class="sam-account-gift__text"><?php echo esc_html__( 'Regístrate antes del lanzamiento y recibe un detalle exclusivo con tu primer pedido.', 'samirarte-boutique' ); ?></p>
+				<p class="sam-account-gift__text"><?php echo esc_html__( 'Regístrate antes del lanzamiento y recibe un regalo exclusivo con tu primer pedido.', 'samirarte-boutique' ); ?></p>
 			</div>
 			<a class="sam-button sam-account-gift__cta" href="#registro" data-sam-account-register>
 				<?php echo esc_html__( 'Quiero mi regalo', 'samirarte-boutique' ); ?>

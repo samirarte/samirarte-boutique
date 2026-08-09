@@ -1,0 +1,20 @@
+.agents/
+.vscode/
+.idea/
+node_modules/
+*.log
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+
+# screenshot.png must stay committed (required by WordPress theme directory).
+# Replace the stub with a real 880x660 px PNG before submitting to wp.org.
+
+# Diff and original-backup files — keep out of version control
+diff-*.txt
+diff_*.txt
+orig-*.txt
+orig_*.txt
+orig-*.php
+orig_*.php

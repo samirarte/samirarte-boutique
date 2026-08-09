@@ -1,0 +1,11 @@
+option batch abort
+option confirm off
+
+open ftpes://user-10575360:X9lY1@Z3fxw!qacg@82.194.68.97/ -certificate="55:ce:85:66:75:de:58:ad:6f:09:1d:4e:d5:b4:a3:a0:ec:05:ec:11:1f:eb:6f:40:eb:cc:93:f0:0f:a3:b4:4d"
+
+pwd
+ls
+
+synchronize remote -delete -criteria=size "C:\Samirarte-wp\samirarte-boutique" "/samirarte.com/wp-content/themes/samirarte-boutique" -filemask="| .git/; .agents/; samirarte-boutique/; node_modules/; .vscode/; *.log; *.bak; *.old; *.zip"
+
+exit

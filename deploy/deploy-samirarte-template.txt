@@ -1,0 +1,13 @@
+option batch abort
+option confirm off
+
+# Sustituye esta linea por tu conexion real de WinSCP.
+# Recomendado: usa la orden open completa que WinSCP te mostro en el log con -certificate.
+# No guardes este archivo en sitios publicos si contiene usuario/contrasena.
+open ftpes://USUARIO:CONTRASENA@82.194.68.97/ -certificate="HUELLA_CERTIFICADO"
+
+# Despliegue SOLO del tema activo limpio.
+# Primera fase recomendada: sin -delete.
+synchronize remote -criteria=size "C:\Samirarte-wp\samirarte-boutique" "/samirarte.com/wp-content/themes/samirarte-boutique" -filemask="| .git/; .agents/; samirarte-boutique/; node_modules/; .vscode/; *.log; *.bak; *.old; *.zip"
+
+exit
