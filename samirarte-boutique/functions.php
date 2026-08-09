@@ -7,6 +7,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Load modularized theme functions extracted into inc/
+// These are loaded early so the original guarded definitions in
+// functions.php are skipped in favor of the modular files when present.
+require_once get_template_directory() . '/inc/assets.php';
+require_once get_template_directory() . '/inc/helpers.php';
+require_once get_template_directory() . '/inc/menus.php';
+require_once get_template_directory() . '/inc/seo.php';
+require_once get_template_directory() . '/inc/branding.php';
+require_once get_template_directory() . '/inc/shop.php';
+
 if ( ! function_exists( 'samirarte_boutique_setup' ) ) {
 	/**
 	 * Register theme supports and menus.
