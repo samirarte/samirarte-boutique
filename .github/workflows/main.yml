@@ -20,6 +20,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./samirarte-boutique/
           protocol: ftps
           port: 21
           security: loose
@@ -31,5 +32,3 @@ jobs:
             **/backup/**
             **/deploy/**
             **/brief/**
-            **/samirarte-theme*/**
-            **/samirarte-core/**
