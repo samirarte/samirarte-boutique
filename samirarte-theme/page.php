@@ -57,7 +57,8 @@ get_header();
 				'visual_title' => __( 'Hablemos de tu propuesta', 'samirarte-theme' ),
 				'intro'        => __( 'Cuéntanos qué quieres preparar y te responderemos con una propuesta cuidada.', 'samirarte-theme' ),
 				'items'        => array(
-					__( 'Teléfono: +34 646 14 38 95', 'samirarte-theme' ),
+					__( 'Teléfono: +34 676 67 90 64', 'samirarte-theme' ),
+					__( 'WhatsApp: +34 676 67 90 64', 'samirarte-theme' ),
 					__( 'Solicitudes para cajas gourmet, experiencias privadas, regalos personalizados o cuentos en pergamino.', 'samirarte-theme' ),
 					__( 'Cuéntanos qué quieres preparar y te responderemos con una propuesta cuidada.', 'samirarte-theme' ),
 				),
@@ -115,7 +116,8 @@ get_header();
 					<section class="sam-page-grid sam-page-grid--contact" aria-label="<?php echo esc_attr__( 'Datos de contacto', 'samirarte-theme' ); ?>">
 						<div class="sam-contact-card">
 							<h2><?php esc_html_e( 'Contacto', 'samirarte-theme' ); ?></h2>
-							<p><a href="<?php echo esc_url( 'tel:+34646143895' ); ?>"><?php echo esc_html( '+34 646 14 38 95' ); ?></a></p>
+							<p><a href="<?php echo esc_url( 'tel:+34676679064' ); ?>"><?php echo esc_html( '+34 676 67 90 64' ); ?></a></p>
+							<p><a href="<?php echo esc_url( 'https://wa.me/34676679064?text=' . rawurlencode( 'Hola Samirarte, quiero información.' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WhatsApp', 'samirarte-theme' ); ?></a></p>
 						</div>
 						<div class="sam-contact-card sam-contact-card--note">
 							<h2><?php esc_html_e( 'Propuesta cuidada', 'samirarte-theme' ); ?></h2>

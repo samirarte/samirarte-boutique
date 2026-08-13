@@ -10,7 +10,7 @@ Configuración ya realizada:
 - Creación de cuenta durante el pago activada.
 - Creación de cuenta en Mi cuenta activada.
 - Pago manual por Bizum configurado.
-- Teléfono Bizum: +34 646 14 38 95.
+- Teléfono Bizum: +34 676 67 90 64.
 - Envío configurado como Entrega acordada.
 - Emails transaccionales funcionando mediante SMTP.
 - UpdraftPlus instalado y conectado a Google Drive.

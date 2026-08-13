@@ -124,7 +124,7 @@ if ( ! class_exists( 'Samirarte_Order_Emails' ) ) {
 					'subject' => __( 'Samirarte · Pedido recibido, pendiente de pago', 'samirarte-core' ),
 					'message' => sprintf(
 						/* translators: %s: order number. */
-						__( 'Hemos recibido tu pedido #%s.<br>Para confirmarlo, realiza el Bizum al +34 646 14 38 95 indicando la referencia del pedido.', 'samirarte-core' ),
+						__( 'Hemos recibido tu pedido #%s.<br>Para confirmarlo, realiza el Bizum al +34 676 67 90 64 indicando la referencia del pedido.', 'samirarte-core' ),
 						$order_number
 					),
 				),
@@ -229,8 +229,8 @@ if ( ! class_exists( 'Samirarte_Order_Emails' ) ) {
 								<tr>
 									<td style="padding:22px 30px;background:#f4e6cf;color:#4b2e22;font-size:14px;line-height:1.6;">
 										<p style="margin:0;"><?php echo esc_html( 'samira.raysse@samirarte.com' ); ?></p>
-										<p style="margin:0;"><?php echo esc_html( '+34 646 14 38 95' ); ?></p>
-									</td>
+										<p style="margin:0"><?php echo esc_html( '+34 676 67 90 64' ); ?></p>
+										<p style="margin:0;"><a href="https://wa.me/34676679064?text=<?php echo rawurlencode( 'Hola Samirarte, quiero información.' ); ?>" style="color:#4b2e22;text-decoration:none;">WhatsApp</a></p>									</td>
 								</tr>
 							</table>
 						</td>
