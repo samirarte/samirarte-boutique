@@ -131,6 +131,25 @@ if ( ! function_exists( 'samirarte_boutique_enqueue_assets' ) ) {
 }
 add_action( 'wp_enqueue_scripts', 'samirarte_boutique_enqueue_assets' );
 
+
+// Remove phone/WhatsApp menu items from nav menus so they don't appear in header/footer.
+add_filter( 'wp_nav_menu_objects', 'samirarte_remove_phone_whatsapp_menu_items', 10, 2 );
+function samirarte_remove_phone_whatsapp_menu_items( $items, $args ) {
+	foreach ( $items as $key => $item ) {
+		$title = isset( $item->title ) ? trim( $item->title ) : '';
+		$url   = isset( $item->url ) ? $item->url : '';
+		if ( strpos( $title, '+34676679064' ) !== false
+			|| strpos( $url, 'tel:+34676679064' ) !== false
+			|| strpos( $url, 'wa.me/34676679064' ) !== false
+			|| stripos( $title, 'whatsapp' ) !== false
+		) {
+			unset( $items[ $key ] );
+		}
+	}
+	// Reindex array to avoid numeric gaps.
+	return array_values( $items );
+}
+
 if ( ! function_exists( 'samirarte_boutique_account_url' ) ) {
 	/**
 	 * Return the configured WooCommerce account URL with a safe fallback.
