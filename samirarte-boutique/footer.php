@@ -98,6 +98,14 @@ $cart_url      = samirarte_boutique_cart_url();
 						<span class="sam-footer__social-text"><?php echo esc_html__( 'TikTok', 'samirarte-boutique' ); ?></span>
 					</a>
 				</li>
+			<li>
+				<a class="sam-footer__social-link" href="https://wa.me/34676679064?text=Hola%20Samirarte%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer">
+					<svg class="sam-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<path d="M20.52 3.48A11.94 11.94 0 1 0 12.06 24l-1.63-5.94A11.95 11.95 0 0 0 20.52 3.48zM12 2a10 10 0 0 1 8.24 15.74l-.59.86L21 22l-4.4-1.3-.82.59A10 10 0 1 1 12 2z" />
+					</svg>
+					<span class="sam-footer__social-text"><?php echo esc_html__( 'WhatsApp', 'samirarte-boutique' ); ?></span>
+				</a>
+			</li>
 			</ul>
 		</section>
 	</div>
