@@ -11,6 +11,8 @@ $account_url   = samirarte_boutique_account_url();
 $account_label = samirarte_boutique_account_label();
 $cart_url      = samirarte_boutique_cart_url();
 $cart_count    = samirarte_boutique_cart_count();
+$contact_phone = '+34676679064';
+$whatsapp_url  = 'https://wa.me/34676679064';
 $account_current_class = function_exists( 'is_account_page' ) && is_account_page() ? ' current_page_item' : '';
 ?>
 <!doctype html>
@@ -55,6 +57,8 @@ $account_current_class = function_exists( 'is_account_page' ) && is_account_page
 						<?php echo esc_html__( 'Mi cuenta', 'samirarte-boutique' ); ?>
 					</a>
 					<a href="<?php echo esc_url( $cart_url ); ?>"><?php echo esc_html__( 'Carrito', 'samirarte-boutique' ); ?></a>
+					<a href="<?php echo esc_url( 'tel:' . $contact_phone ); ?>"><?php echo esc_html( $contact_phone ); ?></a>
+					<a href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'WhatsApp', 'samirarte-boutique' ); ?></a>
 					<a class="sam-button sam-mobile-menu__cta" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>">
 						<?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?>
 					</a>
@@ -71,6 +75,12 @@ $account_current_class = function_exists( 'is_account_page' ) && is_account_page
 		</nav>
 
 		<div class="sam-header-actions">
+			<a class="sam-header-actions__link" href="<?php echo esc_url( 'tel:' . $contact_phone ); ?>">
+				<?php echo esc_html( $contact_phone ); ?>
+			</a>
+			<a class="sam-header-actions__link" href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer">
+				<?php echo esc_html__( 'WhatsApp', 'samirarte-boutique' ); ?>
+			</a>
 			<a class="sam-button sam-button--account<?php echo esc_attr( $account_current_class ); ?>" href="<?php echo esc_url( $account_url ); ?>"<?php echo $account_current_class ? ' aria-current="' . esc_attr( 'page' ) . '"' : ''; ?>>
 				<?php echo esc_html( $account_label ); ?>
 			</a>

@@ -48,8 +48,8 @@ $sam_logo_url  = get_template_directory_uri() . '/assets/img/logo-samirarte.png'
 		<div class="sam-site-footer__contact">
 			<h3><?php esc_html_e( 'Contacto', 'samirarte-theme' ); ?></h3>
 			<p><?php echo esc_html( 'samira.raysse@samirarte.com' ); ?></p>
-			<p><a href="<?php echo esc_url( 'tel:+34676679064' ); ?>"><?php echo esc_html( '+34 676 67 90 64' ); ?></a></p>
-			<p><a href="<?php echo esc_url( 'https://wa.me/34676679064?text=' . rawurlencode( 'Hola Samirarte, quiero información.' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WhatsApp', 'samirarte-theme' ); ?></a></p>
+			<p><a href="<?php echo esc_url( 'tel:+34676679064' ); ?>"><?php echo esc_html( '+34676679064' ); ?></a></p>
+			<p><a href="<?php echo esc_url( 'https://wa.me/34676679064' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WhatsApp', 'samirarte-theme' ); ?></a></p>
 			<p><a class="sam-site-footer__form-link" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><?php esc_html_e( 'Formulario de contacto', 'samirarte-theme' ); ?></a></p>
 		</div>
 	</div>

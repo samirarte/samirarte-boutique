@@ -54,6 +54,8 @@ $cart_url      = samirarte_boutique_cart_url();
 					<li><a href="<?php echo esc_url( $account_url ); ?>"><?php echo esc_html( $account_label ); ?></a></li>
 					<li><a href="<?php echo esc_url( $cart_url ); ?>"><?php echo esc_html__( 'Cesta', 'samirarte-boutique' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?></a></li>
+					<li><a href="<?php echo esc_url( 'tel:+34676679064' ); ?>"><?php echo esc_html( '+34676679064' ); ?></a></li>
+					<li><a href="<?php echo esc_url( 'https://wa.me/34676679064' ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'WhatsApp', 'samirarte-boutique' ); ?></a></li>
 				</ul>
 			<?php endif; ?>
 		</section>
