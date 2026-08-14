@@ -55,14 +55,6 @@ $sam_logo_url  = get_template_directory_uri() . '/assets/img/logo-samirarte.png'
 	<section class="sam-site-footer__social" aria-label="<?php echo esc_attr__( 'Redes sociales', 'samirarte-theme' ); ?>">
 		<h3><?php echo esc_html__( 'Síguenos', 'samirarte-theme' ); ?></h3>
 		<ul class="sam-site-footer__social-list">
-			<li>
-				<a class="sam-site-footer__social-link" href="https://wa.me/34676679064" target="_blank" rel="noopener noreferrer">
-					<svg class="sam-site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-						<path d="M20.52 3.48A11.94 11.94 0 1 0 12.06 24l-1.63-5.94A11.95 11.95 0 0 0 20.52 3.48zM12 2a10 10 0 0 1 8.24 15.74l-.59.86L21 22l-4.4-1.3-.82.59A10 10 0 1 1 12 2z" />
-					</svg>
-					<span class="sam-site-footer__social-text"><?php echo esc_html__( 'WhatsApp', 'samirarte-theme' ); ?></span>
-				</a>
-			</li>
 		</ul>
 	</section>
 
