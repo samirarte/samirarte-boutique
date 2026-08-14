@@ -42,8 +42,7 @@ defined( 'ABSPATH' ) || exit;
 		<div class="footer-contact">
 			<h3><?php esc_html_e( 'Contacto', 'samirarte-theme' ); ?></h3>
 			<p><a href="<?php echo esc_url( 'mailto:samira.raysse@samirarte.com' ); ?>"><?php echo esc_html( 'samira.raysse@samirarte.com' ); ?></a></p>
-			<p><a href="<?php echo esc_url( 'tel:+34676679064' ); ?>"><?php echo esc_html( '+34676679064' ); ?></a></p>
-			<p><a href="<?php echo esc_url( 'https://wa.me/34676679064' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WhatsApp', 'samirarte-theme' ); ?></a></p>
+			<p><a class="sam-site-footer__form-link" href="<?php echo esc_url( home_url( '/contacto/' ) ); ?>"><?php esc_html_e( 'Formulario de contacto', 'samirarte-theme' ); ?></a></p>
 		</div>
 	</div>
 

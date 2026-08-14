@@ -54,8 +54,6 @@ $cart_url      = samirarte_boutique_cart_url();
 					<li><a href="<?php echo esc_url( $account_url ); ?>"><?php echo esc_html( $account_label ); ?></a></li>
 					<li><a href="<?php echo esc_url( $cart_url ); ?>"><?php echo esc_html__( 'Cesta', 'samirarte-boutique' ); ?></a></li>
 					<li><a href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?></a></li>
-					<li><a href="<?php echo esc_url( 'tel:+34676679064' ); ?>"><?php echo esc_html( '+34676679064' ); ?></a></li>
-					<li><a href="<?php echo esc_url( 'https://wa.me/34676679064' ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html__( 'WhatsApp', 'samirarte-boutique' ); ?></a></li>
 				</ul>
 			<?php endif; ?>
 		</section>
@@ -98,6 +96,14 @@ $cart_url      = samirarte_boutique_cart_url();
 							<path d="M15.25 2.8c.3 2.15 1.56 3.68 3.95 3.82v3.08a7.1 7.1 0 0 1-3.9-1.22v5.98c0 3.02-2.06 5.42-5.16 5.42-2.9 0-5.34-2.16-5.34-5.08 0-3.36 3.25-5.88 6.48-4.96v3.18c-1.31-.48-3.25.15-3.25 1.75 0 1.09.94 1.9 2.06 1.9 1.29 0 2.06-.86 2.06-2.27V2.8h3.1Z" />
 						</svg>
 						<span class="sam-footer__social-text"><?php echo esc_html__( 'TikTok', 'samirarte-boutique' ); ?></span>
+					</a>
+				</li>
+				<li>
+					<a class="sam-footer__social-link" href="https://wa.me/34676679064" target="_blank" rel="noopener noreferrer">
+						<svg class="sam-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<path d="M20.52 3.48A11.94 11.94 0 1 0 12.06 24l-1.63-5.94A11.95 11.95 0 0 0 20.52 3.48zM12 2a10 10 0 0 1 8.24 15.74l-.59.86L21 22l-4.4-1.3-.82.59A10 10 0 1 1 12 2z" />
+						</svg>
+						<span class="sam-footer__social-text"><?php echo esc_html__( 'WhatsApp', 'samirarte-boutique' ); ?></span>
 					</a>
 				</li>
 			</ul>
