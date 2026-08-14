@@ -17,11 +17,6 @@ defined( 'ABSPATH' ) || exit;
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<?php
-$contact_phone = '+34676679064';
-$whatsapp_url  = 'https://wa.me/34676679064';
-?>
-
 <header class="site-header">
 	<div class="samirarte-container header-inner">
 		<div class="site-brand">
@@ -50,12 +45,6 @@ $whatsapp_url  = 'https://wa.me/34676679064';
 		</nav>
 
 		<div class="header-actions">
-			<a class="header-link" href="<?php echo esc_url( 'tel:' . $contact_phone ); ?>">
-				<?php echo esc_html( $contact_phone ); ?>
-			</a>
-			<a class="header-link" href="<?php echo esc_url( $whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer">
-				<?php esc_html_e( 'WhatsApp', 'samirarte-theme' ); ?>
-			</a>
 			<a class="header-link" href="<?php echo esc_url( home_url( '/mi-cuenta/' ) ); ?>">
 				<?php esc_html_e( 'Acceso cliente', 'samirarte-theme' ); ?>
 			</a>

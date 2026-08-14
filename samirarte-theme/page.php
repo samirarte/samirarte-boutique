@@ -116,8 +116,6 @@ get_header();
 					<section class="sam-page-grid sam-page-grid--contact" aria-label="<?php echo esc_attr__( 'Datos de contacto', 'samirarte-theme' ); ?>">
 						<div class="sam-contact-card">
 							<h2><?php esc_html_e( 'Contacto', 'samirarte-theme' ); ?></h2>
-							<p><a href="<?php echo esc_url( 'tel:+34676679064' ); ?>"><?php echo esc_html( '+34676679064' ); ?></a></p>
-							<p><a href="<?php echo esc_url( 'https://wa.me/34676679064' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WhatsApp', 'samirarte-theme' ); ?></a></p>
 						</div>
 						<div class="sam-contact-card sam-contact-card--note">
 							<h2><?php esc_html_e( 'Propuesta cuidada', 'samirarte-theme' ); ?></h2>
