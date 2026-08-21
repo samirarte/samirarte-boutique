@@ -5027,8 +5027,8 @@ input[type="submit"]:active,
 
 .sam-shop-intro {
 	display: grid;
-	grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-	gap: clamp(28px, 5vw, 64px);
+	grid-template-columns: minmax(0, 1fr);
+	gap: 24px;
 	align-items: center;
 	margin-bottom: 20px;
 	padding: clamp(30px, 4.5vw, 54px);
@@ -5040,6 +5040,7 @@ input[type="submit"]:active,
 
 .sam-shop-intro__copy {
 	min-width: 0;
+	max-width: 780px;
 }
 
 .sam-shop-intro h1 {
@@ -5475,8 +5476,8 @@ input[type="submit"]:active,
 }
 
 .woocommerce-shop .sam-shop-intro {
-	grid-template-columns: minmax(0, 1.02fr) minmax(380px, 0.98fr);
-	gap: clamp(34px, 5vw, 76px);
+	grid-template-columns: minmax(0, 1fr);
+	gap: 24px;
 	align-items: stretch;
 	margin-bottom: 26px;
 	padding: clamp(34px, 4.4vw, 64px);
@@ -5499,6 +5500,10 @@ input[type="submit"]:active,
 	max-width: 720px;
 	font-size: clamp(1.08rem, 1.2vw, 1.2rem);
 	line-height: 1.72;
+}
+
+.woocommerce-shop .sam-shop-intro .sam-actions {
+	margin-top: 28px;
 }
 
 .woocommerce-shop .sam-shop-steps {

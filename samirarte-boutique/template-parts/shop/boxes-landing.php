@@ -12,22 +12,9 @@ defined( 'ABSPATH' ) || exit;
 			<li><span>2</span><strong><?php echo esc_html__( 'Consulta su precio', 'samirarte-boutique' ); ?></strong></li>
 			<li><span>3</span><strong><?php echo esc_html__( 'Pide o solicita propuesta', 'samirarte-boutique' ); ?></strong></li>
 		</ol>
-	</div>
-
-	<div class="sam-box-size-selector" aria-labelledby="sam-box-size-title">
-		<div class="sam-box-size-selector__heading">
-			<p class="sam-eyebrow"><?php echo esc_html__( 'Compra directa', 'samirarte-boutique' ); ?></p>
-			<h2 id="sam-box-size-title"><?php echo esc_html__( 'Cajas por producto', 'samirarte-boutique' ); ?></h2>
-		</div>
-		<div class="sam-box-size-grid" role="list">
-			<a class="sam-box-size-card is-featured" href="#catalogo-cajas" role="listitem"><strong><?php echo esc_html__( 'Dátiles', 'samirarte-boutique' ); ?></strong><span><?php echo esc_html__( 'precio propio', 'samirarte-boutique' ); ?></span></a>
-			<a class="sam-box-size-card" href="#catalogo-cajas" role="listitem"><strong><?php echo esc_html__( 'Pastas', 'samirarte-boutique' ); ?></strong><span><?php echo esc_html__( 'precio propio', 'samirarte-boutique' ); ?></span></a>
-			<a class="sam-box-size-card" href="#catalogo-cajas" role="listitem"><strong><?php echo esc_html__( 'Surtida', 'samirarte-boutique' ); ?></strong><span><?php echo esc_html__( 'precio propio', 'samirarte-boutique' ); ?></span></a>
-			<a class="sam-box-size-card" href="#catalogo-cajas" role="listitem"><strong><?php echo esc_html__( 'Cuento', 'samirarte-boutique' ); ?></strong><span><?php echo esc_html__( 'precio propio', 'samirarte-boutique' ); ?></span></a>
-		</div>
 		<div class="sam-actions">
-			<a class="sam-button" href="#catalogo-cajas"><?php echo esc_html__( 'Ver cajas y encargos', 'samirarte-boutique' ); ?></a>
-			<a class="sam-button sam-button--ghost" href="#pedido-complejo"><?php echo esc_html__( 'Pedido complejo', 'samirarte-boutique' ); ?></a>
+			<a class="sam-button" href="#catalogo-cajas"><?php echo esc_html__( 'Ir a tienda', 'samirarte-boutique' ); ?></a>
+			<a class="sam-button sam-button--ghost" href="<?php echo esc_url( home_url( '/contacto/#contacto' ) ); ?>"><?php echo esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ); ?></a>
 		</div>
 	</div>
 </section>
