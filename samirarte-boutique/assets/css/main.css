@@ -1993,36 +1993,6 @@ body.sam-intro-active .sam-opening-intro {
 	text-align: center;
 }
 
-.woocommerce ul.products li.product .sam-preopening-product-cta,
-.woocommerce div.product .sam-preopening-product-cta {
-	border-color: rgba(107, 47, 50, 0.72);
-	background: rgba(255, 247, 232, 0.9);
-	color: var(--sam-brown);
-}
-
-.woocommerce ul.products li.product .sam-preopening-product-cta:hover,
-.woocommerce div.product .sam-preopening-product-cta:hover {
-	border-color: var(--sam-burgundy-dark);
-	background: var(--sam-burgundy-dark);
-	color: var(--sam-white);
-}
-
-.sam-preopening-product-note {
-	display: grid;
-	gap: 14px;
-	margin: 24px 0;
-	padding: 20px;
-	border: 1px solid rgba(107, 47, 50, 0.38);
-	border-radius: 20px;
-	background: rgba(255, 247, 232, 0.72);
-}
-
-.sam-preopening-product-note p {
-	margin: 0;
-	color: var(--sam-warm-brown);
-	line-height: 1.62;
-}
-
 .woocommerce-message,
 .woocommerce-info,
 .woocommerce-error {

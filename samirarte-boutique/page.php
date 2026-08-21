@@ -45,14 +45,14 @@ while ( have_posts() ) :
 
 	if ( 'cajas-gourmet' === $page_slug ) {
 		$config['eyebrow']      = esc_html__( 'Cajas Gourmet', 'samirarte-boutique' );
-		$config['title']        = esc_html__( 'Configura una caja regalo', 'samirarte-boutique' );
-		$config['intro']        = esc_html__( 'Configura una caja regalo con piezas gourmet de autor, cuento en pergamino y una composición preparada a medida.', 'samirarte-boutique' );
+		$config['title']        = esc_html__( 'Cajas gourmet listas para pedir', 'samirarte-boutique' );
+		$config['intro']        = esc_html__( 'Compra cajas definidas con precio visible o solicita una propuesta cuando el pedido necesite diseño, muchas unidades o una composición compleja.', 'samirarte-boutique' );
 		$config['content_mode'] = 'boxes_landing';
 	} elseif ( 'artesania-gourmet' === $page_slug ) {
 		$config = array(
 			'eyebrow'      => esc_html__( 'Cajas Gourmet', 'samirarte-boutique' ),
-			'title'        => esc_html__( 'Configura una caja regalo', 'samirarte-boutique' ),
-			'intro'        => esc_html__( 'Configura una caja regalo con piezas gourmet de autor. Elige entre minipastelas, dátiles gourmet y pastas finas, selecciona el tamaño de tu caja y recibe una composición preparada como una pequeña colección de joyas comestibles. Cada caja incluye un cuento en pergamino creado para acompañar la experiencia.', 'samirarte-boutique' ),
+			'title'        => esc_html__( 'Cajas gourmet con precio visible', 'samirarte-boutique' ),
+			'intro'        => esc_html__( 'Elige entre cajas definidas y encargos ya realizados, con precio y descripción visibles en WooCommerce. Las peticiones complejas se valoran siempre bajo solicitud y propuesta previa.', 'samirarte-boutique' ),
 			'media'        => array(
 				array(
 					'url' => samirarte_boutique_image_url( 'caja-gourmet-samirarte.webp' ),
@@ -65,8 +65,8 @@ while ( have_posts() ) :
 			),
 			'buttons'      => array(
 				array(
-					'label' => esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ),
-					'url'   => samirarte_boutique_boxes_url() . '#caja-gourmet-personalizada',
+					'label' => esc_html__( 'Ver cajas con precio', 'samirarte-boutique' ),
+					'url'   => samirarte_boutique_boxes_url() . '#catalogo-piezas',
 					'class' => 'sam-button',
 				),
 				array(
@@ -100,12 +100,12 @@ while ( have_posts() ) :
 			'sections'     => array(
 				array(
 					'type'  => 'steps',
-					'title' => esc_html__( 'Cómo configurar tu caja', 'samirarte-boutique' ),
+					'title' => esc_html__( 'Cómo funciona la tienda', 'samirarte-boutique' ),
 					'items' => array(
-						array( esc_html__( 'Elige el tamaño', 'samirarte-boutique' ), esc_html__( 'Selecciona una caja de 3, 6, 9 o 12 piezas.', 'samirarte-boutique' ) ),
-						array( esc_html__( 'Selecciona tus piezas', 'samirarte-boutique' ), esc_html__( 'Combina minipastelas, dátiles gourmet y pastas finas del catálogo.', 'samirarte-boutique' ) ),
-						array( esc_html__( 'Creamos la composición', 'samirarte-boutique' ), esc_html__( 'Preparamos cada pieza y cuidamos el acabado como un regalo premium.', 'samirarte-boutique' ) ),
-						array( esc_html__( 'Añadimos la historia', 'samirarte-boutique' ), esc_html__( 'Incluimos un cuento en pergamino para acompañar la experiencia.', 'samirarte-boutique' ) ),
+						array( esc_html__( 'Elige una caja definida', 'samirarte-boutique' ), esc_html__( 'Consulta formatos de 3, 6, 9 o 12 piezas y encargos ya realizados.', 'samirarte-boutique' ) ),
+						array( esc_html__( 'Revisa precio y disponibilidad', 'samirarte-boutique' ), esc_html__( 'WooCommerce muestra el precio configurado para cada producto.', 'samirarte-boutique' ) ),
+						array( esc_html__( 'Compra o consulta', 'samirarte-boutique' ), esc_html__( 'Los productos cerrados se pueden pedir desde la tienda; los complejos pasan a propuesta.', 'samirarte-boutique' ) ),
+						array( esc_html__( 'Propuesta para casos especiales', 'samirarte-boutique' ), esc_html__( 'Eventos, muchas unidades, montajes o relatos muy personalizados se valoran antes de confirmar.', 'samirarte-boutique' ) ),
 					),
 				),
 				array(
@@ -121,11 +121,11 @@ while ( have_posts() ) :
 				),
 			),
 			'final_cta'    => array(
-				'title'   => esc_html__( 'Crea tu colección de joyas comestibles', 'samirarte-boutique' ),
-				'text'    => esc_html__( 'Elige el tamaño, descubre el catálogo y prepara una caja lista para regalar.', 'samirarte-boutique' ),
+				'title'   => esc_html__( 'Elige una caja o pide una propuesta', 'samirarte-boutique' ),
+				'text'    => esc_html__( 'Compra formatos definidos con precio visible o cuéntanos el pedido complejo que quieres preparar.', 'samirarte-boutique' ),
 				'buttons' => array(
-					array( esc_html__( 'Personaliza tu caja', 'samirarte-boutique' ), samirarte_boutique_boxes_url() . '#caja-gourmet-personalizada', 'sam-button' ),
-					array( esc_html__( 'Ver catálogo de piezas', 'samirarte-boutique' ), samirarte_boutique_boxes_url(), 'sam-button sam-button--ghost' ),
+					array( esc_html__( 'Ver cajas con precio', 'samirarte-boutique' ), samirarte_boutique_boxes_url() . '#catalogo-piezas', 'sam-button' ),
+					array( esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ), samirarte_boutique_boxes_url() . '#pedido-complejo', 'sam-button sam-button--ghost' ),
 				),
 			),
 			'content_mode' => 'curated',
@@ -343,7 +343,7 @@ while ( have_posts() ) :
 					'titulo_cuento'  => esc_html__( 'La semilla que recordaba el camino', 'samirarte-boutique' ),
 					'extracto'       => esc_html__( 'Un cuento enviado con una caja Samirarte.', 'samirarte-boutique' ),
 					'caja_asociada'  => esc_html__( 'Caja Samirarte', 'samirarte-boutique' ),
-					'fecha'          => esc_html__( 'Archivo de preapertura', 'samirarte-boutique' ),
+					'fecha'          => esc_html__( 'Archivo Samirarte', 'samirarte-boutique' ),
 					'texto_cuento'   => array(
 						esc_html__( 'Cuentan que, en una ciudad de arena clara y patios perfumados, vivía una muchacha llamada Nura, hija de un viejo mercader de especias.', 'samirarte-boutique' ),
 						esc_html__( 'Su padre no vendía oro, ni sedas, ni piedras preciosas. Vendía cosas más pequeñas y más poderosas: vainas de cardamomo, cortezas de canela, pétalos secos de rosa, miel espesa y almendras tostadas. Decía que el oro brillaba solo por fuera, pero las especias sabían encender recuerdos dentro de las personas.', 'samirarte-boutique' ),

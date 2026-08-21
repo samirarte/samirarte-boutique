@@ -12,12 +12,12 @@ if ( ! function_exists( 'samirarte_boutique_seo_data' ) ) {
 		if ( is_front_page() ) {
 			$data = array(
 				'title'       => esc_html__( 'Samirarte | Artesanía gourmet, cajas regalo y experiencias privadas', 'samirarte-boutique' ),
-				'description' => esc_html__( 'Samirarte crea cajas gourmet, detalles artesanales y experiencias privadas bajo encargo, con presentaciones cuidadas y cuentos personalizados para ocasiones especiales.', 'samirarte-boutique' ),
+				'description' => esc_html__( 'Samirarte ofrece cajas gourmet definidas con precio visible, encargos realizados que pueden repetirse y propuestas a medida para pedidos complejos.', 'samirarte-boutique' ),
 			);
 		} elseif ( is_page( array( 'artesania-gourmet', 'cajas-gourmet' ) ) || ( function_exists( 'is_shop' ) && is_shop() ) ) {
 			$data = array(
-				'title'       => esc_html__( 'Cajas Gourmet configurables | Samirarte', 'samirarte-boutique' ),
-				'description' => esc_html__( 'Configura una caja regalo de 3, 6, 9 o 12 piezas gourmet de autor, presentada como regalo premium y con cuento en pergamino incluido.', 'samirarte-boutique' ),
+				'title'       => esc_html__( 'Cajas Gourmet con precio | Samirarte', 'samirarte-boutique' ),
+				'description' => esc_html__( 'Compra cajas gourmet definidas con precio visible o solicita una propuesta para pedidos complejos, eventos y encargos personalizados.', 'samirarte-boutique' ),
 			);
 		} elseif ( is_page( 'experiencias' ) ) {
 			$data = array(
