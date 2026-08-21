@@ -697,7 +697,6 @@ if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
 			</div>
 		</section>
 
-		<?php echo samirarte_boutique_shop_compact_opening_gift_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php
 	}
 }
@@ -847,7 +846,7 @@ if ( ! function_exists( 'samirarte_boutique_ui_text_replacements' ) ) {
 }
 add_filter( 'gettext', 'samirarte_boutique_ui_text_replacements', 20, 2 );
 
-// Opening gift and Google login helpers moved to inc/shop.php; keep functions.php lean.
+// Google login helpers moved to inc/shop.php; keep functions.php lean.
 // WooCommerce now shows the prices and purchase actions configured on each product.
 
 if ( ! function_exists( 'samirarte_boutique_checkout_account_note' ) ) {

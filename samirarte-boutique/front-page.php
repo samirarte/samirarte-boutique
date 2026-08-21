@@ -35,7 +35,6 @@ $story_image      = samirarte_boutique_image_url( 'cuento-pergamino-samirarte.we
 $experience_image = samirarte_boutique_image_url( 'experiencia-privada-samirarte.webp' );
 $table_image      = samirarte_boutique_image_url( 'mesa-gourmet-samirarte.webp' );
 $contact_image    = samirarte_boutique_image_url( 'contacto-propuesta-samirarte.webp' );
-$opening_video    = samirarte_boutique_video_url( 'intro-samirarte-apertura.mp4' );
 $custom_box_url   = samirarte_boutique_boxes_url() . '#catalogo-piezas';
 $proposal_url     = samirarte_boutique_boxes_url() . '#pedido-complejo';
 $shop_price_label = esc_html__( 'Precio en tienda', 'samirarte-boutique' );
@@ -70,48 +69,6 @@ $featured_products = array(
 	),
 );
 ?>
-
-<section class="sam-opening-intro is-hidden" data-theme-url="<?php echo esc_url( get_template_directory_uri() ); ?>" aria-label="<?php echo esc_attr__( 'Vídeo introductorio de Samirarte', 'samirarte-boutique' ); ?>">
-	<?php if ( $opening_video ) : ?>
-	<div class="sam-opening-intro__frame">
-		<div class="sam-opening-intro__backdrop" aria-hidden="true">
-			<video muted playsinline preload="auto">
-				<source src="<?php echo esc_url( $opening_video ); ?>" type="video/mp4">
-			</video>
-		</div>
-		<div class="sam-opening-intro__stage">
-			<video class="sam-opening-intro__video sam-opening-intro__video--a is-active" muted playsinline preload="auto" title="<?php echo esc_attr__( 'Vídeo introductorio de Samirarte', 'samirarte-boutique' ); ?>">
-				<source src="<?php echo esc_url( $opening_video ); ?>" type="video/mp4">
-			</video>
-			<video class="sam-opening-intro__video sam-opening-intro__video--b" muted playsinline preload="auto" title="<?php echo esc_attr__( 'Vídeo introductorio de Samirarte', 'samirarte-boutique' ); ?>">
-				<source src="<?php echo esc_url( $opening_video ); ?>" type="video/mp4">
-			</video>
-		</div>
-		<button class="sam-opening-intro__sound" type="button" aria-pressed="false" aria-label="<?php echo esc_attr__( 'Activar sonido del vídeo', 'samirarte-boutique' ); ?>">
-			<?php echo esc_html__( 'Activar sonido', 'samirarte-boutique' ); ?>
-		</button>
-	</div>
-	<?php endif; ?>
-</section>
-
-<div class="sam-opening-gift-modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="sam-opening-gift-title" aria-describedby="sam-opening-gift-desc" hidden>
-	<div class="sam-opening-gift-modal__backdrop" data-sam-gift-modal-close></div>
-	<div class="sam-opening-gift-modal__card" role="document">
-		<button class="sam-opening-gift-modal__close" type="button" aria-label="<?php echo esc_attr__( 'Cerrar promoción', 'samirarte-boutique' ); ?>" data-sam-gift-modal-close>
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<span class="sam-opening-gift-modal__seal" aria-hidden="true"></span>
-		<p class="sam-opening-gift-modal__eyebrow"><?php echo esc_html__( 'ÁREA CLIENTE', 'samirarte-boutique' ); ?></p>
-		<h2 id="sam-opening-gift-title" class="sam-opening-gift-modal__title" tabindex="-1"><?php echo esc_html__( 'Pedidos y propuestas en un solo lugar', 'samirarte-boutique' ); ?></h2>
-		<p id="sam-opening-gift-desc" class="sam-opening-gift-modal__text"><?php echo esc_html__( 'Crea tu cuenta para consultar pedidos, guardar tus datos y hacer seguimiento de encargos o propuestas personalizadas.', 'samirarte-boutique' ); ?></p>
-		<p class="sam-opening-gift-modal__subtext"><?php echo esc_html__( 'Una forma más cómoda de repetir cajas, revisar detalles y preparar nuevos encargos.', 'samirarte-boutique' ); ?></p>
-		<div class="sam-opening-gift-modal__actions">
-			<a class="sam-opening-gift-modal__cta" href="<?php echo esc_url( samirarte_boutique_account_url() ); ?>"><?php echo esc_html__( 'Crear cuenta', 'samirarte-boutique' ); ?></a>
-			<button class="sam-opening-gift-modal__secondary" type="button" data-sam-gift-modal-close><?php echo esc_html__( 'Ahora no', 'samirarte-boutique' ); ?></button>
-		</div>
-		<p class="sam-opening-gift-modal__legal"><?php echo esc_html__( 'Los pedidos complejos se confirman siempre después de revisar disponibilidad, alcance, tiempos y propuesta final.', 'samirarte-boutique' ); ?></p>
-	</div>
-</div>
 
 <section id="sam-main-hero" class="sam-hero sam-section">
 	<div class="sam-container sam-hero__grid">

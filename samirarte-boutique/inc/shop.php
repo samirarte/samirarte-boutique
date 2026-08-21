@@ -35,62 +35,6 @@ if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
 	}
 }
 
-// Opening gift and related small templates are handled via template-parts so that
-// markup is easy to override. The functions below provide the public API and
-// include the corresponding template parts.
-
-if ( ! function_exists( 'samirarte_boutique_opening_gift_markup' ) ) {
-	function samirarte_boutique_opening_gift_markup( $modifier = '' ) {
-		$template = locate_template( 'template-parts/shop/opening-gift.php' );
-		if ( ! $template ) {
-			return '';
-		}
-
-		$modifier = (string) $modifier;
-		ob_start();
-		include $template; // template expects $modifier in scope
-		return trim( ob_get_clean() );
-	}
-}
-
-if ( ! function_exists( 'samirarte_boutique_render_opening_gift' ) ) {
-	function samirarte_boutique_render_opening_gift( $modifier = '' ) {
-		echo samirarte_boutique_opening_gift_markup( $modifier ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-}
-
-if ( ! function_exists( 'samirarte_boutique_shop_compact_opening_gift_markup' ) ) {
-	function samirarte_boutique_shop_compact_opening_gift_markup() {
-		$template = locate_template( 'template-parts/shop/opening-gift-compact.php' );
-		if ( ! $template ) {
-			return '';
-		}
-
-		ob_start();
-		include $template;
-		return trim( ob_get_clean() );
-	}
-}
-
-if ( ! function_exists( 'samirarte_boutique_shop_opening_gift_notice' ) ) {
-	function samirarte_boutique_shop_opening_gift_notice() {
-		echo samirarte_boutique_shop_compact_opening_gift_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-}
-
-if ( ! function_exists( 'samirarte_boutique_account_opening_gift_notice' ) ) {
-	function samirarte_boutique_account_opening_gift_notice() {
-		if ( is_user_logged_in() ) {
-			return;
-		}
-
-		$template = locate_template( 'template-parts/shop/account-opening-gift.php' );
-		if ( $template ) {
-			include $template;
-		}
-	}
-}
-
 if ( ! function_exists( 'samirarte_boutique_google_login_markup' ) ) {
 	function samirarte_boutique_google_login_markup( $already_rendered = false, $label = '' ) {
 		$markup = '';

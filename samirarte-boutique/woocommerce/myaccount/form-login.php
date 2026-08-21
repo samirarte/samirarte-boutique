@@ -23,8 +23,6 @@ $google_login_markup      = samirarte_boutique_google_login_markup( $nextend_alr
 $google_register_markup   = samirarte_boutique_google_login_markup( $nextend_already_rendered, esc_html__( 'Registrarse con Google', 'samirarte-boutique' ) );
 ?>
 
-<?php samirarte_boutique_account_opening_gift_notice(); ?>
-
 <section class="sam-account-access" aria-label="<?php echo esc_attr__( 'Acceso y registro de cliente', 'samirarte-boutique' ); ?>">
 	<div class="sam-account-forms<?php echo $registration_enabled ? '' : ' sam-account-forms--login-only'; ?>" id="customer_login">
 		<section class="sam-account-card sam-account-card--login" aria-labelledby="sam-account-login-title">
@@ -71,9 +69,9 @@ $google_register_markup   = samirarte_boutique_google_login_markup( $nextend_alr
 
 		<?php if ( $registration_enabled ) : ?>
 			<section class="sam-account-card sam-account-card--register" id="registro" tabindex="-1" aria-labelledby="sam-account-register-title">
-				<p class="sam-account-card__badge"><?php echo esc_html__( 'Preapertura', 'samirarte-boutique' ); ?></p>
+				<p class="sam-account-card__badge"><?php echo esc_html__( 'Nuevo cliente', 'samirarte-boutique' ); ?></p>
 				<h2 id="sam-account-register-title"><?php echo esc_html__( 'Crear cuenta', 'samirarte-boutique' ); ?></h2>
-				<p class="sam-account-card__intro"><?php echo esc_html__( 'Regístrate para guardar tus datos y recibir el regalo exclusivo de apertura con tu primer pedido.', 'samirarte-boutique' ); ?></p>
+				<p class="sam-account-card__intro"><?php echo esc_html__( 'Crea una cuenta para guardar tus datos y consultar tus pedidos.', 'samirarte-boutique' ); ?></p>
 
 				<?php if ( $google_register_markup ) : ?>
 					<div class="sam-account-card__social" data-sam-nextend-login="register">
