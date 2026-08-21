@@ -9,21 +9,22 @@ if ( ! function_exists( 'samirarte_boutique_render_boxes_landing' ) ) {
 	function samirarte_boutique_render_boxes_landing() {
 		$piece_categories = array(
 			array(
-				'title' => esc_html__( 'Minipastelas', 'samirarte-boutique' ),
-				'text'  => esc_html__( 'Capas crujientes, rellenos especiados y acabados delicados.', 'samirarte-boutique' ),
-				'image' => samirarte_boutique_image_url( 'pastelas.webp' ),
-				'alt'   => esc_attr__( 'Minipastelas artesanas Samirarte con té', 'samirarte-boutique' ),
+				'title' => esc_html__( 'Caja de dátiles gourmet', 'samirarte-boutique' ),
+				'text'  => esc_html__( 'Dátiles rellenos y vestidos como pequeñas joyas de sobremesa, con precio propio en tienda.', 'samirarte-boutique' ),
+				'image' => samirarte_boutique_image_url( 'producto-caja-datiles-samirarte.webp' ),
+				'alt'   => esc_attr__( 'Caja de dátiles gourmet Samirarte', 'samirarte-boutique' ),
 			),
 			array(
-				'title' => esc_html__( 'Dátiles gourmet', 'samirarte-boutique' ),
-				'text'  => esc_html__( 'Dátiles rellenos y vestidos como pequeñas joyas de sobremesa.', 'samirarte-boutique' ),
-				'image' => samirarte_boutique_image_url( 'datiles.webp' ),
-				'alt'   => esc_attr__( 'Dátiles gourmet Samirarte con frutos secos y té', 'samirarte-boutique' ),
-			),
-			array(
-				'title' => esc_html__( 'Pastas finas', 'samirarte-boutique' ),
-				'text'  => esc_html__( 'Bocados delicados para té, regalo y celebraciones especiales.', 'samirarte-boutique' ),
+				'title' => esc_html__( 'Caja de pastas finas', 'samirarte-boutique' ),
+				'text'  => esc_html__( 'Bocados delicados para té, regalo y celebraciones especiales, configurados como producto cerrado.', 'samirarte-boutique' ),
 				'image' => samirarte_boutique_image_url( 'pastas_finas.webp' ),
+				'alt'   => esc_attr__( 'Caja de pastas finas Samirarte', 'samirarte-boutique' ),
+			),
+			array(
+				'title' => esc_html__( 'Caja surtida Samirarte', 'samirarte-boutique' ),
+				'text'  => esc_html__( 'Una selección combinada de productos gourmet con descripción, disponibilidad y precio propios.', 'samirarte-boutique' ),
+				'image' => samirarte_boutique_image_url( 'producto-caja-surtida-samirarte.webp' ),
+				'alt'   => esc_attr__( 'Caja surtida Samirarte', 'samirarte-boutique' ),
 			),
 		);
 

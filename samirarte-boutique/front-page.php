@@ -35,36 +35,36 @@ $story_image      = samirarte_boutique_image_url( 'cuento-pergamino-samirarte.we
 $experience_image = samirarte_boutique_image_url( 'experiencia-privada-samirarte.webp' );
 $table_image      = samirarte_boutique_image_url( 'mesa-gourmet-samirarte.webp' );
 $contact_image    = samirarte_boutique_image_url( 'contacto-propuesta-samirarte.webp' );
-$custom_box_url   = samirarte_boutique_boxes_url() . '#catalogo-piezas';
+$custom_box_url   = samirarte_boutique_boxes_url() . '#catalogo-cajas';
 $proposal_url     = samirarte_boutique_boxes_url() . '#pedido-complejo';
-$shop_price_label = esc_html__( 'Precio en tienda', 'samirarte-boutique' );
+$shop_price_label = esc_html__( 'Precio según producto', 'samirarte-boutique' );
 $featured_products = array(
 	array(
-		'title' => esc_html__( 'Caja Gourmet 3 piezas', 'samirarte-boutique' ),
+		'title' => esc_html__( 'Caja de dátiles gourmet', 'samirarte-boutique' ),
 		'price' => $shop_price_label,
-		'text'  => esc_html__( 'Un detalle pequeño y precioso para abrir boca con tus piezas favoritas.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_3.png' ),
+		'text'  => esc_html__( 'Dátiles seleccionados, rellenos y presentados como una caja regalo cerrada.', 'samirarte-boutique' ),
+		'image' => samirarte_boutique_image_url( 'producto-caja-datiles-samirarte.webp' ),
 		'url'   => $custom_box_url,
 	),
 	array(
-		'title' => esc_html__( 'Caja Gourmet 6 piezas', 'samirarte-boutique' ),
+		'title' => esc_html__( 'Caja de pastas finas', 'samirarte-boutique' ),
 		'price' => $shop_price_label,
-		'text'  => esc_html__( 'La combinación equilibrada para regalar, compartir o acompañar un té.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_6.png' ),
+		'text'  => esc_html__( 'Pastas delicadas para acompañar el té, regalar o vestir una sobremesa.', 'samirarte-boutique' ),
+		'image' => samirarte_boutique_image_url( 'pastas_finas.webp' ),
 		'url'   => $custom_box_url,
 	),
 	array(
-		'title' => esc_html__( 'Caja Gourmet 9 piezas', 'samirarte-boutique' ),
+		'title' => esc_html__( 'Caja surtida Samirarte', 'samirarte-boutique' ),
 		'price' => $shop_price_label,
-		'text'  => esc_html__( 'Una colección generosa para descubrir distintas texturas y sabores.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_9.png' ),
+		'text'  => esc_html__( 'Una selección combinada de productos gourmet preparada como regalo completo.', 'samirarte-boutique' ),
+		'image' => samirarte_boutique_image_url( 'producto-caja-surtida-samirarte.webp' ),
 		'url'   => $custom_box_url,
 	),
 	array(
-		'title' => esc_html__( 'Caja Gourmet 12 piezas', 'samirarte-boutique' ),
+		'title' => esc_html__( 'Caja regalo con cuento', 'samirarte-boutique' ),
 		'price' => $shop_price_label,
-		'text'  => esc_html__( 'La composición completa para celebraciones, empresas y regalos especiales.', 'samirarte-boutique' ),
-		'image' => samirarte_boutique_image_url( 'caja_12.png' ),
+		'text'  => esc_html__( 'Una caja de producto con relato en pergamino para convertir el detalle en recuerdo.', 'samirarte-boutique' ),
+		'image' => samirarte_boutique_image_url( 'producto-regalo-cuento-samirarte.webp' ),
 		'url'   => $custom_box_url,
 	),
 );
@@ -75,7 +75,7 @@ $featured_products = array(
 		<div class="sam-hero__content">
 			<p class="sam-eyebrow"><?php echo esc_html__( 'Boutique gourmet artesanal', 'samirarte-boutique' ); ?></p>
 			<h1><?php echo esc_html__( 'Sabores que cuentan historias. Detalles que dejan huella.', 'samirarte-boutique' ); ?></h1>
-			<p class="sam-hero__text"><?php echo esc_html__( 'Cajas gourmet definidas con precio visible en tienda, encargos realizados que puedes repetir y propuestas a medida para pedidos complejos.', 'samirarte-boutique' ); ?></p>
+			<p class="sam-hero__text"><?php echo esc_html__( 'Cajas gourmet por tipo de producto, cada una con su precio visible en tienda, y propuestas a medida para pedidos complejos.', 'samirarte-boutique' ); ?></p>
 			<div class="sam-actions">
 				<a class="sam-button" href="<?php echo esc_url( $custom_box_url ); ?>"><?php echo esc_html__( 'Ver cajas con precio', 'samirarte-boutique' ); ?></a>
 				<a class="sam-button sam-button--ghost" href="<?php echo esc_url( $proposal_url ); ?>"><?php echo esc_html__( 'Pedido complejo', 'samirarte-boutique' ); ?></a>
@@ -87,7 +87,7 @@ $featured_products = array(
 <section class="sam-featured-carousel-section sam-box-builder" aria-labelledby="sam-featured-carousel-title">
 	<div class="sam-container sam-featured-carousel-heading">
 		<h2 id="sam-featured-carousel-title"><?php echo esc_html__( 'Elige tu caja', 'samirarte-boutique' ); ?></h2>
-		<p><?php echo esc_html__( 'Formatos cerrados para compra directa y encargos ya realizados que pueden repetirse con precio visible desde WooCommerce.', 'samirarte-boutique' ); ?></p>
+		<p><?php echo esc_html__( 'Cajas cerradas por producto para compra directa: cada una tiene su propia descripción, disponibilidad y precio en WooCommerce.', 'samirarte-boutique' ); ?></p>
 	</div>
 	<div class="sam-featured-carousel sam-box-builder__formats" tabindex="0" aria-label="<?php echo esc_attr__( 'Cajas Gourmet Samirarte', 'samirarte-boutique' ); ?>">
 		<?php foreach ( $featured_products as $product ) : ?>
@@ -123,7 +123,7 @@ $featured_products = array(
 			<article class="sam-value-card">
 				<span class="sam-mini-icon sam-mini-icon--box" aria-hidden="true"></span>
 				<h3><?php echo esc_html__( 'Compra clara', 'samirarte-boutique' ); ?></h3>
-				<p><?php echo esc_html__( 'Las cajas definidas muestran precio, descripción y disponibilidad antes de pedir.', 'samirarte-boutique' ); ?></p>
+				<p><?php echo esc_html__( 'Cada caja de producto muestra precio, descripción y disponibilidad antes de pedir.', 'samirarte-boutique' ); ?></p>
 			</article>
 			<article class="sam-value-card">
 				<span class="sam-mini-icon sam-mini-icon--ribbon" aria-hidden="true"></span>
@@ -165,7 +165,7 @@ $featured_products = array(
 				),
 				array(
 					'title' => esc_html__( 'Cajas regalo', 'samirarte-boutique' ),
-					'text'  => esc_html__( 'Cajas cerradas con precio visible y opciones especiales bajo propuesta cuando el encargo necesita más diseño.', 'samirarte-boutique' ),
+					'text'  => esc_html__( 'Cajas de producto con precio visible y opciones especiales bajo propuesta cuando el encargo necesita más diseño.', 'samirarte-boutique' ),
 					'image' => $box_image,
 				),
 			);

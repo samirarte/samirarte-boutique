@@ -66,35 +66,35 @@ while ( have_posts() ) :
 			'buttons'      => array(
 				array(
 					'label' => esc_html__( 'Ver cajas con precio', 'samirarte-boutique' ),
-					'url'   => samirarte_boutique_boxes_url() . '#catalogo-piezas',
+					'url'   => samirarte_boutique_boxes_url() . '#catalogo-cajas',
 					'class' => 'sam-button',
 				),
 				array(
-					'label' => esc_html__( 'Ver catálogo de piezas', 'samirarte-boutique' ),
-					'url'   => samirarte_boutique_boxes_url() . '#catalogo-piezas',
+					'label' => esc_html__( 'Ver tipos de caja', 'samirarte-boutique' ),
+					'url'   => samirarte_boutique_boxes_url() . '#catalogo-cajas',
 					'class' => 'sam-button sam-button--ghost',
 				),
 			),
 			'cards'        => array(
 				array(
 					'icon'  => 'box',
-					'title' => esc_html__( 'Caja de 3 piezas', 'samirarte-boutique' ),
-					'text'  => esc_html__( 'Un detalle pequeño y precioso, presentado como una colección de joyas comestibles.', 'samirarte-boutique' ),
+					'title' => esc_html__( 'Caja de dátiles gourmet', 'samirarte-boutique' ),
+					'text'  => esc_html__( 'Un producto cerrado con su propio precio, pensado para regalar o compartir.', 'samirarte-boutique' ),
 				),
 				array(
 					'icon'  => 'date',
-					'title' => esc_html__( 'Caja de 6 piezas', 'samirarte-boutique' ),
-					'text'  => esc_html__( 'Un formato equilibrado para regalar, compartir o acompañar una celebración íntima.', 'samirarte-boutique' ),
+					'title' => esc_html__( 'Caja de pastas finas', 'samirarte-boutique' ),
+					'text'  => esc_html__( 'Pastas delicadas preparadas como caja de producto con precio propio.', 'samirarte-boutique' ),
 				),
 				array(
 					'icon'  => 'ribbon',
-					'title' => esc_html__( 'Caja de 9 piezas', 'samirarte-boutique' ),
-					'text'  => esc_html__( 'Una composición generosa para descubrir diferentes piezas y crear un recorrido de sabores.', 'samirarte-boutique' ),
+					'title' => esc_html__( 'Caja surtida Samirarte', 'samirarte-boutique' ),
+					'text'  => esc_html__( 'Una selección combinada de productos gourmet con descripción y precio visibles.', 'samirarte-boutique' ),
 				),
 				array(
 					'icon'  => 'scroll',
-					'title' => esc_html__( 'Caja de 12 piezas', 'samirarte-boutique' ),
-					'text'  => esc_html__( 'La colección completa para una ocasión especial, con presentación premium y cuento incluido.', 'samirarte-boutique' ),
+					'title' => esc_html__( 'Caja regalo con cuento', 'samirarte-boutique' ),
+					'text'  => esc_html__( 'Una caja de producto acompañada por un relato en pergamino cuando el regalo pide historia.', 'samirarte-boutique' ),
 				),
 			),
 			'sections'     => array(
@@ -102,8 +102,8 @@ while ( have_posts() ) :
 					'type'  => 'steps',
 					'title' => esc_html__( 'Cómo funciona la tienda', 'samirarte-boutique' ),
 					'items' => array(
-						array( esc_html__( 'Elige una caja definida', 'samirarte-boutique' ), esc_html__( 'Consulta formatos de 3, 6, 9 o 12 piezas y encargos ya realizados.', 'samirarte-boutique' ) ),
-						array( esc_html__( 'Revisa precio y disponibilidad', 'samirarte-boutique' ), esc_html__( 'WooCommerce muestra el precio configurado para cada producto.', 'samirarte-boutique' ) ),
+						array( esc_html__( 'Elige un tipo de caja', 'samirarte-boutique' ), esc_html__( 'Consulta cajas de productos diferentes y encargos ya realizados.', 'samirarte-boutique' ) ),
+						array( esc_html__( 'Revisa precio y disponibilidad', 'samirarte-boutique' ), esc_html__( 'WooCommerce muestra el precio configurado para cada caja de producto.', 'samirarte-boutique' ) ),
 						array( esc_html__( 'Compra o consulta', 'samirarte-boutique' ), esc_html__( 'Los productos cerrados se pueden pedir desde la tienda; los complejos pasan a propuesta.', 'samirarte-boutique' ) ),
 						array( esc_html__( 'Propuesta para casos especiales', 'samirarte-boutique' ), esc_html__( 'Eventos, muchas unidades, montajes o relatos muy personalizados se valoran antes de confirmar.', 'samirarte-boutique' ) ),
 					),
@@ -122,9 +122,9 @@ while ( have_posts() ) :
 			),
 			'final_cta'    => array(
 				'title'   => esc_html__( 'Elige una caja o pide una propuesta', 'samirarte-boutique' ),
-				'text'    => esc_html__( 'Compra formatos definidos con precio visible o cuéntanos el pedido complejo que quieres preparar.', 'samirarte-boutique' ),
+				'text'    => esc_html__( 'Compra cajas de producto con precio visible o cuéntanos el pedido complejo que quieres preparar.', 'samirarte-boutique' ),
 				'buttons' => array(
-					array( esc_html__( 'Ver cajas con precio', 'samirarte-boutique' ), samirarte_boutique_boxes_url() . '#catalogo-piezas', 'sam-button' ),
+					array( esc_html__( 'Ver cajas con precio', 'samirarte-boutique' ), samirarte_boutique_boxes_url() . '#catalogo-cajas', 'sam-button' ),
 					array( esc_html__( 'Solicitar propuesta', 'samirarte-boutique' ), samirarte_boutique_boxes_url() . '#pedido-complejo', 'sam-button sam-button--ghost' ),
 				),
 			),
@@ -388,7 +388,7 @@ while ( have_posts() ) :
 					'image' => samirarte_boutique_image_url( 'galeria-caja-gourmet-8-piezas.webp' ),
 					'alt'   => esc_attr__( 'Caja gourmet', 'samirarte-boutique' ),
 					'title' => esc_html__( 'Cajas', 'samirarte-boutique' ),
-					'text'  => esc_html__( 'Composiciones de 3, 6, 9 y 12 piezas preparadas como regalos premium.', 'samirarte-boutique' ),
+					'text'  => esc_html__( 'Cajas de productos diferentes preparadas como regalos premium, cada una con su precio y descripción.', 'samirarte-boutique' ),
 				),
 				array(
 					'image' => samirarte_boutique_image_url( 'datiles.webp' ),
