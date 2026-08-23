@@ -37,6 +37,9 @@ if ( ! function_exists( 'samirarte_boutique_setup' ) ) {
 			)
 		);
 		add_theme_support( 'woocommerce' );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
 
 		register_nav_menus(
 			array(
@@ -211,6 +214,19 @@ if ( ! function_exists( 'samirarte_boutique_boxes_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'samirarte_boutique_shop_url' ) ) {
+	/**
+	 * Return the WooCommerce shop URL with a stable fallback.
+	 *
+	 * @return string
+	 */
+	function samirarte_boutique_shop_url() {
+		$shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
+
+		return $shop_url ? $shop_url : home_url( '/tienda/' );
+	}
+}
+
 if ( ! function_exists( 'samirarte_boutique_diary_url' ) ) {
 	/**
 	 * Return the WordPress posts page URL with a stable fallback.
@@ -235,6 +251,7 @@ if ( ! function_exists( 'samirarte_boutique_primary_links' ) ) {
 		return array(
 			array( esc_html__( 'Inicio', 'samirarte-boutique' ), home_url( '/' ) ),
 			array( esc_html__( 'Cajas Gourmet', 'samirarte-boutique' ), samirarte_boutique_boxes_url() ),
+			array( esc_html__( 'Tienda', 'samirarte-boutique' ), samirarte_boutique_shop_url() ),
 			array( esc_html__( 'Experiencias', 'samirarte-boutique' ), home_url( '/experiencias/' ) ),
 			array( esc_html__( 'Galería', 'samirarte-boutique' ), home_url( '/galeria/' ) ),
 			array( esc_html__( 'Cuentos', 'samirarte-boutique' ), home_url( '/cuentos/' ) ),

@@ -41,6 +41,14 @@ if ( ! function_exists( 'samirarte_boutique_boxes_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'samirarte_boutique_shop_url' ) ) {
+	function samirarte_boutique_shop_url() {
+		$shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : '';
+
+		return $shop_url ? $shop_url : home_url( '/tienda/' );
+	}
+}
+
 if ( ! function_exists( 'samirarte_boutique_diary_url' ) ) {
 	function samirarte_boutique_diary_url() {
 		$posts_page_id = (int) get_option( 'page_for_posts' );
