@@ -60,3 +60,17 @@ if ( ! function_exists( 'samirarte_boutique_google_login_markup' ) ) {
 		return trim( (string) apply_filters( 'samirarte_google_login_markup', $markup ) );
 	}
 }
+
+if ( ! function_exists( 'samirarte_boutique_disable_woocommerce_sidebar' ) ) {
+	/**
+	 * Keep WooCommerce layouts clean by removing the default sidebar output.
+	 */
+	function samirarte_boutique_disable_woocommerce_sidebar() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+
+		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+	}
+}
+add_action( 'after_setup_theme', 'samirarte_boutique_disable_woocommerce_sidebar', 99 );
