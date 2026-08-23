@@ -9,8 +9,8 @@ if ( ! function_exists( 'samirarte_boutique_primary_links' ) ) {
 	function samirarte_boutique_primary_links() {
 		return array(
 			array( esc_html__( 'Inicio', 'samirarte-boutique' ), home_url( '/' ) ),
+			array( esc_html__( 'Tienda', 'samirarte-boutique' ), samirarte_boutique_shop_url(), 'sam-menu-item-shop' ),
 			array( esc_html__( 'Cajas Gourmet', 'samirarte-boutique' ), samirarte_boutique_boxes_url() ),
-			array( esc_html__( 'Tienda', 'samirarte-boutique' ), samirarte_boutique_shop_url() ),
 			array( esc_html__( 'Experiencias', 'samirarte-boutique' ), home_url( '/experiencias/' ) ),
 			array( esc_html__( 'Galería', 'samirarte-boutique' ), home_url( '/galeria/' ) ),
 			array( esc_html__( 'Cuentos', 'samirarte-boutique' ), home_url( '/cuentos/' ) ),
@@ -24,9 +24,10 @@ if ( ! function_exists( 'samirarte_boutique_primary_menu' ) ) {
 		echo '<ul class="' . esc_attr( $menu_class ) . '">';
 		foreach ( samirarte_boutique_primary_links() as $item ) {
 			printf(
-				'<li><a href="%1$s">%2$s</a></li>',
+				'<li%3$s><a href="%1$s">%2$s</a></li>',
 				esc_url( $item[1] ),
-				esc_html( $item[0] )
+				esc_html( $item[0] ),
+				! empty( $item[2] ) ? ' class="' . esc_attr( $item[2] ) . '"' : ''
 			);
 		}
 		echo '</ul>';
@@ -41,38 +42,55 @@ if ( ! function_exists( 'samirarte_boutique_add_shop_menu_item' ) ) {
 			return $items;
 		}
 
+		$items           = array_values( $items );
 		$shop_url        = untrailingslashit( samirarte_boutique_shop_url() );
-		$insert_position = count( $items );
+		$home_url        = untrailingslashit( home_url( '/' ) );
+		$home_position   = null;
+		$shop_position   = null;
 
 		foreach ( $items as $index => $item ) {
 			$item_url   = isset( $item->url ) ? untrailingslashit( (string) $item->url ) : '';
 			$item_title = isset( $item->title ) ? trim( wp_strip_all_tags( (string) $item->title ) ) : '';
 
-			if ( $shop_url === $item_url || 0 === strcasecmp( 'Tienda', $item_title ) ) {
-				return $items;
+			if ( $home_url === $item_url || 0 === strcasecmp( 'Inicio', $item_title ) ) {
+				$home_position = $index;
 			}
 
-			if ( 0 === strcasecmp( 'Cajas Gourmet', $item_title ) ) {
-				$insert_position = $index + 1;
+			if ( $shop_url === $item_url || 0 === strcasecmp( 'Tienda', $item_title ) ) {
+				$shop_position = $index;
 			}
 		}
 
-		$shop_item                   = new stdClass();
-		$shop_item->ID               = 0;
-		$shop_item->db_id            = 0;
-		$shop_item->menu_item_parent = 0;
-		$shop_item->object_id        = 0;
-		$shop_item->object           = 'custom';
-		$shop_item->type             = 'custom';
-		$shop_item->type_label       = esc_html__( 'Enlace personalizado', 'samirarte-boutique' );
-		$shop_item->title            = esc_html__( 'Tienda', 'samirarte-boutique' );
-		$shop_item->url              = samirarte_boutique_shop_url();
-		$shop_item->target           = '';
-		$shop_item->attr_title       = '';
-		$shop_item->description      = '';
-		$shop_item->classes          = array( 'menu-item', 'menu-item-type-custom', 'sam-menu-item-shop' );
-		$shop_item->xfn              = '';
-		$shop_item->current          = function_exists( 'is_shop' ) && is_shop();
+		$insert_position = null !== $home_position ? $home_position + 1 : 0;
+
+		if ( null !== $shop_position ) {
+			$shop_item = $items[ $shop_position ];
+			array_splice( $items, $shop_position, 1 );
+
+			if ( $shop_position < $insert_position ) {
+				$insert_position--;
+			}
+		} else {
+			$shop_item                   = new stdClass();
+			$shop_item->ID               = 0;
+			$shop_item->db_id            = 0;
+			$shop_item->menu_item_parent = 0;
+			$shop_item->object_id        = 0;
+			$shop_item->object           = 'custom';
+			$shop_item->type             = 'custom';
+			$shop_item->type_label       = esc_html__( 'Enlace personalizado', 'samirarte-boutique' );
+			$shop_item->title            = esc_html__( 'Tienda', 'samirarte-boutique' );
+			$shop_item->url              = samirarte_boutique_shop_url();
+			$shop_item->target           = '';
+			$shop_item->attr_title       = '';
+			$shop_item->description      = '';
+			$shop_item->classes          = array( 'menu-item', 'menu-item-type-custom' );
+			$shop_item->xfn              = '';
+		}
+
+		$shop_item->classes = isset( $shop_item->classes ) && is_array( $shop_item->classes ) ? $shop_item->classes : array();
+		$shop_item->classes = array_values( array_unique( array_merge( $shop_item->classes, array( 'sam-menu-item-shop' ) ) ) );
+		$shop_item->current = function_exists( 'is_shop' ) && is_shop();
 		$shop_item->current_item_parent   = false;
 		$shop_item->current_item_ancestor = false;
 

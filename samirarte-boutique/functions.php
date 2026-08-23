@@ -250,8 +250,8 @@ if ( ! function_exists( 'samirarte_boutique_primary_links' ) ) {
 	function samirarte_boutique_primary_links() {
 		return array(
 			array( esc_html__( 'Inicio', 'samirarte-boutique' ), home_url( '/' ) ),
+			array( esc_html__( 'Tienda', 'samirarte-boutique' ), samirarte_boutique_shop_url(), 'sam-menu-item-shop' ),
 			array( esc_html__( 'Cajas Gourmet', 'samirarte-boutique' ), samirarte_boutique_boxes_url() ),
-			array( esc_html__( 'Tienda', 'samirarte-boutique' ), samirarte_boutique_shop_url() ),
 			array( esc_html__( 'Experiencias', 'samirarte-boutique' ), home_url( '/experiencias/' ) ),
 			array( esc_html__( 'Galería', 'samirarte-boutique' ), home_url( '/galeria/' ) ),
 			array( esc_html__( 'Cuentos', 'samirarte-boutique' ), home_url( '/cuentos/' ) ),
@@ -270,9 +270,10 @@ if ( ! function_exists( 'samirarte_boutique_primary_menu' ) ) {
 		echo '<ul class="' . esc_attr( $menu_class ) . '">';
 		foreach ( samirarte_boutique_primary_links() as $item ) {
 			printf(
-				'<li><a href="%1$s">%2$s</a></li>',
+				'<li%3$s><a href="%1$s">%2$s</a></li>',
 				esc_url( $item[1] ),
-				esc_html( $item[0] )
+				esc_html( $item[0] ),
+				! empty( $item[2] ) ? ' class="' . esc_attr( $item[2] ) . '"' : ''
 			);
 		}
 		echo '</ul>';

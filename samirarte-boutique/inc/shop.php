@@ -74,3 +74,13 @@ if ( ! function_exists( 'samirarte_boutique_disable_woocommerce_sidebar' ) ) {
 	}
 }
 add_action( 'after_setup_theme', 'samirarte_boutique_disable_woocommerce_sidebar', 99 );
+
+if ( ! function_exists( 'samirarte_boutique_disable_shop_archive_header' ) ) {
+	/**
+	 * Remove the default WooCommerce shop title block.
+	 */
+	function samirarte_boutique_disable_shop_archive_header() {
+		remove_action( 'woocommerce_shop_loop_header', 'woocommerce_product_taxonomy_archive_header', 10 );
+	}
+}
+add_action( 'after_setup_theme', 'samirarte_boutique_disable_shop_archive_header', 99 );

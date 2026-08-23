@@ -4737,6 +4737,29 @@ input[type="submit"]:active,
 	white-space: nowrap;
 }
 
+.sam-site-menu .sam-menu-item-shop > a,
+.sam-mobile-menu__list .sam-menu-item-shop > a {
+	min-height: 40px;
+	padding: 8px 18px;
+	border: 1px solid rgba(105, 24, 16, 0.2);
+	border-radius: 999px;
+	background: var(--sam-burgundy);
+	box-shadow: 0 10px 20px rgba(105, 24, 16, 0.16);
+	color: #fff;
+	font-size: 0.82rem;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.sam-site-menu .sam-menu-item-shop > a:hover,
+.sam-site-menu .sam-menu-item-shop > a:focus-visible,
+.sam-mobile-menu__list .sam-menu-item-shop > a:hover,
+.sam-mobile-menu__list .sam-menu-item-shop > a:focus-visible {
+	background: var(--sam-brown);
+	color: #fff;
+}
+
 .sam-header-actions .sam-button--account {
 	border-color: transparent;
 	background: transparent;
@@ -5457,12 +5480,7 @@ input[type="submit"]:active,
 }
 
 .woocommerce-shop .woocommerce-products-header {
-	margin-bottom: 24px;
-	padding: clamp(30px, 4.2vw, 52px);
-	border-radius: 28px;
-	background:
-		radial-gradient(circle at 96% 12%, rgba(181, 132, 80, 0.18), transparent 14rem),
-		linear-gradient(125deg, rgba(255, 250, 242, 0.96), rgba(245, 239, 230, 0.86));
+	display: none;
 }
 
 .woocommerce-shop .woocommerce-products-header::before {
