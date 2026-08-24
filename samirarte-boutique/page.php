@@ -356,6 +356,20 @@ while ( have_posts() ) :
 						esc_html__( 'Y por eso, cada caja Samirarte guarda algo más que bocados: guarda un camino, una memoria y una pequeña historia esperando ser abierta.', 'samirarte-boutique' ),
 					),
 				),
+				array(
+					'nombre_publico' => esc_html__( 'Samirarte', 'samirarte-boutique' ),
+					'lugar_envio'    => esc_html__( 'Archivo', 'samirarte-boutique' ),
+					'titulo_cuento'  => esc_html__( 'La Leyenda de la Raíz de Fuego y la Flor del Reposo', 'samirarte-boutique' ),
+					'extracto'       => esc_html__( 'Un relato sobre el jengibre dorado, el agua de azahar y el equilibrio que nace cuando el fuego encuentra reposo.', 'samirarte-boutique' ),
+					'caja_asociada'  => esc_html__( 'Caja Samirarte', 'samirarte-boutique' ),
+					'fecha'          => esc_html__( 'Archivo Samirarte', 'samirarte-boutique' ),
+					'texto_cuento'   => array(
+						esc_html__( 'Cuentan los antiguos maestros artesanos de las Medinas, aquellos que amasan con el alma y endulzan con la memoria, que cada ingrediente de nuestra gastronomía no fue elegido por el azar, sino que encierra un secreto del universo. Dicen que las recetas no solo alimentan el cuerpo, sino que narran la esencia inmaterial de quienes las comparten. Esta es una de esas historias, escrita en el lenguaje antiguo de las especias y las flores.', 'samirarte-boutique' ),
+						esc_html__( 'Para comprender la fuerza de este relato, hay que escuchar primero la leyenda del sinjibir, el jengibre dorado. Cuentan las sabias abuelas que esta raíz milenaria no se limita a crecer, sino que palpita bajo la tierra, guardando celosamente en su interior la luz y la fuerza del sol. En nuestros dulces tradicionales, el jengibre representa la pura energía; es esa chispa vital, radiante e incansable que despierta los sentidos y pone el mundo en movimiento. Pero, desde tiempos inmemoriales, es también el mayor símbolo de protección: su calor inconfundible abraza desde dentro, ahuyenta el viento frío de la adversidad y levanta una poderosa muralla cálida e invisible alrededor del hogar. Es el impulso inagotable que ilumina los días y el escudo inquebrantable que resguarda a los que ama.', 'samirarte-boutique' ),
+						esc_html__( 'Como contrapeso perfecto a este fuego vital, la naturaleza nos regala el milagro del naranjo amargo y su flor, zahr, el destilado de agua de azahar. Cuenta la tradición que este árbol debe resistir estoicamente las heladas y los vientos más hostiles, moldeando sus ramas con el tiempo, para poder finalmente florecer. Es, por tanto, el emblema eterno de la superación y de la vida que se abre paso. Tras la dureza del clima, brota una pequeña flor blanca cuya esencia destila una infinita serenidad. Un aroma que, con solo acariciar el aire, aquieta los pensamientos y ofrece un remanso de paz. Cuando esta gota fragante humedece la masa y se une al dulzor de la almendra, revela una ternura inmensa que reconforta hasta el corazón más cansado. Es el alma que ha sabido florecer a pesar de las tormentas, ofreciendo siempre un refugio de calma, quietud y lealtad.', 'samirarte-boutique' ),
+						esc_html__( 'Por separado, la raíz vibrante y la flor paciente son joyas invaluables de la tierra. Pero cuando el destino las une en el silencioso obrador de la vida —como en el corazón de los dulces más exquisitos de Marruecos—, ocurre el verdadero milagro. La energía protectora encuentra su equilibrio perfecto, descansando al fin en la tierna serenidad. El fuego no quema, sino que mantiene vivo el calor del hogar; y el agua mansa no apaga la llama, sino que la hace eterna, creando un sabor único, profundo e inolvidable que desafía el paso del tiempo.', 'samirarte-boutique' ),
+					),
+				),
 			),
 			'final_cta'    => array(
 				'title'   => esc_html__( 'Encargar una caja con cuento', 'samirarte-boutique' ),
