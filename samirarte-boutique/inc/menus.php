@@ -34,6 +34,40 @@ if ( ! function_exists( 'samirarte_boutique_primary_menu' ) ) {
 	}
 }
 
+if ( ! function_exists( 'samirarte_boutique_fallback_menu' ) ) {
+	function samirarte_boutique_fallback_menu( $args = array() ) {
+		$menu_class = 'sam-site-menu';
+
+		if ( is_object( $args ) && ! empty( $args->menu_class ) ) {
+			$menu_class = $args->menu_class;
+		} elseif ( is_array( $args ) && ! empty( $args['menu_class'] ) ) {
+			$menu_class = $args['menu_class'];
+		}
+
+		samirarte_boutique_primary_menu( $menu_class );
+	}
+}
+
+if ( ! function_exists( 'samirarte_remove_phone_whatsapp_menu_items' ) ) {
+	function samirarte_remove_phone_whatsapp_menu_items( $items, $args ) {
+		foreach ( $items as $key => $item ) {
+			$title = isset( $item->title ) ? trim( $item->title ) : '';
+			$url   = isset( $item->url ) ? $item->url : '';
+
+			if ( strpos( $title, '+34676679064' ) !== false
+				|| strpos( $url, 'tel:+34676679064' ) !== false
+				|| strpos( $url, 'wa.me/34676679064' ) !== false
+				|| stripos( $title, 'whatsapp' ) !== false
+			) {
+				unset( $items[ $key ] );
+			}
+		}
+
+		return array_values( $items );
+	}
+}
+add_filter( 'wp_nav_menu_objects', 'samirarte_remove_phone_whatsapp_menu_items', 10, 2 );
+
 if ( ! function_exists( 'samirarte_boutique_add_shop_menu_item' ) ) {
 	function samirarte_boutique_add_shop_menu_item( $items, $args ) {
 		$theme_location = isset( $args->theme_location ) ? (string) $args->theme_location : '';
