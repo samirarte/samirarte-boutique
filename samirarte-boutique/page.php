@@ -465,6 +465,39 @@ while ( have_posts() ) :
 			'sections'        => array(),
 			'journal_entries' => array(
 				array(
+					'slug'        => 'secretos-ancestrales-del-datil',
+					'label'       => esc_html__( '24 agosto 2026', 'samirarte-boutique' ),
+					'title'       => esc_html__( 'Secretos ancestrales del dátil: el elixir del desierto en la mesa gourmet', 'samirarte-boutique' ),
+					'description' => esc_html__( 'Descubre los secretos milenarios del dátil, desde la maceración en especias hasta el elixir robb, y cómo aplicarlos en la alta cocina gourmet.', 'samirarte-boutique' ),
+					'pubDate'     => '2026-08-24',
+					'author'      => esc_html__( 'Samirarte', 'samirarte-boutique' ),
+					'tags'        => array( 'gastronomia', 'datiles', 'recetas-ancestrales', 'gourmet' ),
+					'draft'       => false,
+					'paragraphs'  => array(
+						esc_html__( 'Durante milenios, el dátil no fue considerado un simple alimento, sino un verdadero tesoro de vida. En las vastas rutas de caravanas y en los oasis del desierto, la palmera datilera era venerada como el «árbol de la vida». En el obrador de Samirarte, recogemos ese legado de sabiduría antigua para llevar a tu mesa técnicas y combinaciones que han atravesado siglos de tradición.', 'samirarte-boutique' ),
+						esc_html__( 'Estos son algunos de los secretos ancestrales que transforman al dátil en una joya gastronómica:', 'samirarte-boutique' ),
+					),
+					'items'       => array(
+						array(
+							'title' => esc_html__( 'El arte de la maceración en especias:', 'samirarte-boutique' ),
+							'text'  => esc_html__( 'En la antigüedad, los dátiles se maceraban junto a cardamomo, canela en rama y clavos de olor en vasijas de barro. Este reposo lento permite que las especias infusionen la carne del fruto, creando un contraste aromático que equilibra su dulzor natural.', 'samirarte-boutique' ),
+						),
+						array(
+							'title' => esc_html__( 'La manteca natural de la cocina antigua:', 'samirarte-boutique' ),
+							'text'  => esc_html__( 'Antes de la repostería moderna, la pasta de dátil cocida a fuego lento con unas gotas de agua de azahar o rosa se utilizaba como aglutinante noble. Aporta a los dulces una textura melosa e inalterable, manteniendo la humedad de las masas durante días de forma 100% natural.', 'samirarte-boutique' ),
+						),
+						array(
+							'title' => esc_html__( 'El elixir concentrado (Robb):', 'samirarte-boutique' ),
+							'text'  => esc_html__( 'Tradicionalmente, la reducción prolongada del jugo de dátil daba lugar a un jarabe oscuro y denso. Este arrope ancestral se utilizaba tanto para endulzar infusiones como para glasear platos salados, aportando notas profundas de toffee y tostado.', 'samirarte-boutique' ),
+						),
+						array(
+							'title' => esc_html__( 'El maridaje con frutos secos tostados:', 'samirarte-boutique' ),
+							'text'  => esc_html__( 'La combinación clásica de dátil relleno de almendra o nuez tostada a la leña responde a un sabio equilibrio de texturas y nutrientes. El amargor sutil del fruto seco recién tostado rompe la densidad del dátil, creando un bocado redondo en paladar.', 'samirarte-boutique' ),
+						),
+					),
+					'closing'     => esc_html__( 'Respetar los tiempos de elaboración y el origen del fruto es nuestra forma de rendir tributo a una tradición milenaria donde la cocina es, ante todo, arte y memoria.', 'samirarte-boutique' ),
+				),
+				array(
 					'label'      => esc_html__( 'Primera entrada', 'samirarte-boutique' ),
 					'title'      => esc_html__( 'Bienvenida al diario de Samirarte', 'samirarte-boutique' ),
 					'closing'    => esc_html__( 'Bienvenida a los sabores que cuentan historias.', 'samirarte-boutique' ),
@@ -820,18 +853,60 @@ while ( have_posts() ) :
 
 					<div class="sam-journal__entries">
 						<?php foreach ( $config['journal_entries'] as $entry ) : ?>
-							<article class="sam-journal-entry">
+							<?php if ( ! empty( $entry['draft'] ) ) : ?>
+								<?php continue; ?>
+							<?php endif; ?>
+							<article class="sam-journal-entry" <?php echo ! empty( $entry['slug'] ) ? 'id="' . esc_attr( $entry['slug'] ) . '"' : ''; ?>>
 								<header class="sam-journal-entry__header">
 									<?php if ( ! empty( $entry['label'] ) ) : ?>
 										<p class="sam-journal-entry__label"><?php echo esc_html( $entry['label'] ); ?></p>
 									<?php endif; ?>
 									<h2><?php echo esc_html( $entry['title'] ); ?></h2>
+									<?php if ( ! empty( $entry['description'] ) ) : ?>
+										<p class="sam-journal-entry__description"><?php echo esc_html( $entry['description'] ); ?></p>
+									<?php endif; ?>
+									<?php if ( ! empty( $entry['author'] ) || ! empty( $entry['pubDate'] ) ) : ?>
+										<p class="sam-journal-entry__meta">
+											<?php
+											echo esc_html(
+												trim(
+													implode(
+														' · ',
+														array_filter(
+															array(
+																! empty( $entry['author'] ) ? $entry['author'] : '',
+																! empty( $entry['pubDate'] ) ? mysql2date( 'd/m/Y', $entry['pubDate'] ) : '',
+															)
+														)
+													)
+												)
+											);
+											?>
+										</p>
+									<?php endif; ?>
 								</header>
 
 								<div class="sam-journal-entry__content">
 									<?php foreach ( $entry['paragraphs'] as $paragraph ) : ?>
 										<p><?php echo esc_html( $paragraph ); ?></p>
 									<?php endforeach; ?>
+									<?php if ( ! empty( $entry['items'] ) ) : ?>
+										<ul class="sam-journal-entry__list">
+											<?php foreach ( $entry['items'] as $item ) : ?>
+												<li>
+													<strong><?php echo esc_html( $item['title'] ); ?></strong>
+													<?php echo esc_html( ' ' . $item['text'] ); ?>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>
+									<?php if ( ! empty( $entry['tags'] ) ) : ?>
+										<ul class="sam-journal-entry__tags" aria-label="<?php echo esc_attr__( 'Etiquetas', 'samirarte-boutique' ); ?>">
+											<?php foreach ( $entry['tags'] as $tag ) : ?>
+												<li><?php echo esc_html( $tag ); ?></li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>
 								</div>
 
 								<?php if ( ! empty( $entry['closing'] ) ) : ?>

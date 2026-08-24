@@ -1,0 +1,44 @@
+# Credenciales y scripts de despliegue con secretos
+deploy/deploy-samirarte.txt
+
+# Backups locales del tema
+backup/
+
+# Sistema y editores
+.agents/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+dist/
+build/
+.cache/
+.sass-cache/
+
+# Composer
+vendor/
+
+# Logs y temporales
+*.log
+*.log.*
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Entornos
+.env
+.env.*.local
+
+# WordPress runtime
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
