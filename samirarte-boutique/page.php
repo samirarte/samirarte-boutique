@@ -370,7 +370,6 @@ while ( have_posts() ) :
 						esc_html__( 'Por separado, la raíz vibrante y la flor paciente son joyas invaluables de la tierra. Pero cuando el destino las une en el silencioso obrador de la vida —como en el corazón de los dulces más exquisitos de Marruecos—, ocurre el verdadero milagro. La energía protectora encuentra su equilibrio perfecto, descansando al fin en la tierna serenidad. El fuego no quema, sino que mantiene vivo el calor del hogar; y el agua mansa no apaga la llama, sino que la hace eterna, creando un sabor único, profundo e inolvidable que desafía el paso del tiempo.', 'samirarte-boutique' ),
 					),
 				),
-			),
 				array(
 					'nombre_publico' => esc_html__( 'Antonio', 'samirarte-boutique' ),
 					'lugar_envio'    => esc_html__( 'Valencia', 'samirarte-boutique' ),
