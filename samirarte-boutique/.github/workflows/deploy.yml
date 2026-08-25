@@ -22,18 +22,18 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          local-dir: '.'
+          local-dir: './'
           protocol: ftps
-          # Remove files on remote that do not exist locally
-          # Warning: --delete will remove remote files not present in the repo
-          git-ftp-args: --insecure --delete
-          # Optional: exclude common dev files (pattern list)
+          port: 21
+          security: loose
+          timeout: 60000
           exclude: |
-            .git
-            .github
-            node_modules
-            .vscode
-            .env
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.vscode/**
+            **/.github/**
+            **/.env
 
       - name: Confirm deployment
         run: |
