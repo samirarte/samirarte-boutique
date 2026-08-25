@@ -357,8 +357,8 @@ while ( have_posts() ) :
 					),
 				),
 				array(
-					'nombre_publico' => esc_html__( 'Samirarte', 'samirarte-boutique' ),
-					'lugar_envio'    => esc_html__( 'Archivo', 'samirarte-boutique' ),
+					'nombre_publico' => esc_html__( 'Cris y Pepe', 'samirarte-boutique' ),
+					'lugar_envio'    => esc_html__( 'Alcañiz (Teruel)', 'samirarte-boutique' ),
 					'titulo_cuento'  => esc_html__( 'La Leyenda de la Raíz de Fuego y la Flor del Reposo', 'samirarte-boutique' ),
 					'extracto'       => esc_html__( 'Un relato sobre el jengibre dorado, el agua de azahar y el equilibrio que nace cuando el fuego encuentra reposo.', 'samirarte-boutique' ),
 					'caja_asociada'  => esc_html__( 'Caja Samirarte', 'samirarte-boutique' ),
@@ -368,6 +368,22 @@ while ( have_posts() ) :
 						esc_html__( 'Para comprender la fuerza de este relato, hay que escuchar primero la leyenda del sinjibir, el jengibre dorado. Cuentan las sabias abuelas que esta raíz milenaria no se limita a crecer, sino que palpita bajo la tierra, guardando celosamente en su interior la luz y la fuerza del sol. En nuestros dulces tradicionales, el jengibre representa la pura energía; es esa chispa vital, radiante e incansable que despierta los sentidos y pone el mundo en movimiento. Pero, desde tiempos inmemoriales, es también el mayor símbolo de protección: su calor inconfundible abraza desde dentro, ahuyenta el viento frío de la adversidad y levanta una poderosa muralla cálida e invisible alrededor del hogar. Es el impulso inagotable que ilumina los días y el escudo inquebrantable que resguarda a los que ama.', 'samirarte-boutique' ),
 						esc_html__( 'Como contrapeso perfecto a este fuego vital, la naturaleza nos regala el milagro del naranjo amargo y su flor, zahr, el destilado de agua de azahar. Cuenta la tradición que este árbol debe resistir estoicamente las heladas y los vientos más hostiles, moldeando sus ramas con el tiempo, para poder finalmente florecer. Es, por tanto, el emblema eterno de la superación y de la vida que se abre paso. Tras la dureza del clima, brota una pequeña flor blanca cuya esencia destila una infinita serenidad. Un aroma que, con solo acariciar el aire, aquieta los pensamientos y ofrece un remanso de paz. Cuando esta gota fragante humedece la masa y se une al dulzor de la almendra, revela una ternura inmensa que reconforta hasta el corazón más cansado. Es el alma que ha sabido florecer a pesar de las tormentas, ofreciendo siempre un refugio de calma, quietud y lealtad.', 'samirarte-boutique' ),
 						esc_html__( 'Por separado, la raíz vibrante y la flor paciente son joyas invaluables de la tierra. Pero cuando el destino las une en el silencioso obrador de la vida —como en el corazón de los dulces más exquisitos de Marruecos—, ocurre el verdadero milagro. La energía protectora encuentra su equilibrio perfecto, descansando al fin en la tierna serenidad. El fuego no quema, sino que mantiene vivo el calor del hogar; y el agua mansa no apaga la llama, sino que la hace eterna, creando un sabor único, profundo e inolvidable que desafía el paso del tiempo.', 'samirarte-boutique' ),
+					),
+				),
+			),
+				array(
+					'nombre_publico' => esc_html__( 'Antonio', 'samirarte-boutique' ),
+					'lugar_envio'    => esc_html__( 'Valencia', 'samirarte-boutique' ),
+					'titulo_cuento'  => esc_html__( 'La Leyenda de las Semillas de Luz', 'samirarte-boutique' ),
+					'extracto'       => esc_html__( 'Un cuento sobre el amor silencioso que se amasa de madrugada y llega envuelto en aroma de azahar.', 'samirarte-boutique' ),
+					'caja_asociada'  => esc_html__( 'Caja Samirarte', 'samirarte-boutique' ),
+					'fecha'          => esc_html__( 'Archivo Samirarte', 'samirarte-boutique' ),
+					'texto_cuento'   => array(
+						esc_html__( 'El silencio de la medianoche envolvía la cocina. Allí estaba ella, con las manos curtidas de quien libra batallas diarias, amasando con el tacto suave de quien ama sin reservas. Sobre la mesa, los dátiles palpitaban con una extraña luz ambarina.', 'samirarte-boutique' ),
+						esc_html__( 'En la habitación contigua descansaba él, un hombre de alma inmensa; un padre maravilloso que fue el refugio de muchos y que ahora encontraba su puerto seguro en los inagotables cuidados de una mujer de hierro y miel.', 'samirarte-boutique' ),
+						esc_html__( 'Aunque estaban solos, el aire se saturó de una presencia antigua y protectora. Una pizca de canela, el suspiro del agua de azahar y el calor del clavo levitaron por unos instantes. Caían sobre el cuenco guiados por una brisa invisible, como si entidades de otro mundo acudieran a sostener los brazos de la mujer cuando el cansancio amenazaba con doblarla.', 'samirarte-boutique' ),
+						esc_html__( 'La leyenda de aquellos dulces hablaba de unas «semillas secretas». En el corazón de esas madrugadas se revelaba el verdadero misterio: mientras ella velaba el sueño, finas motas de luz plateada —polvo estelar indetectable de día— descendían de la nada para fundirse con el almíbar hirviendo. Esas semillas no eran de este mundo. Eran la cristalización de una devoción pura, el milagro sobrenatural de dos almas que se sostienen.', 'samirarte-boutique' ),
+						esc_html__( 'Al alba, el aroma del horneado llenó la casa. Ella tomó el primer dulce aún tibio y se lo ofreció al hombre justo cuando abría los ojos. Al compartir aquel bocado, el crujido dio paso a una oleada de paz inexplicable. En ese sabor habitaba un «gracias» mudo, inmenso y eterno, flotando brillante entre dos personas que, desafiando al tiempo, se siguen salvando cada día.', 'samirarte-boutique' ),
 					),
 				),
 			),
@@ -787,7 +803,7 @@ while ( have_posts() ) :
 					</div>
 
 					<div class="sam-story-archive__grid">
-						<?php foreach ( $config['stories'] as $story ) : ?>
+							<?php foreach ( array_reverse( $config['stories'] ) as $story ) : ?>
 							<article class="sam-story-card">
 								<div class="sam-story-card__header">
 									<p class="sam-story-card__meta">
@@ -814,7 +830,7 @@ while ( have_posts() ) :
 									<p class="sam-story-card__box"><?php echo esc_html( $story['caja_asociada'] ); ?></p>
 								<?php endif; ?>
 
-								<details class="sam-story-card__details" open>
+								<details class="sam-story-card__details">
 									<summary><?php echo esc_html__( 'Leer cuento completo', 'samirarte-boutique' ); ?></summary>
 									<div class="sam-story-card__text">
 										<?php foreach ( $story['texto_cuento'] as $paragraph ) : ?>
