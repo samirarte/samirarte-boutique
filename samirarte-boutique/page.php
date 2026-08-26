@@ -361,7 +361,9 @@ while ( have_posts() ) :
 					'lugar_envio'    => esc_html__( 'Alcañiz (Teruel)', 'samirarte-boutique' ),
 					'titulo_cuento'  => esc_html__( 'La Leyenda de la Raíz de Fuego y la Flor del Reposo', 'samirarte-boutique' ),
 					'extracto'       => esc_html__( 'Un relato sobre el jengibre dorado, el agua de azahar y el equilibrio que nace cuando el fuego encuentra reposo.', 'samirarte-boutique' ),
-					'caja_asociada'  => esc_html__( 'Caja Samirarte', 'samirarte-boutique' ),
+					'caja_asociada'  => esc_html__( 'Mira la caja para Cris y Pepe', 'samirarte-boutique' ),
+					'caja_url'       => 'https://www.instagram.com/reel/DcEgTBos_DQ/?utm_source=ig_web_copy_link&igsi=NTc4MTIwNjQ2YQ==',
+					'caja_thumbnail' => 'regalocrisypepe.png',
 					'fecha'          => esc_html__( 'Archivo Samirarte', 'samirarte-boutique' ),
 					'texto_cuento'   => array(
 						esc_html__( 'Cuentan los antiguos maestros artesanos de las Medinas, aquellos que amasan con el alma y endulzan con la memoria, que cada ingrediente de nuestra gastronomía no fue elegido por el azar, sino que encierra un secreto del universo. Dicen que las recetas no solo alimentan el cuerpo, sino que narran la esencia inmaterial de quienes las comparten. Esta es una de esas historias, escrita en el lenguaje antiguo de las especias y las flores.', 'samirarte-boutique' ),
