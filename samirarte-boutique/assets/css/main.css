@@ -5957,3 +5957,170 @@ input[type="submit"]:active,
 		text-align: center;
 	}
 }
+
+
+/* ============================================================
+   Samirarte Digital — Proyectos
+   ============================================================ */
+
+.sam-digital-projects {
+	padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+
+.sam-digital-projects__heading {
+	max-width: 640px;
+	margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.sam-digital-projects__intro {
+	margin-top: 0.6rem;
+	color: var(--sam-brown);
+	font-size: 1.05rem;
+}
+
+.sam-digital-projects__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+	gap: 1.75rem;
+}
+
+/* Card */
+.sam-digital-card {
+	display: flex;
+	flex-direction: column;
+	border-radius: 14px;
+	overflow: hidden;
+	background: var(--sam-cream-light, #fffbf5);
+	border: 1px solid rgba(107, 47, 50, 0.12);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.sam-digital-card:hover {
+	box-shadow: 0 6px 28px rgba(0, 0, 0, 0.13);
+	transform: translateY(-3px);
+}
+
+/* Thumbnail */
+.sam-digital-card__thumb {
+	position: relative;
+	display: block;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: #1a1a2e;
+}
+
+.sam-digital-card__thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top;
+	display: block;
+	transition: transform 0.3s ease;
+}
+
+.sam-digital-card:hover .sam-digital-card__thumb img {
+	transform: scale(1.03);
+}
+
+.sam-digital-card__thumb-placeholder {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);
+}
+
+.sam-digital-card__overlay {
+	position: absolute;
+	top: 0.65rem;
+	right: 0.65rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.15);
+	color: #fff;
+	backdrop-filter: blur(4px);
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.sam-digital-card__thumb:hover .sam-digital-card__overlay,
+.sam-digital-card__thumb:focus-visible .sam-digital-card__overlay {
+	opacity: 1;
+}
+
+/* Body */
+.sam-digital-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	padding: 1.2rem 1.35rem 1.35rem;
+	flex: 1;
+}
+
+.sam-digital-card__domain {
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--sam-burgundy, #6b2f32);
+	margin: 0;
+}
+
+.sam-digital-card__body h3 {
+	font-size: 1.08rem;
+	font-weight: 800;
+	margin: 0;
+	color: var(--sam-brown-dark, #2c1a0e);
+	line-height: 1.3;
+}
+
+.sam-digital-card__description {
+	font-size: 0.88rem;
+	color: var(--sam-brown, #5c3d1e);
+	margin: 0;
+	line-height: 1.55;
+	flex: 1;
+}
+
+/* Tags */
+.sam-digital-card__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	list-style: none;
+	margin: 0.2rem 0 0;
+	padding: 0;
+}
+
+.sam-digital-card__tags li {
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	padding: 0.2rem 0.55rem;
+	border-radius: 999px;
+	background: rgba(107, 47, 50, 0.08);
+	color: var(--sam-burgundy, #6b2f32);
+}
+
+/* Link */
+.sam-digital-card__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	margin-top: 0.5rem;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: var(--sam-burgundy, #6b2f32);
+	text-decoration: none;
+	transition: opacity 0.15s;
+}
+
+.sam-digital-card__link:hover,
+.sam-digital-card__link:focus-visible {
+	opacity: 0.75;
+	text-decoration: underline;
+}

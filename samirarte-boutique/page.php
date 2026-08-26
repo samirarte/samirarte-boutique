@@ -534,6 +534,53 @@ while ( have_posts() ) :
 			'final_cta'       => array(),
 			'content_mode'    => 'journal',
 		);
+	} elseif ( 'samirarte-digital' === $page_slug ) {
+		$config = array(
+			'eyebrow'      => esc_html__( 'Samirarte Digital', 'samirarte-boutique' ),
+			'title'        => esc_html__( 'Desarrollo Web & Apps', 'samirarte-boutique' ),
+			'intro'        => esc_html__( 'Proyectos digitales diseñados y desarrollados por Samirarte. Webs, aplicaciones y herramientas hechas con la misma atención al detalle que nuestras cajas.', 'samirarte-boutique' ),
+			'media'        => array(),
+			'buttons'      => array(),
+			'digital_projects' => array(
+				array(
+					'name'        => esc_html__( 'El Rex Barber Club', 'samirarte-boutique' ),
+					'domain'      => 'elrexbarberclub.es',
+					'url'         => 'https://el-rex-barber-club.pages.dev',
+					'description' => esc_html__( 'Barbería clásica premium en Valencia. Web corporativa con reserva online, galería y ficha de servicios.', 'samirarte-boutique' ),
+					'tags'        => array( 'Web', 'Diseño', 'Reservas' ),
+					'image'       => 'app-elrex.png',
+					'image_alt'   => esc_attr__( 'Web de El Rex Barber Club', 'samirarte-boutique' ),
+				),
+				array(
+					'name'        => esc_html__( 'CCSE — Simulacro de Examen', 'samirarte-boutique' ),
+					'domain'      => 'ccse-prep.es',
+					'url'         => 'https://ccse-96981979-90250.web.app/',
+					'description' => esc_html__( 'Plataforma de preparación para la prueba de conocimientos constitucionales y socioculturales de España (CCSE). Simulacros de examen y panel de alumno.', 'samirarte-boutique' ),
+					'tags'        => array( 'App Web', 'Educación', 'Firebase' ),
+					'image'       => 'app-ccse.png',
+					'image_alt'   => esc_attr__( 'Aplicación CCSE simulacro de examen', 'samirarte-boutique' ),
+				),
+				array(
+					'name'        => esc_html__( 'Gestor de Escandallos Samirarte', 'samirarte-boutique' ),
+					'domain'      => 'escandallos.samirarte.es',
+					'url'         => 'https://escandallos.streamlit.app/',
+					'description' => esc_html__( 'Herramienta inteligente para gestionar recetas, controlar costes por ración y calcular alérgenos. Con integración de IA para generar recetas.', 'samirarte-boutique' ),
+					'tags'        => array( 'App', 'IA', 'Gastronomía', 'Streamlit' ),
+					'image'       => 'app-escandallos.png',
+					'image_alt'   => esc_attr__( 'Gestor de escandallos inteligente Samirarte', 'samirarte-boutique' ),
+				),
+				array(
+					'name'        => esc_html__( 'Almazara Catering', 'samirarte-boutique' ),
+					'domain'      => 'almazaracatering.es',
+					'url'         => 'https://almazaracatering.base44.app/',
+					'description' => esc_html__( 'Plataforma de gestión para empresa de catering. Menús, presupuestos y coordinación de eventos desde una sola aplicación.', 'samirarte-boutique' ),
+					'tags'        => array( 'App', 'Catering', 'Gestión' ),
+					'image'       => 'app-almazara.png',
+					'image_alt'   => esc_attr__( 'App de gestión Almazara Catering', 'samirarte-boutique' ),
+				),
+			),
+			'content_mode' => 'digital',
+		);
 	} elseif ( $is_account ) {
 		$config['eyebrow']      = esc_html__( 'Área cliente', 'samirarte-boutique' );
 		$config['title']        = esc_html__( 'Bienvenida a tu espacio', 'samirarte-boutique' );
@@ -880,6 +927,47 @@ while ( have_posts() ) :
 						<?php the_content(); ?>
 					</div>
 				<?php endif; ?>
+			<?php elseif ( 'digital' === $config['content_mode'] ) : ?>
+				<section class="sam-digital-projects" aria-labelledby="sam-digital-title">
+					<div class="sam-digital-projects__heading">
+						<p class="sam-eyebrow"><?php echo esc_html__( 'Proyectos', 'samirarte-boutique' ); ?></p>
+						<h2 id="sam-digital-title"><?php echo esc_html__( 'Lo que hemos construido', 'samirarte-boutique' ); ?></h2>
+						<p class="sam-digital-projects__intro"><?php echo esc_html__( 'Cada proyecto tiene su propio lenguaje. Aquí los que ya están en marcha.', 'samirarte-boutique' ); ?></p>
+					</div>
+					<div class="sam-digital-projects__grid">
+						<?php foreach ( $config['digital_projects'] as $project ) : ?>
+							<?php $thumb = ! empty( $project['image'] ) ? samirarte_boutique_image_url( $project['image'] ) : ''; ?>
+							<article class="sam-digital-card">
+								<a class="sam-digital-card__thumb" href="<?php echo esc_url( $project['url'] ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $project['name'] ); ?>">
+									<?php if ( $thumb ) : ?>
+										<img src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo esc_attr( $project['image_alt'] ); ?>" loading="lazy">
+									<?php else : ?>
+										<div class="sam-digital-card__thumb-placeholder" aria-hidden="true"></div>
+									<?php endif; ?>
+									<span class="sam-digital-card__overlay" aria-hidden="true">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+									</span>
+								</a>
+								<div class="sam-digital-card__body">
+									<p class="sam-digital-card__domain"><?php echo esc_html( $project['domain'] ); ?></p>
+									<h3><?php echo esc_html( $project['name'] ); ?></h3>
+									<p class="sam-digital-card__description"><?php echo esc_html( $project['description'] ); ?></p>
+									<?php if ( ! empty( $project['tags'] ) ) : ?>
+										<ul class="sam-digital-card__tags" aria-label="<?php echo esc_attr__( 'Tecnologías', 'samirarte-boutique' ); ?>">
+											<?php foreach ( $project['tags'] as $tag ) : ?>
+												<li><?php echo esc_html( $tag ); ?></li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>
+									<a class="sam-digital-card__link" href="<?php echo esc_url( $project['url'] ); ?>" target="_blank" rel="noopener noreferrer">
+										<?php echo esc_html( $project['domain'] ); ?>
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+									</a>
+								</div>
+							</article>
+						<?php endforeach; ?>
+					</div>
+				</section>
 			<?php elseif ( 'journal' === $config['content_mode'] ) : ?>
 				<section class="sam-journal" aria-labelledby="sam-journal-title">
 					<div class="sam-journal__heading">
