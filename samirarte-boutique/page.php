@@ -578,6 +578,15 @@ while ( have_posts() ) :
 					'image'       => 'almazara.png',
 					'image_alt'   => esc_attr__( 'App de gestión Almazara Catering', 'samirarte-boutique' ),
 				),
+				array(
+					'name'        => esc_html__( 'Nourd Rent a Car', 'samirarte-boutique' ),
+					'domain'      => 'nourdrentacar.es',
+					'url'         => 'https://nourd-rent-car.rayssesamira9.workers.dev/',
+					'description' => esc_html__( 'Plataforma de alquiler de vehículos premium. Flota de SUV, Mercedes, Dacia y más, con reserva directa por WhatsApp y disponibilidad 24 horas.', 'samirarte-boutique' ),
+					'tags'        => array( 'Web', 'Multiidioma', 'Cloudflare' ),
+					'image'       => 'nourd.png',
+					'image_alt'   => esc_attr__( 'Nourd Rent a Car — alquiler de vehículos premium', 'samirarte-boutique' ),
+				),
 			),
 			'content_mode' => 'digital',
 		);
