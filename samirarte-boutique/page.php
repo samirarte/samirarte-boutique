@@ -548,7 +548,7 @@ while ( have_posts() ) :
 					'url'         => 'https://el-rex-barber-club.pages.dev',
 					'description' => esc_html__( 'Barbería clásica premium en Valencia. Web corporativa con reserva online, galería y ficha de servicios.', 'samirarte-boutique' ),
 					'tags'        => array( 'Web', 'Diseño', 'Reservas' ),
-					'image'       => 'app-elrex.png',
+					'image'       => 'elrex.png',
 					'image_alt'   => esc_attr__( 'Web de El Rex Barber Club', 'samirarte-boutique' ),
 				),
 				array(
@@ -557,7 +557,7 @@ while ( have_posts() ) :
 					'url'         => 'https://ccse-96981979-90250.web.app/',
 					'description' => esc_html__( 'Plataforma de preparación para la prueba de conocimientos constitucionales y socioculturales de España (CCSE). Simulacros de examen y panel de alumno.', 'samirarte-boutique' ),
 					'tags'        => array( 'App Web', 'Educación', 'Firebase' ),
-					'image'       => 'app-ccse.png',
+					'image'       => 'ccse.png',
 					'image_alt'   => esc_attr__( 'Aplicación CCSE simulacro de examen', 'samirarte-boutique' ),
 				),
 				array(
@@ -566,7 +566,7 @@ while ( have_posts() ) :
 					'url'         => 'https://escandallos.streamlit.app/',
 					'description' => esc_html__( 'Herramienta inteligente para gestionar recetas, controlar costes por ración y calcular alérgenos. Con integración de IA para generar recetas.', 'samirarte-boutique' ),
 					'tags'        => array( 'App', 'IA', 'Gastronomía', 'Streamlit' ),
-					'image'       => 'app-escandallos.png',
+					'image'       => 'escandallos.png',
 					'image_alt'   => esc_attr__( 'Gestor de escandallos inteligente Samirarte', 'samirarte-boutique' ),
 				),
 				array(
@@ -575,7 +575,7 @@ while ( have_posts() ) :
 					'url'         => 'https://almazaracatering.base44.app/',
 					'description' => esc_html__( 'Plataforma de gestión para empresa de catering. Menús, presupuestos y coordinación de eventos desde una sola aplicación.', 'samirarte-boutique' ),
 					'tags'        => array( 'App', 'Catering', 'Gestión' ),
-					'image'       => 'app-almazara.png',
+					'image'       => 'almazara.png',
 					'image_alt'   => esc_attr__( 'App de gestión Almazara Catering', 'samirarte-boutique' ),
 				),
 			),
