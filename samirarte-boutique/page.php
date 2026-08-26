@@ -377,6 +377,7 @@ while ( have_posts() ) :
 					'extracto'       => esc_html__( 'Un cuento sobre el amor silencioso que se amasa de madrugada y llega envuelto en aroma de azahar.', 'samirarte-boutique' ),
 					'caja_asociada'  => esc_html__( 'Mira la caja para Antonio', 'samirarte-boutique' ),
 					'caja_url'       => 'https://www.instagram.com/reel/DcZNbfNMSuL/?utm_source=ig_web_copy_link&igsi=NTc4MTIwNjQ2YQ==',
+					'caja_thumbnail' => 'reel-antonio-semillas-luz.webp',
 					'fecha'          => esc_html__( 'Archivo Samirarte', 'samirarte-boutique' ),
 					'texto_cuento'   => array(
 						esc_html__( 'El silencio de la medianoche envolvía la cocina. Allí estaba ella, con las manos curtidas de quien libra batallas diarias, amasando con el tacto suave de quien ama sin reservas. Sobre la mesa, los dátiles palpitaban con una extraña luz ambarina.', 'samirarte-boutique' ),
@@ -828,7 +829,20 @@ while ( have_posts() ) :
 
 								<?php if ( ! empty( $story['caja_asociada'] ) ) : ?>
 									<?php if ( ! empty( $story['caja_url'] ) ) : ?>
-										<a class="sam-story-card__box" href="<?php echo esc_url( $story['caja_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $story['caja_asociada'] ); ?></a>
+										<div class="sam-story-card__reel-wrap">
+											<?php if ( ! empty( $story['caja_thumbnail'] ) ) : ?>
+												<?php $thumb_url = samirarte_boutique_image_url( $story['caja_thumbnail'] ); ?>
+												<?php if ( $thumb_url ) : ?>
+													<a class="sam-story-card__reel-thumb" href="<?php echo esc_url( $story['caja_url'] ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Ver reel en Instagram', 'samirarte-boutique' ); ?>">
+														<img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $story['caja_asociada'] ); ?>" loading="lazy" width="160" height="160">
+														<span class="sam-story-card__reel-play" aria-hidden="true">
+															<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M8 5v14l11-7z"/></svg>
+														</span>
+													</a>
+												<?php endif; ?>
+											<?php endif; ?>
+											<a class="sam-story-card__box" href="<?php echo esc_url( $story['caja_url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $story['caja_asociada'] ); ?></a>
+										</div>
 									<?php else : ?>
 										<p class="sam-story-card__box"><?php echo esc_html( $story['caja_asociada'] ); ?></p>
 									<?php endif; ?>
