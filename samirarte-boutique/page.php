@@ -377,7 +377,7 @@ while ( have_posts() ) :
 					'lugar_envio'    => esc_html__( 'Valencia', 'samirarte-boutique' ),
 					'titulo_cuento'  => esc_html__( 'La Leyenda de las Semillas de Luz', 'samirarte-boutique' ),
 					'extracto'       => esc_html__( 'Un cuento sobre el amor silencioso que se amasa de madrugada y llega envuelto en aroma de azahar.', 'samirarte-boutique' ),
-					'caja_asociada'  => esc_html__( 'Mira la caja para Antonio', 'samirarte-boutique' ),
+					'caja_asociada'  => esc_html__( 'Mira la caja para Víctor', 'samirarte-boutique' ),
 					'caja_url'       => 'https://www.instagram.com/reel/DcZNbfNMSuL/?utm_source=ig_web_copy_link&igsi=NTc4MTIwNjQ2YQ==',
 					'caja_thumbnail' => 'reagalo_antonio.png',
 					'fecha'          => esc_html__( 'Archivo Samirarte', 'samirarte-boutique' ),
