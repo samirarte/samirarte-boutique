@@ -539,7 +539,12 @@ while ( have_posts() ) :
 			'eyebrow'      => esc_html__( 'Samirarte Digital', 'samirarte-boutique' ),
 			'title'        => esc_html__( 'Desarrollo Web & Apps', 'samirarte-boutique' ),
 			'intro'        => esc_html__( 'Proyectos digitales diseñados y desarrollados por Samirarte. Webs, aplicaciones y herramientas hechas con la misma atención al detalle que nuestras cajas.', 'samirarte-boutique' ),
-			'media'        => array(),
+			'media'        => array(
+				array(
+					'url' => samirarte_boutique_image_url( 'samiratedigital.jpg' ),
+					'alt' => esc_attr__( 'Samirarte Digital — desarrollo web, apps e inteligencia artificial', 'samirarte-boutique' ),
+				),
+			),
 			'buttons'      => array(),
 			'digital_projects' => array(
 				array(
